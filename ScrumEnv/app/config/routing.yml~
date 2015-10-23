@@ -9,4 +9,4 @@ homepage:
     
 backlog:
     path: /backlog
-    defaults: { _controller: AppBundle:Route:backlog }   
+    defaults: { _controller: AppBundle:Route:displayBacklog }   
