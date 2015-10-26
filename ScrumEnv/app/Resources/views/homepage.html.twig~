@@ -1,0 +1,9 @@
+{% block stylesheets %}
+	<link href="{{ asset('css/homepage.css') }}" rel="stylesheet" />
+{% endblock %}
+
+{% block body %}
+    {{ include('navbar.html.twig') }}
+    {% endblock %}
+	Homepage.
+{% endblock %}

@@ -8,5 +8,5 @@ homepage:
     defaults: { _controller: AppBundle:Route:homepage }
     
 backlog:
-    path: /backlog
-    defaults: { _controller: AppBundle:Route:displayBacklog }   
+    path: /{user}/{project}/backlog
+    defaults: { _controller: AppBundle:Route:backlog }   

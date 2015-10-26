@@ -1,4 +1,3 @@
-
 <!DOCTYPE html>
 <html>
     <head>
@@ -7,30 +6,27 @@
         <link href="{{ asset('css/twbs/bootstrap.css') }}" rel="stylesheet" />
         {% endblock %}
     </head>
-    
-    <body>
+    {% block body %}
+    {{ include('navbar.html.twig') }}
         <table class="table table-bordered" data-toggle="table">
-        <thead>
-        <tr class="us">
-            <th class="us">ID</th>
-            <th class="us">DESCRIPTION</th>
-            <th class="us">COST</th>
-            <th class="us">PRIORITY</th>
-        </td>
-        </thead>
-        <tbody>
-        {% for us in usList %}
-            <tr class="us">
-                <td class="us">{{us.id}}</td>
-                <td class="us">{{us.description}}</td>
-                <td class="us">{{us.cost}}</td>
-                <td class="us">{{us.priority}}</td>
-            </tr>
-        {% endfor %}
-        </body>
-        </table>
-        
-        {% block javascripts %}
-        {% endblock %}
-    </body>
+            <thead>
+                <tr class="us">
+                    <th class="us">ID</th>
+                    <th class="us">DESCRIPTION</th>
+                    <th class="us">COST</th>
+                    <th class="us">PRIORITY</th>
+                </td>
+            </thead>
+            <tbody>
+                {% for us in usList %}
+                    <tr class="us">
+                        <td class="us">{{us.id}}</td>
+                        <td class="us">{{us.description}}</td>
+                        <td class="us">{{us.cost}}</td>
+                        <td class="us">{{us.priority}}</td>
+                    </tr>
+                {% endfor %}
+            </body>
+        </table>        
+    {% endblock %}
 </html>
