@@ -9,5 +9,5 @@ before_script:
     - sleep 5
 
 script:
-    - vendor/bin/phpunit ScrumEnv/E2ETests/USListTest.php
+    - phpunit --coverage-text
 
