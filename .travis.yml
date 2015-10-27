@@ -9,5 +9,5 @@ before_script:
     - sleep 5
 
 script:
-    - ./ScrumEnv/bin/phpunit --colors -v E2ETests/USListTest.php
+    - phpunit ScrumEnv/E2ETests/USListTest.php
 
