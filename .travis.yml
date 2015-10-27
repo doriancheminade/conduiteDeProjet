@@ -9,5 +9,5 @@ before_script:
     - sleep 5
 
 script:
-    - "vendor/bin/phpunit" --colors -v ../E2ETests/USListTest.php
+    - vendor/bin/phpunit --colors -v ../E2ETests/USListTest.php
 
