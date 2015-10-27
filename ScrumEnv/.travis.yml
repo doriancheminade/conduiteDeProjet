@@ -1,0 +1,13 @@
+language: php
+php:
+    - 5.5
+    - 5.4
+    - hhvm
+
+before_script:
+    - "nohup java -jar selenium-server-standalone-2.44.0.jar > /dev/null &"
+    - sleep 5
+
+script:
+    - bin/phpunit --colors -v E2ETests/USListTest.php
+
