@@ -9,5 +9,5 @@ before_script:
     - sleep 5
 
 script:
-    - phpunit --coverage-text
+    - "vendor/bin/phpunit" --colors -v ../E2ETests/USListTest.php
 
