@@ -9,5 +9,5 @@ before_script:
     - sleep 5
 
 script:
-    - phpunit ScrumEnv/E2ETests/USListTest.php
+    - vendor/bin/phpunit ScrumEnv/E2ETests/USListTest.php
 
