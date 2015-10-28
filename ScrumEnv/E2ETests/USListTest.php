@@ -1,7 +1,7 @@
 <?php
 
 require('../vendor/autoload.php')
-require_once 'PHPUnit/Extensions/SeleniumTestCase.php';
+//require_once 'PHPUnit/Extensions/SeleniumTestCase.php';
 
 class USListTest extends PHPUnit_Extensions_SeleniumTestCase
 {
