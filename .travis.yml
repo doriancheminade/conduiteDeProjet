@@ -10,7 +10,7 @@ before_script:
     - wget http://selenium.googlecode.com/files/selenium-server-standalone-2.33.0.jar
     - "nohup java -jar selenium-server-standalone-2.33.0.jar > /dev/null &"
     - sleep 5
-    - php ScrumEnv/app/console server:run
+    - "php ScrumEnv/app/console server:run &"
 
 script:
     - phpunit -c ScrumEnv/app/ -v
