@@ -1,7 +1,8 @@
 <?php
 
-require('../vendor/autoload.php')
-require_once __DIR__ . '/phpunit/phpunit-selenium';
+//require('../vendor/autoload.php')
+//require __DIR__ . '/vendor/autoload.php'
+//require __DIR__ . '/phpunit/phpunit-selenium';
 
 class USListTest extends PHPUnit_Extensions_SeleniumTestCase
 {

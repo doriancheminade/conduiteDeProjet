@@ -9,5 +9,5 @@ before_script:
     - sleep 5
 
 script:
-    - phpunit --colors -v ScrumEnv/E2ETests/USListTest.php
+    - phpunit --bootstrap vendor/autoload.php
 
