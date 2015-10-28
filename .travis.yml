@@ -9,4 +9,4 @@ before_script:
     - sleep 5
 
 script:
-    - phpunit -c app/
+    - phpunit -c ScrumEnv/app/ -v
