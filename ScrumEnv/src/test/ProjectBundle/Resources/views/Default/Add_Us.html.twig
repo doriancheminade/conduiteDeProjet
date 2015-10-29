@@ -1,0 +1,48 @@
+<html>
+<head>
+	<link href="{{ asset('bundles/testProject/css/main.css') }}" rel="stylesheet"  type="text/css"/>
+</head>
+<meta http-equiv="Content-Type" content="text/html; charset=utf-8" />
+	<body >
+	<div id="Project">
+			{% if up %}
+			<h1 id="TitlePage">Update an user_Story</h1>
+			{% endif %}
+			{% if up==null %}
+			<h1 id="TitlePage">Add an user_Story</h1>
+			{% endif %}
+
+			{% if message %}
+			<p>{{ message }}</p>
+			{% endif %}
+	
+<form action="" method="post" {{ form_enctype(form) }}>
+	{{ form_start(form) }}
+	<table id="Add_Form">
+		<tr>
+			<td class="Add_Form_Column"> {{ form_label(form.describe_UserStory) }} </td>
+			<td class="Add_Form_Column"> {{ form_widget(form.describe_UserStory) }} </td>
+		</tr>
+		<tr>
+			<td class="Add_Form_Column"> {{ form_label(form.priority_UserStory) }} </td>
+			<td class="Add_Form_Column"> {{ form_widget(form.priority_UserStory) }} </td>
+		</tr>
+		<tr>
+			<td class="Add_Form_Column"> {{ form_label(form.difficulty_UserStory) }} </td>
+			<td class="Add_Form_Column"> {{ form_widget(form.difficulty_UserStory) }} </td>
+		</tr>
+
+		<tr>
+			 <td class="Add_Form_Column"> <input type="submit" /> </td>
+			<td class="Add_Form_Column"> <button type="submit" ><a href="{{ path('go_to_backlog') }}"> Back to backlog  </a> </button> </td>
+		</tr>
+	</table>
+   
+
+    
+      
+    {{ form_end(form) }}
+</form>
+</div>
+</body>
+</html>

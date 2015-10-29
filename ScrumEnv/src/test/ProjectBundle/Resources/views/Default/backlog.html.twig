@@ -1,0 +1,46 @@
+
+<html>
+<head>
+	<link href="{{ asset('bundles/testProject/css/main.css') }}" rel="stylesheet"  type="text/css"/>
+</head>
+<meta http-equiv="Content-Type" content="text/html; charset=utf-8" />
+	<body >
+	<div id="Project">
+		
+			<h1 id="TitlePage">Bienvenue sur la page de création de backlog</h1>
+			<div id="backlog">
+			<table>
+				<th class="Backlog_column_int"> ID </th>
+				<th class="Backlog_column_string"> Description </th>
+				<th class="Backlog_column_int"> P </th>
+				<th class="Backlog_column_int"> D </th>
+						{% for a in message %}
+
+				<tr>
+					<div>
+					<td class="IntUser">{{ a.getIdUserStory }}</td>
+					<td class="DescriptionUser">{{ a.getDescribeUserStory }}</td>
+					<td class="IntUser">{{ a.getPriorityUserStory }}</td>
+					<td class="IntUser">{{ a.getDifficultyUserStory}}</td>
+
+
+
+				<td id="backlog_option">	<button type="submit" class="updateDelete" ><a href="{{ path('Update_User_Story', { 'id': a.getIdUserStory }) }}"> Update  </a> </button> </td>
+
+				<td>	<button  class="updateDelete" type="submit" ><a href="{{ path('Delete_User_Story', { 'id': a.getIdUserStory }) }}"> Delete  </a> </button> </td>
+
+					<div>
+				</tr>
+
+			{% else %}
+				<tr><td>Aucun acteur n'a été trouvé.</td></tr>
+			{% endfor %}
+			</table>
+
+			</div>
+
+			<button type="submit" ><a href="{{ path('go_to_User_Story') }}"> Add User Story  </a> </button>
+	</div>
+	
+	</body>
+</html>
