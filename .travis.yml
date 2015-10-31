@@ -6,7 +6,7 @@ before_script:
     - composer install --no-interaction --working-dir ScrumEnv
     - "export DISPLAY=:99.0"
     - "sh -e /etc/init.d/xvfb start"
-    - php app/console doctrine:database:create --env=test
+    - php ScrumEnv/app/console doctrine:database:create --env=test
     - php ScrumEnv/app/console doctrine:schema:update --force --env=test
     - php ScrumEnv/app/console doctrine:fixtures:load --no-interaction --env=test
     - sleep 3 # give xvfb some time to start
