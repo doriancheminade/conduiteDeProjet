@@ -1,8 +1,6 @@
 language: php
 php:
     - 5.5
-env:
-  - SYMFONY_VERSION="2.7.*" DB=mysql
   
 before_script:
     - composer install --no-interaction --working-dir ScrumEnv
