@@ -15,7 +15,3 @@ test_project:
     resource: "@testProjectBundle/Resources/config/routing.yml"
     prefix:   /ProjectCDP
 
-MyAppFilmothequeBundle:
-    resource: "@MyAppFilmothequeBundle/Resources/config/routing.yml"
-    prefix:   /myapp
-
