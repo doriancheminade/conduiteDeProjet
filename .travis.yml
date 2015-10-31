@@ -10,8 +10,8 @@ before_script:
     - php ScrumEnv/app/console doctrine:schema:update --force --env=test
     - php ScrumEnv/app/console doctrine:fixtures:load --no-interaction --env=test
     - sleep 3 # give xvfb some time to start
-    - wget http://selenium.googlecode.com/files/selenium-server-standalone-2.33.0.jar
-    - "nohup java -jar selenium-server-standalone-2.33.0.jar > /dev/null &"
+    - wget http://selenium.googlecode.com/files/selenium-server-standalone-2.39.0.jar
+    - "nohup java -jar selenium-server-standalone-2.39.0.jar > /dev/null &"
     - sleep 5
     - "php ScrumEnv/app/console server:run &"
 
