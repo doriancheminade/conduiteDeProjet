@@ -18,7 +18,8 @@
         "sensio/framework-extra-bundle": "^3.0.2",
         "incenteev/composer-parameter-handler": "~2.0",
         "twbs/bootstrap": "^3.3",
-        "phpunit/phpunit-selenium": "1.4.*"
+        "phpunit/phpunit-selenium": "1.4.*",
+        "doctrine/doctrine-fixtures-bundle": "^2.2"
     },
     "require-dev": {
         "sensio/generator-bundle": "~2.3",
