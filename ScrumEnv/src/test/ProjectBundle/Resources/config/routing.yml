@@ -16,4 +16,20 @@ Delete_User_Story:
 
 Update_User_Story:
   pattern: /Backlog/update_UserStory/{id}
-  defaults: { _controller: testProjectBundle:Default:Update_Us }   
+  defaults: { _controller: testProjectBundle:Default:Update_Us }
+
+oG_Update_Achievement:
+  pattern: /Kanban/update_UserStory_achievement_OG/{id}
+  defaults: { _controller: testProjectBundle:Default:Update_Us_achievementoG }
+
+Done_Update_Achievement:
+  pattern: /Kanban/update_UserStory_achievement_Done/{id}
+  defaults: { _controller: testProjectBundle:Default:Update_Us_achievementD }
+
+ToDo_Update_Achievement:
+  pattern: /Kanban/update_UserStory_achievement_ToDo/{id}
+  defaults: { _controller: testProjectBundle:Default:Update_Us_achievementToDo }
+
+go_to_Kanban:
+  pattern: /Kanban/visualisation/
+  defaults: { _controller: testProjectBundle:Default:visualisation }   

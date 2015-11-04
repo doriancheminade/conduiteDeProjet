@@ -41,6 +41,7 @@ class DefaultController extends Controller
             ->add('describe_UserStory','text')
             ->add('priority_UserStory','text')
             ->add('difficulty_UserStory','text')
+            ->add('achievement_US','text')
          ->getForm();
 
 
@@ -94,6 +95,7 @@ class DefaultController extends Controller
             ->add('describe_UserStory','text')
             ->add('priority_UserStory','text')
             ->add('difficulty_UserStory','text')
+            ->add('achievement_US','text')
          ->getForm();
 
          $request = $this->container->get('request');
@@ -115,5 +117,73 @@ class DefaultController extends Controller
 
           return $this->container->get('templating')->renderResponse('testProjectBundle:Default:Add_Us.html.twig',array(
         'form' => $form->createView(), 'message' => $message, 'up' => $up));
+    }
+
+    public function visualisationAction(){
+        $em = $this->container->get('doctrine')->getEntityManager();
+
+        $US= $em->getRepository('testProjectBundle:UserStory')->findAll();
+
+        return $this->container->get('templating')->renderResponse('testProjectBundle:Kanban:Kanban_visualisation.html.twig', 
+        array(
+        'kanban_us' => $US,
+        ));
+    }
+
+    public function Update_Us_achievementoGAction($id){
+
+         $message = '';
+         $up = 'ok';
+         $em = $this->container->get('doctrine')->getEntityManager();
+         $User_Story = $em->find('testProjectBundle:UserStory', $id);
+          $US= $em->getRepository('testProjectBundle:UserStory')->findAll();
+         if (!$User_Story){
+            $message = "Aucune US trouve";
+         }
+
+         else{
+            $User_Story -> setAchievementUS("onGoing");
+            $em->persist($User_Story);
+            $em->flush();
+         }
+          return $this->container->get('templating')->renderResponse('testProjectBundle:Kanban:Kanban_visualisation.html.twig',array('kanban_us' => $US, 'message' => $message, 'up' => $up));
+    }
+
+    public function Update_Us_achievementDAction($id){
+
+         $message = '';
+         $up = 'ok';
+         $em = $this->container->get('doctrine')->getEntityManager();
+         $User_Story = $em->find('testProjectBundle:UserStory', $id);
+          $US= $em->getRepository('testProjectBundle:UserStory')->findAll();
+         if (!$User_Story){
+            $message = "Aucune US trouve";
+         }
+
+         else{
+            $User_Story -> setAchievementUS("Done");
+            $em->persist($User_Story);
+            $em->flush();
+         }
+          return $this->container->get('templating')->renderResponse('testProjectBundle:Kanban:Kanban_visualisation.html.twig',array('kanban_us' => $US, 'message' => $message, 'up' => $up));
+    }
+
+    public function Update_Us_achievementToDoAction($id){
+
+         $message = '';
+         $up = 'ok';
+         $em = $this->container->get('doctrine')->getEntityManager();
+         $User_Story = $em->find('testProjectBundle:UserStory', $id);
+          $US= $em->getRepository('testProjectBundle:UserStory')->findAll();
+         if (!$User_Story){
+            $message = "Aucune US trouve";
+         }
+
+         else{
+            $User_Story -> setAchievementUS("ToDo");
+            $em->persist($User_Story);
+            $em->flush();
+         }
+          return $this->container->get('templating')->renderResponse('testProjectBundle:Kanban:Kanban_visualisation.html.twig',array('kanban_us' => $US, 'message' => $message, 'up' => $up));
     }
 }

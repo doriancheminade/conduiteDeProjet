@@ -11,24 +11,33 @@ body{
 	
 }
 
+#Project_Kanban{
+	width:75%;
+	height:75%;
+	margin:auto;
+	background-color: lightgrey;
+	text-align: center;
+	
+}
+
 #TitlePage{
 	color:blue;
 	font-size: 40px;
 	text-align: center;
 }
 	
-.IntUser, .DescriptionUser{
+.IntUser, .DescriptionUser,.Kanban_column_string,.Kanban_column_int{
 
 	background-color: white;
 	text-align: center;
 	border:1px solid black;
 }
 
-.DescriptionUser{
-	width:700px;
+.DescriptionUser,.Kanban_column_string{
+	width:525px;
 }
 
-.IntUser, .backlog_option{
+.IntUser, .backlog_option,.Kanban_column_int{
 	width:100px;
 }
 
@@ -47,6 +56,7 @@ td {
 
 table{
 	border-collapse: collapse;
+	float:left;
 }
 
 #Add_Form{
@@ -62,4 +72,16 @@ table{
 
 a{
 	text-decoration: none;
+}
+
+.DescriptionUser{
+	width:400px;
+}
+
+.IntUser{
+	width:100px;
+}
+
+.line_option{
+	float:right;
 }
