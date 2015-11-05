@@ -1,0 +1,17 @@
+
+<html>
+<head>
+	<link href="{{ asset('bundles/Project/css/main.css') }}" rel="stylesheet"  type="text/css"/>
+</head>
+<meta http-equiv="Content-Type" content="text/html; charset=utf-8" />
+	<body >
+	<div id="Project">
+			<p id="TitlePage">Welcome</p>
+			<div>
+				<a href="{{ path('go_to_backlog') }}">create a Backlog</a>
+			</div>
+	</div>
+
+	
+	</body>
+</html>

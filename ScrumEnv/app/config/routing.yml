@@ -1,17 +1,3 @@
-app:
-    resource: "@AppBundle/Controller/"
-    type: annotation
-    prefix: /Scrum
-
-homepage:
-    path: /
-    defaults: { _controller: AppBundle:Route:homepage }
-    
-backlog:
-    path: /{owner}/{project}/backlog
-    defaults: { _controller: AppBundle:Route:backlog }
-    
-backlogDeleteUS:
-    path: /{owner}/{project}/backlog/delete/{USId}
-    defaults: { _controller: AppBundle:Route:USBacklogDelete }
-    requirements: { _method: post|delete }
+project:
+    resource: "@ProjectBundle/Resources/config/routing.yml"
+    prefix:   /ScrumTool
