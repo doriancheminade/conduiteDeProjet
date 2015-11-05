@@ -55,8 +55,7 @@
             "file": "app/config/parameters.yml"
         },
         "branch-alias": {
-            "dev-master": "2.7-dev",
-            "keep-outdated": true
+            "dev-master": "2.7-dev"
         }
     }
 }
