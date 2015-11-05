@@ -122,4 +122,28 @@ class UserStory
     {
         return $this->difficulty_UserStory;
     }
+
+    /**
+     * Set achievementUS
+     *
+     * @param string $achievementUS
+     *
+     * @return UserStory
+     */
+    public function setAchievementUS($achievementUS)
+    {
+        $this->achievement_US = $achievementUS;
+
+        return $this;
+    }
+
+    /**
+     * Get achievementUS
+     *
+     * @return string
+     */
+    public function getAchievementUS()
+    {
+        return $this->achievement_US;
+    }
 }

@@ -122,7 +122,7 @@ class DefaultController extends Controller
     public function visualisationAction(){
         $em = $this->container->get('doctrine')->getEntityManager();
 
-        $US= $em->getRepository('testProjectBundle:UserStory')->findAll();
+        $US= $em->getRepository('testProjectBundle:Task')->findAll();
 
         return $this->container->get('templating')->renderResponse('testProjectBundle:Kanban:Kanban_visualisation.html.twig', 
         array(
@@ -130,58 +130,59 @@ class DefaultController extends Controller
         ));
     }
 
-    public function Update_Us_achievementoGAction($id){
+   
+    public function Update_task_achievementoGAction($id){
 
          $message = '';
          $up = 'ok';
          $em = $this->container->get('doctrine')->getEntityManager();
-         $User_Story = $em->find('testProjectBundle:UserStory', $id);
-          $US= $em->getRepository('testProjectBundle:UserStory')->findAll();
-         if (!$User_Story){
-            $message = "Aucune US trouve";
+         $Task = $em->find('testProjectBundle:Task', $id);
+          $US= $em->getRepository('testProjectBundle:Task')->findAll();
+         if (!$Task){
+            $message = "Aucune tache trouve";
          }
 
          else{
-            $User_Story -> setAchievementUS("onGoing");
-            $em->persist($User_Story);
+            $Task -> setAchievementTask("onGoing");
+            $em->persist($Task);
             $em->flush();
          }
           return $this->container->get('templating')->renderResponse('testProjectBundle:Kanban:Kanban_visualisation.html.twig',array('kanban_us' => $US, 'message' => $message, 'up' => $up));
     }
 
-    public function Update_Us_achievementDAction($id){
+    public function Update_task_achievementDAction($id){
 
          $message = '';
          $up = 'ok';
          $em = $this->container->get('doctrine')->getEntityManager();
-         $User_Story = $em->find('testProjectBundle:UserStory', $id);
-          $US= $em->getRepository('testProjectBundle:UserStory')->findAll();
-         if (!$User_Story){
-            $message = "Aucune US trouve";
+         $Task = $em->find('testProjectBundle:Task', $id);
+          $US= $em->getRepository('testProjectBundle:Task')->findAll();
+         if (!$Task){
+            $message = "Aucune tache trouve";
          }
 
          else{
-            $User_Story -> setAchievementUS("Done");
-            $em->persist($User_Story);
+            $Task -> setAchievementTask("Done");
+            $em->persist($Task);
             $em->flush();
          }
           return $this->container->get('templating')->renderResponse('testProjectBundle:Kanban:Kanban_visualisation.html.twig',array('kanban_us' => $US, 'message' => $message, 'up' => $up));
     }
 
-    public function Update_Us_achievementToDoAction($id){
+    public function Update_task_achievementToDoAction($id){
 
          $message = '';
          $up = 'ok';
          $em = $this->container->get('doctrine')->getEntityManager();
-         $User_Story = $em->find('testProjectBundle:UserStory', $id);
-          $US= $em->getRepository('testProjectBundle:UserStory')->findAll();
-         if (!$User_Story){
-            $message = "Aucune US trouve";
+         $Task = $em->find('testProjectBundle:Task', $id);
+          $US= $em->getRepository('testProjectBundle:Task')->findAll();
+         if (!$Task){
+            $message = "Aucune tache trouve";
          }
 
          else{
-            $User_Story -> setAchievementUS("ToDo");
-            $em->persist($User_Story);
+            $Task -> setAchievementTask("ToDo");
+            $em->persist($Task);
             $em->flush();
          }
           return $this->container->get('templating')->renderResponse('testProjectBundle:Kanban:Kanban_visualisation.html.twig',array('kanban_us' => $US, 'message' => $message, 'up' => $up));

@@ -84,4 +84,6 @@ a{
 
 .line_option{
 	float:right;
+	border:1px solid black;
+	width:50px;
 }

@@ -16,15 +16,15 @@
 			
 			{% for a in kanban_us %}
 
-			{% if a.getAchievementUS == 'ToDo' %}
+			{% if a.getAchievementTask == 'ToDo' %}
 			
 				<tr>
 					<div>
 
-					<td class="IntUser">{{ a.getIdUserStory }}</td>
-					<td class="DescriptionUser">{{ a.getDescribeUserStory }}
-				 <a class="line_option" href="{{ path('oG_Update_Achievement', { 'id': a.getIdUserStory }) }}"> oG </a>
-				 <a class="line_option" href="{{ path('Done_Update_Achievement', { 'id': a.getIdUserStory }) }}"> Done </a></td>
+					<td class="IntUser">{{ a.getIdTask }}</td>
+					<td class="DescriptionTask">{{ a.getDescribeTask }}
+				 <a class="line_option" href="{{ path('oG_Update_Achievement', { 'id': a.getIdTask }) }}"> oG </a>
+				 <a class="line_option" href="{{ path('Done_Update_Achievement', { 'id': a.getIdTask }) }}"> Done </a></td>
 				</div>
 
 				</tr>
@@ -38,14 +38,14 @@
 			<th class="Kanban_column_int"> ID </th>
 			<th class="Kanban_column_string"> onGoing </th>
 			{% for a in kanban_us %}
-			{% if a.getAchievementUS == 'onGoing' %}
+			{% if a.getAchievementTask == 'onGoing' %}
 				<tr>
 					<div>
 
-					<td class="IntUser">{{ a.getIdUserStory }}</td>
-					<td class="DescriptionUser">{{ a.getDescribeUserStory }}
-					<a class="line_option" href="{{ path('ToDo_Update_Achievement', { 'id': a.getIdUserStory }) }}"> ToDo </a>
-				    <a class="line_option" href="{{ path('Done_Update_Achievement', { 'id': a.getIdUserStory }) }}"> Done </a></td>
+					<td class="IntUser">{{ a.getIdTask }}</td>
+					<td class="DescriptionTask">{{ a.getDescribeTask }}
+					<a class="line_option" href="{{ path('ToDo_Update_Achievement', { 'id': a.getIdTask }) }}"> ToDo </a>
+				    <a class="line_option" href="{{ path('Done_Update_Achievement', { 'id': a.getIdTask }) }}"> Done </a></td>
 					</div>
 				</tr>
 			{% endif %}
@@ -57,13 +57,13 @@
 			<th class="Kanban_column_int"> ID </th>
 			<th class="Kanban_column_string"> Done </th>
 			{% for a in kanban_us %}
-			{% if a.getAchievementUS == 'Done' %}
+			{% if a.getAchievementTask == 'Done' %}
 				<tr>
 					<div>
-					<td class="IntUser">{{ a.getIdUserStory }}</td>
-					<td class="DescriptionUser">{{ a.getDescribeUserStory }}
-					<a class="line_option" href="{{ path('ToDo_Update_Achievement', { 'id': a.getIdUserStory }) }}"> ToDo </a>
-				    <a class="line_option" href="{{ path('oG_Update_Achievement', { 'id': a.getIdUserStory }) }}"> onGoing </a></td>
+					<td class="IntUser">{{ a.getIdTask }}</td>
+					<td class="DescriptionTask">{{ a.getDescribeTask }}
+					<a class="line_option" href="{{ path('ToDo_Update_Achievement', { 'id': a.getIdTask }) }}"> ToDo </a>
+				    <a class="line_option" href="{{ path('oG_Update_Achievement', { 'id': a.getIdTask }) }}"> onGoing </a></td>
 					</div>
 				</tr>
 			{% endif %}

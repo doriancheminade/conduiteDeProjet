@@ -1,0 +1,40 @@
+<?php
+namespace test\ProjectBundle\Entity;
+use Doctrine\ORM\Mapping as ORM;
+use Symfony\Component\Validator\Constraints as Assert;
+
+/**
+ * @ORM\Entity
+ */
+class Task
+{
+    /**
+     * @ORM\GeneratedValue
+     * @ORM\Id
+     * @ORM\Column(type="integer")
+     */
+    private $id_task;
+
+    /**
+     * @ORM\Column(type="string",length=255)
+     * @Assert\NotBlank()
+     */    
+    private $describe_task;
+
+
+    /**
+     * @ORM\Column(type="integer")
+     * @Assert\NotBlank()
+     */    
+    private $Time;
+
+
+    /**
+     * @ORM\Column(type="string",length=255)
+     * @Assert\NotBlank()
+     */    
+    private $achievement_task;
+
+
+    
+}
