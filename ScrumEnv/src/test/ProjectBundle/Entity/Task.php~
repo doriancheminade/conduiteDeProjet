@@ -37,4 +37,86 @@ class Task
 
 
     
+
+    /**
+     * Get idTask
+     *
+     * @return integer
+     */
+    public function getIdTask()
+    {
+        return $this->id_task;
+    }
+
+    /**
+     * Set describeTask
+     *
+     * @param string $describeTask
+     *
+     * @return Task
+     */
+    public function setDescribeTask($describeTask)
+    {
+        $this->describe_task = $describeTask;
+
+        return $this;
+    }
+
+    /**
+     * Get describeTask
+     *
+     * @return string
+     */
+    public function getDescribeTask()
+    {
+        return $this->describe_task;
+    }
+
+    /**
+     * Set time
+     *
+     * @param integer $time
+     *
+     * @return Task
+     */
+    public function setTime($time)
+    {
+        $this->Time = $time;
+
+        return $this;
+    }
+
+    /**
+     * Get time
+     *
+     * @return integer
+     */
+    public function getTime()
+    {
+        return $this->Time;
+    }
+
+    /**
+     * Set achievementTask
+     *
+     * @param string $achievementTask
+     *
+     * @return Task
+     */
+    public function setAchievementTask($achievementTask)
+    {
+        $this->achievement_task = $achievementTask;
+
+        return $this;
+    }
+
+    /**
+     * Get achievementTask
+     *
+     * @return string
+     */
+    public function getAchievementTask()
+    {
+        return $this->achievement_task;
+    }
 }

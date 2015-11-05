@@ -34,12 +34,6 @@ class UserStory
      */    
     private $difficulty_UserStory;
 
-          /**
-     * @ORM\Column(type="string",length=255)
-     * @Assert\NotBlank()
-     */    
-    private $achievement_US;
-
 
     /**
      * Get idUserStory
@@ -130,20 +124,5 @@ class UserStory
      *
      * @return UserStory
      */
-    public function setAchievementUS($achievementUS)
-    {
-        $this->achievement_US = $achievementUS;
-
-        return $this;
-    }
-
-    /**
-     * Get achievementUS
-     *
-     * @return string
-     */
-    public function getAchievementUS()
-    {
-        return $this->achievement_US;
-    }
+   
 }

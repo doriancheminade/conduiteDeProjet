@@ -1,6 +1,10 @@
-mytest_display_firsttry:
+Welcome:
   pattern: /Welcome/{name}
-  defaults: { _controller: testProjectBundle:Default:index }    
+  defaults: { _controller: testProjectBundle:Default:index } 
+
+go_to_sprintIndex:
+  pattern: /Sprint_Index/{name}
+  defaults: { _controller: testProjectBundle:Default:sprintNavigation }      
 
 go_to_backlog:
   pattern: /Backlog/

@@ -14,6 +14,11 @@ class DefaultController extends Controller
         return $this->render('testProjectBundle:Default:index.html.twig', array('name' => $name));
     }
 
+    public function sprintNavigationAction($name)
+    {
+        return $this->render('testProjectBundle:Kanban:Sprint_page.html.twig', array('name' => $name));
+    }
+
     public function naviguerAction(){
 
     	$message = "hey";
@@ -41,7 +46,6 @@ class DefaultController extends Controller
             ->add('describe_UserStory','text')
             ->add('priority_UserStory','text')
             ->add('difficulty_UserStory','text')
-            ->add('achievement_US','text')
          ->getForm();
 
 
