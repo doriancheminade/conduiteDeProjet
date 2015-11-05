@@ -5,8 +5,8 @@ php:
 before_script:
     - wget http://selenium.googlecode.com/files/selenium-server-standalone-2.39.0.jar
     - "nohup java -jar selenium-server-standalone-2.39.0.jar > /dev/null &"
+    - "cp ScrumEnv/app/config/parameters.travis ScrumEnv/app/config/parameters.yml.dist"
     - composer install --no-interaction --working-dir ScrumEnv
-    - "cp ScrumEnv/app/config/parameters.travis ScrumEnv/app/config/parameters.yml"
     - "export DISPLAY=:99.0"
     - "sh -e /etc/init.d/xvfb start"
     - php ScrumEnv/app/console doctrine:database:create -v --env=test
