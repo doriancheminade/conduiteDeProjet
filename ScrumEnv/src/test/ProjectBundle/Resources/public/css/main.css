@@ -1,0 +1,89 @@
+body{
+	background-color: white;
+}
+
+#Project{
+	width:50%;
+	height:50%;
+	margin:auto;
+	background-color: #E6E6FA;
+	text-align: center;
+	
+}
+
+#Project_Kanban{
+	width:75%;
+	height:75%;
+	margin:auto;
+	background-color: lightgrey;
+	text-align: center;
+	
+}
+
+#TitlePage{
+	color:blue;
+	font-size: 40px;
+	text-align: center;
+}
+	
+.IntUser, .DescriptionUser,.Kanban_column_string,.Kanban_column_int{
+
+	background-color: white;
+	text-align: center;
+	border:1px solid black;
+}
+
+.DescriptionUser,.Kanban_column_string{
+	width:525px;
+}
+
+.IntUser, .backlog_option,.Kanban_column_int{
+	width:100px;
+}
+
+
+td {
+	text-align: center;
+}
+
+#Backlog_column{
+	font-weight: bold;
+}
+
+#backlog{
+	background-color: white;
+}
+
+table{
+	border-collapse: collapse;
+	float:left;
+}
+
+#Add_Form{
+	width:50%;
+	text-align: center;
+	margin: auto;
+}
+
+.Add_Form_Column{
+	padding:10px;
+	font-weight: bold;
+}
+
+a{
+	text-decoration: none;
+}
+
+.DescriptionUser{
+	width:400px;
+}
+
+.IntUser{
+	width:100px;
+}
+
+.line_option{
+	float:right;
+	border:1px solid black;
+	width:50px;
+}

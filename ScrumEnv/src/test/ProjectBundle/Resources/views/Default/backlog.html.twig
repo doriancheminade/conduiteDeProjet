@@ -1,0 +1,56 @@
+
+<html>
+<head>
+	<link href="{{ asset('bundles/testProject/css/main.css') }}" rel="stylesheet"  type="text/css"/>
+	<link href="{{ asset('css/twbs/bootstrap.css') }}" rel="stylesheet" />
+</head>
+<meta http-equiv="Content-Type" content="text/html; charset=utf-8" />
+	<body >
+	<div id="Project">
+		
+			<h1 id="TitlePage">Bienvenue sur la page de création de backlog</h1>
+			<div id="backlog">
+			<table border="1">
+				<tr bgcolor="#F8F8FF">
+				<th class="Backlog_column_int"> ID </th>
+				<th class="Backlog_column_string"> Description </th>
+				<th class="Backlog_column_int"> P </th>
+				<th class="Backlog_column_int"> D </th>
+				<th class="Backlog_column_int"> U </th>
+				<th class="Backlog_column_int"> Del </th>
+						{% for a in message %}
+
+				<tr>
+					<div>
+					<td class="IntUser">{{ a.getIdUserStory }}</td>
+					<td class="DescriptionUser">{{ a.getDescribeUserStory }}</td>
+					<td class="IntUser">{{ a.getPriorityUserStory }}</td>
+					<td class="IntUser">{{ a.getDifficultyUserStory}}</td>
+
+
+
+				<td id="backlog_option"><a href="{{ path('Update_User_Story', { 'id': a.getIdUserStory }) }}">	<button type="submit" class="btn btn-success" > Update   </button> </a></td>
+
+				<td>	<a href="{{ path('Delete_User_Story', { 'id': a.getIdUserStory }) }}"><button  class="btn btn-danger" type="submit" > Delete   </button></a> </td>
+
+					<div>
+				</tr>
+
+			{% else %}
+				<tr><td>Aucune user story n'a été trouvé.</td></tr>
+			{% endfor %}
+			</table>
+
+			</div>
+<<<<<<< HEAD
+
+			<button type="submit" ><a href="{{ path('go_to_User_Story') }}"> Add User Story  </a> </button>
+			<button type="submit" ><a href="{{ path('Welcome', { 'name': 'Guillaume' }) }}"> Back to project  </a> </button> 
+=======
+<br></br>
+		<a href="Add_UserStory"><button class="btn btn-primary" type="submit" > Add User Story   </button></a>
+>>>>>>> origin/Guillaume_Dev
+	</div>
+	
+	</body>
+</html>

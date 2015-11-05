@@ -1,0 +1,39 @@
+Welcome:
+  pattern: /Welcome/{name}
+  defaults: { _controller: testProjectBundle:Default:index } 
+
+go_to_sprintIndex:
+  pattern: /Sprint_Index/{name}
+  defaults: { _controller: testProjectBundle:Default:sprintNavigation }      
+
+go_to_backlog:
+  pattern: /Backlog/
+  defaults: { _controller: testProjectBundle:Default:list }   
+
+go_to_User_Story:
+  pattern: /Backlog/Add_UserStory/
+  defaults: { _controller: testProjectBundle:Default:Add_Us }   
+
+Delete_User_Story:
+  pattern: /Backlog/supp_UserStory/{id}
+  defaults: { _controller: testProjectBundle:Default:Delete_Us }   
+
+Update_User_Story:
+  pattern: /Backlog/update_UserStory/{id}
+  defaults: { _controller: testProjectBundle:Default:Update_Us }
+
+oG_Update_Achievement:
+  pattern: /Kanban/Update_task_achievement_OG/{id}
+  defaults: { _controller: testProjectBundle:Default:Update_task_achievementoG }
+
+Done_Update_Achievement:
+  pattern: /Kanban/Update_task_achievement_Done/{id}
+  defaults: { _controller: testProjectBundle:Default:Update_task_achievementD }
+
+ToDo_Update_Achievement:
+  pattern: /Kanban/Update_task_achievement_ToDo/{id}
+  defaults: { _controller: testProjectBundle:Default:Update_task_achievementToDo }
+
+go_to_Kanban:
+  pattern: /Kanban/visualisation/
+  defaults: { _controller: testProjectBundle:Default:visualisation }   
