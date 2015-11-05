@@ -1,0 +1,17 @@
+//TODO: homepage that list projects for each user  
+
+go_to_backlog:
+  pattern: /Backlog/{owner}/{project}/
+  defaults: { _controller: ProjectBundle:Default:list }   
+
+go_to_User_Story:
+  pattern: /Backlog/{owner}/{project}/Add_UserStory/
+  defaults: { _controller: ProjectBundle:Default:Add_Us }   
+
+Delete_User_Story:
+  pattern: /Backlog/{owner}/{project}/delete_UserStory/{id}
+  defaults: { _controller: ProjectBundle:Default:Delete_Us }   
+
+Update_User_Story:
+  pattern: /Backlog/{owner}/{project}/update_UserStory/{id}
+  defaults: { _controller: ProjectBundle:Default:Update_Us }   
