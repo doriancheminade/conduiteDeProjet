@@ -1,0 +1,33 @@
+#TODO: homepage that list projects for each user  
+
+go_to_backlog:
+  pattern: /Backlog/{owner}/{project}/
+  defaults: { _controller: ProjectBundle:Default:list }   
+
+go_to_User_Story:
+  pattern: /Backlog/{owner}/{project}/Add_UserStory/
+  defaults: { _controller: ProjectBundle:Default:Add_Us }   
+
+Delete_User_Story:
+  pattern: /Backlog/{owner}/{project}/delete_UserStory/{id}
+  defaults: { _controller: ProjectBundle:Default:Delete_Us }   
+
+Update_User_Story:
+  pattern: /Backlog/{owner}/{project}/update_UserStory/{id}
+  defaults: { _controller: ProjectBundle:Default:Update_Us } 
+
+go_to_Kanban:
+  pattern: /Kanban/{owner}/{project}/visualisation/
+  defaults: { _controller: ProjectBundle:Default:visualisation } 
+
+oG_Update_Achievement:
+  pattern: /Kanban/{owner}/{project}/Update_task_achievement_OG/{id}
+  defaults: { _controller: ProjectBundle:Default:Update_task_achievementoG }
+
+Done_Update_Achievement:
+  pattern: /Kanban/{owner}/{project}/Update_task_achievement_Done/{id}
+  defaults: { _controller: ProjectBundle:Default:Update_task_achievementD }
+
+ToDo_Update_Achievement:
+  pattern: /Kanban/{owner}/{project}/Update_task_achievement_ToDo/{id}
+  defaults: { _controller: ProjectBundle:Default:Update_task_achievementToDo }

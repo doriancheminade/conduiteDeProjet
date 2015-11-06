@@ -1,12 +1,3 @@
-app:
-    resource: "@AppBundle/Controller/"
-    type: annotation
-    prefix: /Scrum
-
-homepage:
-    path: /
-    defaults: { _controller: AppBundle:Route:homepage }
-    
-backlog:
-    path: /{user}/{project}/backlog
-    defaults: { _controller: AppBundle:Route:backlog }   
+project:
+    resource: "@ProjectBundle/Resources/config/routing.yml"
+    prefix:   /ProjectCDP

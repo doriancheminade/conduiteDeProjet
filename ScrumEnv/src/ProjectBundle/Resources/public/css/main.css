@@ -1,0 +1,120 @@
+/************************************************************************************************* Global ********************************************************************************************/
+
+
+body{
+	background-color: #E6E6FA;
+}
+
+td {
+	text-align: center;
+}
+
+table{
+	border-collapse: collapse;
+	float:left;
+	margin-bottom: 20px;
+}
+
+a{
+	text-decoration: none;
+}
+
+/************************************************************************************************* Backlog ********************************************************************************************/
+
+
+#Project{
+	width:50%;
+	height:50%;
+	margin:auto;
+	background-color: lightgrey;
+	text-align: center;
+	padding: 20px;
+}
+
+#TitlePage{
+	color:blue;
+	font-size: 40px;
+	text-align: center;
+}
+
+
+#Backlog_column{
+	font-weight: bold;
+}
+
+#backlog{
+	background-color: white;
+}
+
+
+#Add_Form{
+	width:50%;
+	text-align: center;
+	margin: auto;
+}
+
+.Add_Form_Column{
+	padding:10px;
+	font-weight: bold;
+}
+
+.DescriptionUser{
+	width:750px;
+}
+
+
+.IntUser{
+	width:100px;
+}
+
+.line_option{
+	float:right;
+	border:1px solid black;
+	width:70px;
+	color:black;
+}
+
+.updateDelete{
+	width: 115px;
+}
+
+	
+.IntUser, .DescriptionUser,.Kanban_column_string,.Kanban_column_int,.DescriptionTask{
+	background-color: white;
+	text-align: center;
+	border:1px solid black;
+}
+
+.DescriptionUser,.Kanban_column_string{
+	width:525px;
+}
+
+
+
+.IntUser, .backlog_option,.Kanban_column_int{
+	width:100px;
+}
+
+
+/************************************************************************************************* Kanban ********************************************************************************************/
+
+
+
+#Project_Kanban{
+	width:85%;
+	height:75%;
+	margin:auto;
+	background-color: lightgrey;
+	text-align: center;
+}
+
+.DescriptionTask{
+	width:400px;
+}
+
+
+#Kanban{
+		margin-left: 70px;
+}
+
+}

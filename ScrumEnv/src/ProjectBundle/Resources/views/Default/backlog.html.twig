@@ -1,0 +1,56 @@
+
+<html>
+<head>
+	<link href="{{ asset('bundles/Project/css/main.css') }}" rel="stylesheet"  type="text/css"/>
+	<link href="{{ asset('css/twbs/bootstrap.css') }}" rel="stylesheet" />
+</head>
+<meta http-equiv="Content-Type" content="text/html; charset=utf-8" />
+	<body >
+	<div id="Project">
+		
+			<h1 id="TitlePage">backlog creation page</h1>
+			<div id="backlog">
+			<table border="1">
+				<tr bgcolor="#F8F8FF">
+				<th class="Backlog_column_int"> ID </th>
+				<th class="Backlog_column_string"> Description </th>
+				<th class="Backlog_column_int"> Priority </th>
+				<th class="Backlog_column_int"> Cost </th>
+				<th class="Backlog_column_int"> Update </th>
+				<th class="Backlog_column_int"> Delete </th>
+						{% for a in message %}
+
+				<tr>
+					<div>
+					<td class="IntUser">{{ a.getId }}</td>
+					<td class="DescriptionUser">{{ a.getDescription }}</td>
+					<td class="IntUser">{{ a.getPriority }}</td>
+					<td class="IntUser">{{ a.getCost }}</td>
+
+				<td id="backlog_option"><a href="{{ path('Update_User_Story', 
+				    { 'owner': a.getOwner, 
+				    'project': a.getProject, 
+				    'id': a.getId }
+				    ) }}">	<button type="submit" class="btn btn-success" >Update</button> </a></td>
+
+				<td>	<a href="{{ path('Delete_User_Story', 
+				    { 'owner': a.getOwner, 
+				    'project': a.getProject, 
+				    'id': a.getId }
+				    ) }}"><button  class="btn btn-danger" type="submit" >Delete</button></a> </td>
+
+					<div>
+				</tr>
+
+			{% else %}
+				<tr><td>no US found.</td></tr>
+			{% endfor %}
+			</table>
+
+			</div>
+<br></br>
+		<a href="Add_UserStory"><button class="btn btn-primary" type="submit" > Add User Story   </button></a>
+	</div>
+	
+	</body>
+</html>
