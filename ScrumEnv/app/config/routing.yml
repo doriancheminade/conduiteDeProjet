@@ -1,0 +1,3 @@
+project:
+    resource: "@ProjectBundle/Resources/config/routing.yml"
+    prefix:   /ScrumTool

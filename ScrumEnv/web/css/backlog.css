@@ -1,0 +1,14 @@
+
+th.us{
+    color: #6356B0;
+    background: #051133;
+}
+tr.us:nth-child(odd) {
+    color: #6356B0;
+    background: #1A284F;
+}
+tr.us:nth-child(even) {
+    color: #6356B0;
+    background: #96A1C1;
+}
+

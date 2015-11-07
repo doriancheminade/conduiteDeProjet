@@ -1,0 +1,38 @@
+<!DOCTYPE html>
+<html>
+    <head>
+        {% block stylesheets %}
+        <link href="{{ asset('css/backlog.css') }}" rel="stylesheet" />
+        <link href="{{ asset('css/twbs/bootstrap.css') }}" rel="stylesheet" />
+        {% endblock %}
+    </head>
+    {% block body %}
+    {{ include('navbar.html.twig') }}
+        <table id=usListTable class="table table-bordered" data-toggle="table">
+            <thead>
+                <tr class="us">
+                    <th class="us">ID</th>
+                    <th class="us">DESCRIPTION</th>
+                    <th class="us">COST</th>
+                    <th class="us">PRIORITY</th>
+                    <th class="us">Actions</th>
+                </td>
+            </thead>
+            <tbody>
+                {% for us in usList %}
+                    <tr class="us">
+                        <td class="us">{{us.id}}</td>
+                        <td class="us">{{us.description}}</td>
+                        <td class="us">{{us.cost}}</td>
+                        <td class="us">{{us.priority}}</td>
+                        <td class="us table-action">
+                            <form action="{{ path('backlogDeleteUS', { 'owner': us.owner ,'project': us.project, 'USId':us.id }) }}" method="post">
+                                <input type="submit" value="delete">
+                            </form>
+                        </td>
+                    </tr>
+                {% endfor %}
+            </body>
+        </table>        
+    {% endblock %}
+</html>

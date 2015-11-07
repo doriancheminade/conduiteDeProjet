@@ -1,0 +1,65 @@
+body{
+	background-color: white;
+}
+
+#Project{
+	width:50%;
+	height:50%;
+	margin:auto;
+	background-color: #E6E6FA;
+	text-align: center;
+	
+}
+
+#TitlePage{
+	color:blue;
+	font-size: 40px;
+	text-align: center;
+}
+	
+.IntUser, .DescriptionUser{
+
+	background-color: white;
+	text-align: center;
+	border:1px solid black;
+}
+
+.DescriptionUser{
+	width:700px;
+}
+
+.IntUser, .backlog_option{
+	width:100px;
+}
+
+
+td {
+	text-align: center;
+}
+
+#Backlog_column{
+	font-weight: bold;
+}
+
+#backlog{
+	background-color: white;
+}
+
+table{
+	border-collapse: collapse;
+}
+
+#Add_Form{
+	width:50%;
+	text-align: center;
+	margin: auto;
+}
+
+.Add_Form_Column{
+	padding:10px;
+	font-weight: bold;
+}
+
+a{
+	text-decoration: none;
+}
