@@ -16,7 +16,6 @@
                     {% for sprint in sprints%}
                         <li class="list-group-item"><a href="path/to/sprint" type="datetime">
                         {{sprint.id}}
-                        {{" : "}}
                         {{sprint.dateBegining|date('Y-m-d')}}
                         {{" : "}}
                         {{sprint.dateEnd|date('Y-m-d')}}
