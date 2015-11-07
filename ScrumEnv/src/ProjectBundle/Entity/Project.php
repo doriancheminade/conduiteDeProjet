@@ -10,6 +10,12 @@ class Project
 {    
     /**
      * @ORM\Column(type="string",length=255)
+     * @ORM\Id
+     * @Assert\NotBlank()
+     */    
+    private $id;
+    /**
+     * @ORM\Column(type="string",length=255)
      * @Assert\NotBlank()
      */    
     private $owner;

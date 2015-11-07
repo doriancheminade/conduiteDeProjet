@@ -10,6 +10,7 @@ class Task
 {
     /**
      * @ORM\Column(type="string",length=255)
+     * @ORM\Id
      * @Assert\NotBlank()
      */    
     private $id;

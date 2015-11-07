@@ -8,4 +8,10 @@ use Symfony\Component\Validator\Constraints as Assert;
  */
 class User
 {
+    /**
+     * @ORM\Column(type="string",length=255)
+     * @ORM\Id
+     * @Assert\NotBlank()
+     */    
+    private $id;
 }
