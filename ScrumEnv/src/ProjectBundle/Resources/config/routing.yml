@@ -1,5 +1,9 @@
 #TODO: homepage that list projects for each user  
 
+createAProject:
+  pattern: /Project_creation/{owner}/
+  defaults: { _controller: ProjectBundle:Default:Add_Project }
+
 go_to_backlog:
   pattern: /Backlog/{owner}/{project}/
   defaults: { _controller: ProjectBundle:Default:list }   

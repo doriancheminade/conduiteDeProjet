@@ -2,13 +2,28 @@
 <html>
 <head>
 	<link href="{{ asset('bundles/Project/css/main.css') }}" rel="stylesheet"  type="text/css"/>
+	<link href="{{ asset('css/twbs/bootstrap.css') }}" rel="stylesheet" />
 </head>
 <meta http-equiv="Content-Type" content="text/html; charset=utf-8" />
 	<body >
 	<div id="Project">
-			<p id="TitlePage">Welcome</p>
+			<p id="TitlePage">Welcome on website</p>
 			<div>
-				<a href="{{ path('go_to_backlog') }}">create a Backlog</a>
+
+				<form action="" method="post" {{ form_enctype(form) }}>
+				{{ form_start(form) }}
+				<table id="Add_Form">
+					<tr>
+						<td class="Add_Form_Column"> {{ form_label(form.nameProject) }} </td>
+						<td class="Add_Form_Column"> {{ form_widget(form.nameProject) }} </td>
+					<tr>
+						 <td class="Add_Form_Column"> <a href="{{ path('go_to_backlog', 
+			  				  { 'owner': owner ,'project' : project })
+			   					}}"class="btn btn-info" role="button">Create project</a> </td>
+					</tr>
+				</table>
+ 			   {{ form_end(form) }}
+				</form>
 			</div>
 	</div>
 

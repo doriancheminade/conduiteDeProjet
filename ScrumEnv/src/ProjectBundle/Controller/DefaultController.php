@@ -6,6 +6,7 @@ use Symfony\Component\HttpKernel\Exception\NotFoundHttpException;
 use Symfony\Bundle\FrameworkBundle\Controller\Controller;
 use ProjectBundle\Entity\UserStory;
 use ProjectBundle\Entity\Task;
+use ProjectBundle\Entity\Project;
 use ProjectBundle\Form\UserStoryForm;
 
 class DefaultController extends Controller
@@ -15,11 +16,41 @@ class DefaultController extends Controller
         return $this->render('ProjectBundle:Default:index.html.twig', array('name' => $name));
     }
 
-    public function naviguerAction(){
+    public function Add_ProjectAction($owner){
 
-      $message = "hey";
-      return $this->render('ProjectBundle:Default:backlog.html.twig', array('message' => $message ));
-    }
+        $message = ' ';
+        $Project = new Project(); 
+        
+        $form = $this->createFormBuilder($Project)
+            ->add('nameProject','text')
+        ->getForm();
+
+        $request = $this->container->get('request');
+        if ($request->getMethod() == 'POST') 
+          {
+           
+           $form->bind($request);
+           
+            if ($form->isValid()) 
+            {
+                
+               $em = $this->container->get('doctrine')->getEntityManager();
+               $em->persist($Project);
+               $em->flush();
+               $message='Project succesfully added';
+           }
+
+           else{
+            $message = "nom non valide ou nom de project existant";
+           }
+        
+        }
+        return $this->container->get('templating')->renderResponse('ProjectBundle:Default:index.html.twig', 
+        array(
+        'owner' => $owner , 'message' => $message, 'form' => $form->createView(), 'project'=> $Project -> getNameProject() 
+        ));
+    
+}
 
     public function listAction($owner, $project){
       $em = $this->container->get('doctrine')->getEntityManager();
@@ -27,13 +58,13 @@ class DefaultController extends Controller
         $US= $em->getRepository('ProjectBundle:UserStory')
             ->findBy(
                 array('owner' => $owner,
-                    'project' => $project),
+                      'project' => $project),
                 array('id' => 'ASC')
              );
 
         return $this->container->get('templating')->renderResponse('ProjectBundle:Default:backlog.html.twig', 
         array(
-        'message' => $US
+        'message' => $US 
         ));
         
     }
