@@ -6,15 +6,13 @@ use Symfony\Component\Validator\Constraints as Assert;
 /**
  * @ORM\Entity
  */
-class UserStory
+class Sprint
 {
     /**
      * @ORM\Column(type="string",length=255)
      * @ORM\Id
-     * @Assert\NotBlank()
-     */    
-    private $id;
-    
+     */  
+    protected $id;
     /**
      * @ORM\Column(type="string",length=255)
      * @Assert\NotBlank()
@@ -24,47 +22,27 @@ class UserStory
      * @ORM\Column(type="string",length=255)
      * @Assert\NotBlank()
      */    
-    private $project;
-
+    private $project;    
     /**
-     * @ORM\Column(type="string",length=255)
-     * @Assert\NotBlank()
-     */    
+    * @ORM\Column(type="string",length=255)
+    * @Assert\NotBlank()
+    */
     private $description;
-
-
     /**
-     * @ORM\Column(type="integer")
+     * @ORM\Column(type="date",length=255)
      * @Assert\NotBlank()
-     */    
-    private $priority;
-
+     */ 
+    private $dateBegining;
     /**
-     * @ORM\Column(type="integer")
+     * @ORM\Column(type="date",length=255)
      * @Assert\NotBlank()
-     */    
-    private $cost;
-
-    
-
-    /**
-     * Set id
-     *
-     * @param string $id
-     *
-     * @return UserStory
-     */
-    public function setId($id)
-    {
-        $this->id = $id;
-
-        return $this;
-    }
+     */ 
+    private $dateEnd;
 
     /**
      * Get id
      *
-     * @return string
+     * @return integer
      */
     public function getId()
     {
@@ -76,7 +54,7 @@ class UserStory
      *
      * @param string $owner
      *
-     * @return UserStory
+     * @return Sprint
      */
     public function setOwner($owner)
     {
@@ -100,7 +78,7 @@ class UserStory
      *
      * @param string $project
      *
-     * @return UserStory
+     * @return Sprint
      */
     public function setProject($project)
     {
@@ -124,7 +102,7 @@ class UserStory
      *
      * @param string $description
      *
-     * @return UserStory
+     * @return Sprint
      */
     public function setDescription($description)
     {
@@ -144,50 +122,64 @@ class UserStory
     }
 
     /**
-     * Set priority
+     * Set dateBegining
      *
-     * @param integer $priority
+     * @param \DateTime $dateBegining
      *
-     * @return UserStory
+     * @return Sprint
      */
-    public function setPriority($priority)
+    public function setDateBegining($dateBegining)
     {
-        $this->priority = $priority;
+        $this->dateBegining = $dateBegining;
 
         return $this;
     }
 
     /**
-     * Get priority
+     * Get dateBegining
      *
-     * @return integer
+     * @return \DateTime
      */
-    public function getPriority()
+    public function getDateBegining()
     {
-        return $this->priority;
+        return $this->dateBegining;
     }
 
     /**
-     * Set cost
+     * Set dateEnd
      *
-     * @param integer $cost
+     * @param \DateTime $dateEnd
      *
-     * @return UserStory
+     * @return Sprint
      */
-    public function setCost($cost)
+    public function setDateEnd($dateEnd)
     {
-        $this->cost = $cost;
+        $this->dateEnd = $dateEnd;
 
         return $this;
     }
 
     /**
-     * Get cost
+     * Get dateEnd
      *
-     * @return integer
+     * @return \DateTime
      */
-    public function getCost()
+    public function getDateEnd()
     {
-        return $this->cost;
+        return $this->dateEnd;
+    }
+
+    /**
+     * Set id
+     *
+     * @param integer $id
+     *
+     * @return Sprint
+     */
+    public function setId($id)
+    {
+        $this->id = $id;
+
+        return $this;
     }
 }

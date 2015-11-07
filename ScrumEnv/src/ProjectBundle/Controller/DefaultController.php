@@ -14,13 +14,18 @@ class DefaultController extends Controller
         return $this->render('ProjectBundle:Default:index.html.twig', array('name' => $name));
     }
 
-    public function naviguerAction(){
-
+    public function naviguerAction()
+    {
     	$message = "hey";
     	return $this->render('ProjectBundle:Default:backlog.html.twig', array('message' => $message ));
     }
+    
+    public function ProjectOverviewAction($owner, $project){
+        return $this->render('ProjectBundle:Default:ProjectOverview.html.twig', array('owner' => $owner, 'project' => $project));
+    }
 
-    public function listAction($owner, $project){
+    public function listAction($owner, $project)
+    {
     	$em = $this->container->get('doctrine')->getEntityManager();
 
         $US= $em->getRepository('ProjectBundle:UserStory')
@@ -37,7 +42,8 @@ class DefaultController extends Controller
         
     }
 
-    public function Add_UsAction($owner, $project){
+    public function Add_UsAction($owner, $project)
+    {
         $up ='';
         $message = '';
         $User_Story = new UserStory();       
@@ -68,7 +74,8 @@ class DefaultController extends Controller
         'form' => $form->createView(), 'message' => $message,'up' => $up));
     }
 
-    public function Delete_UsAction($owner, $project, $id){
+    public function Delete_UsAction($owner, $project, $id)
+    {
         $em = $this->container->get('doctrine')->getEntityManager();
         $User_Story = $em->getRepository('ProjectBundle:UserStory')
             ->findOneBy(
@@ -88,7 +95,8 @@ class DefaultController extends Controller
       return new RedirectResponse($this->container->get('router')->generate('go_to_backlog', array('owner' => $owner, 'project' => $project)));
     }
 
-    public function Update_UsAction($owner, $project, $id){
+    public function Update_UsAction($owner, $project, $id)
+    {
 
          $message = '';
          $up = 'ok';

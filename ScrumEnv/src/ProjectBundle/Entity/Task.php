@@ -6,15 +6,13 @@ use Symfony\Component\Validator\Constraints as Assert;
 /**
  * @ORM\Entity
  */
-class UserStory
+class Task
 {
     /**
      * @ORM\Column(type="string",length=255)
-     * @ORM\Id
      * @Assert\NotBlank()
      */    
     private $id;
-    
     /**
      * @ORM\Column(type="string",length=255)
      * @Assert\NotBlank()
@@ -24,35 +22,29 @@ class UserStory
      * @ORM\Column(type="string",length=255)
      * @Assert\NotBlank()
      */    
-    private $project;
-
+    private $project;  
     /**
      * @ORM\Column(type="string",length=255)
      * @Assert\NotBlank()
      */    
-    private $description;
-
-
+    private $description;  
     /**
-     * @ORM\Column(type="integer")
+     * @ORM\Column(type="string",length=255)
      * @Assert\NotBlank()
      */    
-    private $priority;
-
+    private $cost;  
     /**
-     * @ORM\Column(type="integer")
+     * @ORM\Column(type="string",length=255)
      * @Assert\NotBlank()
      */    
-    private $cost;
-
-    
+    private $priority;  
 
     /**
      * Set id
      *
      * @param string $id
      *
-     * @return UserStory
+     * @return Task
      */
     public function setId($id)
     {
@@ -76,7 +68,7 @@ class UserStory
      *
      * @param string $owner
      *
-     * @return UserStory
+     * @return Task
      */
     public function setOwner($owner)
     {
@@ -100,7 +92,7 @@ class UserStory
      *
      * @param string $project
      *
-     * @return UserStory
+     * @return Task
      */
     public function setProject($project)
     {
@@ -124,7 +116,7 @@ class UserStory
      *
      * @param string $description
      *
-     * @return UserStory
+     * @return Task
      */
     public function setDescription($description)
     {
@@ -144,35 +136,11 @@ class UserStory
     }
 
     /**
-     * Set priority
-     *
-     * @param integer $priority
-     *
-     * @return UserStory
-     */
-    public function setPriority($priority)
-    {
-        $this->priority = $priority;
-
-        return $this;
-    }
-
-    /**
-     * Get priority
-     *
-     * @return integer
-     */
-    public function getPriority()
-    {
-        return $this->priority;
-    }
-
-    /**
      * Set cost
      *
-     * @param integer $cost
+     * @param string $cost
      *
-     * @return UserStory
+     * @return Task
      */
     public function setCost($cost)
     {
@@ -184,10 +152,34 @@ class UserStory
     /**
      * Get cost
      *
-     * @return integer
+     * @return string
      */
     public function getCost()
     {
         return $this->cost;
+    }
+
+    /**
+     * Set priority
+     *
+     * @param string $priority
+     *
+     * @return Task
+     */
+    public function setPriority($priority)
+    {
+        $this->priority = $priority;
+
+        return $this;
+    }
+
+    /**
+     * Get priority
+     *
+     * @return string
+     */
+    public function getPriority()
+    {
+        return $this->priority;
     }
 }

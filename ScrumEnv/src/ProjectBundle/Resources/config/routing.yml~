@@ -1,4 +1,4 @@
-//TODO: homepage that list projects for each user  
+#TODO: homepage that list projects for each user  
 
 go_to_backlog:
   pattern: /Backlog/{owner}/{project}/
@@ -15,3 +15,11 @@ Delete_User_Story:
 Update_User_Story:
   pattern: /Backlog/{owner}/{project}/update_UserStory/{id}
   defaults: { _controller: ProjectBundle:Default:Update_Us }   
+  
+Project:
+    pattern: /Project/{owner}/{project}
+    defaults: { _controller: ProjectBundle:Default:ProjectOverview }
+    
+Sprint_creation:
+    pattern: /Sprint/new/{owner}/{project}
+    defaults: { _controller: ProjectBundle:SprintController:SprintCreation }

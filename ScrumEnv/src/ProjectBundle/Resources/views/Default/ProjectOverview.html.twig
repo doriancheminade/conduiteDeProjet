@@ -1,0 +1,12 @@
+<html>
+    <head>
+        {% block stylesheets %}
+	    <link href="{{ asset('css/twbs/bootstrap.css') }}" rel="stylesheet" />
+	    {% endblock %}
+    </head>
+    <body>
+        {% block body %}
+            {{ include('ProjectBundle::navbar.html.twig') }}
+        {% endblock %}
+    </body>
+</html>
