@@ -6,14 +6,13 @@ use Symfony\Component\Validator\Constraints as Assert;
 /**
  * @ORM\Entity
  */
-class Task
+class Sprint
 {
     /**
      * @ORM\Column(type="string",length=255)
      * @ORM\Id
-     * @Assert\NotBlank()
-     */    
-    private $id;
+     */  
+    protected $id;
     /**
      * @ORM\Column(type="string",length=255)
      * @Assert\NotBlank()
@@ -23,50 +22,27 @@ class Task
      * @ORM\Column(type="string",length=255)
      * @Assert\NotBlank()
      */    
-    private $project;  
+    private $project;    
     /**
-     * @ORM\Column(type="string",length=255)
+    * @ORM\Column(type="string",length=255)
+    * @Assert\NotBlank()
+    */
+    private $description;
+    /**
+     * @ORM\Column(type="date",length=255)
      * @Assert\NotBlank()
-     */    
-    private $description;  
+     */ 
+    private $dateBegining;
     /**
-     * @ORM\Column(type="string",length=255)
+     * @ORM\Column(type="date",length=255)
      * @Assert\NotBlank()
-     */    
-    private $cost;  
-    /**
-     * @ORM\Column(type="string",length=255)
-     * @Assert\NotBlank()
-     */    
-    private $priority;  
-
-    
-    /**
-     * @ORM\Column(type="string",length=255)
-     * @Assert\NotBlank()
-     */    
-    private $achievement_task;
-
-
-    
-    /**
-     * Set id
-     *
-     * @param string $id
-     *
-     * @return Task
-     */
-    public function setId($id)
-    {
-        $this->id = $id;
-
-        return $this;
-    }
+     */ 
+    private $dateEnd;
 
     /**
      * Get id
      *
-     * @return string
+     * @return integer
      */
     public function getId()
     {
@@ -78,7 +54,7 @@ class Task
      *
      * @param string $owner
      *
-     * @return Task
+     * @return Sprint
      */
     public function setOwner($owner)
     {
@@ -102,7 +78,7 @@ class Task
      *
      * @param string $project
      *
-     * @return Task
+     * @return Sprint
      */
     public function setProject($project)
     {
@@ -126,7 +102,7 @@ class Task
      *
      * @param string $description
      *
-     * @return Task
+     * @return Sprint
      */
     public function setDescription($description)
     {
@@ -146,74 +122,64 @@ class Task
     }
 
     /**
-     * Set cost
+     * Set dateBegining
      *
-     * @param string $cost
+     * @param \DateTime $dateBegining
      *
-     * @return Task
+     * @return Sprint
      */
-    public function setCost($cost)
+    public function setDateBegining($dateBegining)
     {
-        $this->cost = $cost;
+        $this->dateBegining = $dateBegining;
 
         return $this;
     }
 
     /**
-     * Get cost
+     * Get dateBegining
      *
-     * @return string
+     * @return \DateTime
      */
-    public function getCost()
+    public function getDateBegining()
     {
-        return $this->cost;
+        return $this->dateBegining;
     }
 
     /**
-     * Set priority
+     * Set dateEnd
      *
-     * @param string $priority
+     * @param \DateTime $dateEnd
      *
-     * @return Task
+     * @return Sprint
      */
-    public function setPriority($priority)
+    public function setDateEnd($dateEnd)
     {
-        $this->priority = $priority;
+        $this->dateEnd = $dateEnd;
 
         return $this;
     }
 
     /**
-     * Get priority
+     * Get dateEnd
      *
-     * @return string
+     * @return \DateTime
      */
-    public function getPriority()
+    public function getDateEnd()
     {
-        return $this->priority;
+        return $this->dateEnd;
     }
 
     /**
-     * Set achievementTask
+     * Set id
      *
-     * @param string $achievementTask
+     * @param integer $id
      *
-     * @return Task
+     * @return Sprint
      */
-    public function setAchievementTask($achievementTask)
+    public function setId($id)
     {
-        $this->achievement_task = $achievementTask;
+        $this->id = $id;
 
         return $this;
-    }
-
-    /**
-     * Get achievementTask
-     *
-     * @return string
-     */
-    public function getAchievementTask()
-    {
-        return $this->achievement_task;
     }
 }

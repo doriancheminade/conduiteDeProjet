@@ -9,26 +9,38 @@ use Symfony\Component\Validator\Constraints as Assert;
 class Task
 {
     /**
-     * @ORM\GeneratedValue
+     * @ORM\Column(type="string",length=255)
      * @ORM\Id
-     * @ORM\Column(type="integer")
-     */
-    private $id_task;
-
+     * @Assert\NotBlank()
+     */    
+    private $id;
     /**
      * @ORM\Column(type="string",length=255)
      * @Assert\NotBlank()
      */    
-    private $describe_task;
-
-
+    private $owner;
     /**
-     * @ORM\Column(type="integer")
+     * @ORM\Column(type="string",length=255)
      * @Assert\NotBlank()
      */    
-    private $Time;
+    private $project;  
+    /**
+     * @ORM\Column(type="string",length=255)
+     * @Assert\NotBlank()
+     */    
+    private $description;  
+    /**
+     * @ORM\Column(type="string",length=255)
+     * @Assert\NotBlank()
+     */    
+    private $cost;  
+    /**
+     * @ORM\Column(type="string",length=255)
+     * @Assert\NotBlank()
+     */    
+    private $priority;  
 
-
+    
     /**
      * @ORM\Column(type="string",length=255)
      * @Assert\NotBlank()
@@ -37,86 +49,147 @@ class Task
 
 
     
-
     /**
-     * Get idTask
+     * Set id
      *
-     * @return integer
-     */
-    public function getIdTask()
-    {
-        return $this->id_task;
-    }
-
-    /**
-     * Set describeTask
-     *
-     * @param string $describeTask
+     * @param string $id
      *
      * @return Task
      */
-    public function setDescribeTask($describeTask)
+    public function setId($id)
     {
-        $this->describe_task = $describeTask;
+        $this->id = $id;
 
         return $this;
     }
 
     /**
-     * Get describeTask
+     * Get id
      *
      * @return string
      */
-    public function getDescribeTask()
+    public function getId()
     {
-        return $this->describe_task;
+        return $this->id;
     }
 
     /**
-     * Set time
+     * Set owner
      *
-     * @param integer $time
+     * @param string $owner
      *
      * @return Task
      */
-    public function setTime($time)
+    public function setOwner($owner)
     {
-        $this->Time = $time;
+        $this->owner = $owner;
 
         return $this;
     }
 
     /**
-     * Get time
-     *
-     * @return integer
-     */
-    public function getTime()
-    {
-        return $this->Time;
-    }
-
-    /**
-     * Set achievementTask
-     *
-     * @param string $achievementTask
-     *
-     * @return Task
-     */
-    public function setAchievementTask($achievementTask)
-    {
-        $this->achievement_task = $achievementTask;
-
-        return $this;
-    }
-
-    /**
-     * Get achievementTask
+     * Get owner
      *
      * @return string
      */
-    public function getAchievementTask()
+    public function getOwner()
     {
-        return $this->achievement_task;
+        return $this->owner;
+    }
+
+    /**
+     * Set project
+     *
+     * @param string $project
+     *
+     * @return Task
+     */
+    public function setProject($project)
+    {
+        $this->project = $project;
+
+        return $this;
+    }
+
+    /**
+     * Get project
+     *
+     * @return string
+     */
+    public function getProject()
+    {
+        return $this->project;
+    }
+
+    /**
+     * Set description
+     *
+     * @param string $description
+     *
+     * @return Task
+     */
+    public function setDescription($description)
+    {
+        $this->description = $description;
+
+        return $this;
+    }
+
+    /**
+     * Get description
+     *
+     * @return string
+     */
+    public function getDescription()
+    {
+        return $this->description;
+    }
+
+    /**
+     * Set cost
+     *
+     * @param string $cost
+     *
+     * @return Task
+     */
+    public function setCost($cost)
+    {
+        $this->cost = $cost;
+
+        return $this;
+    }
+
+    /**
+     * Get cost
+     *
+     * @return string
+     */
+    public function getCost()
+    {
+        return $this->cost;
+    }
+
+    /**
+     * Set priority
+     *
+     * @param string $priority
+     *
+     * @return Task
+     */
+    public function setPriority($priority)
+    {
+        $this->priority = $priority;
+
+        return $this;
+    }
+
+    /**
+     * Get priority
+     *
+     * @return string
+     */
+    public function getPriority()
+    {
+        return $this->priority;
     }
 }

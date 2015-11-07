@@ -8,11 +8,11 @@ use Symfony\Component\Validator\Constraints as Assert;
  */
 class UserStory
 {
-     /**
+      /**
      * @ORM\GeneratedValue
      * @ORM\Id
      * @ORM\Column(type="integer")
-     */ 
+     */    
     private $id;
     
     /**
@@ -44,6 +44,8 @@ class UserStory
      * @Assert\NotBlank()
      */    
     private $cost;
+
+    
 
     /**
      * Set id

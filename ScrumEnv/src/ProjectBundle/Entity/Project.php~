@@ -7,17 +7,26 @@ use Symfony\Component\Validator\Constraints as Assert;
  * @ORM\Entity
  */
 class Project
-{
-     /**
-     * @ORM\GeneratedValue
-     * @ORM\Id
-     * @ORM\Column(type="integer")
-     */ 
-    private $id;
-    
+{    
     /**
-     * @ORM\Column(type="string",unique=true,length=255)
+     * @ORM\Column(type="string",length=255)
+     * @ORM\Id
      * @Assert\NotBlank()
      */    
-    private $nameProject;
+    private $id;
+    /**
+     * @ORM\Column(type="string",length=255)
+     * @Assert\NotBlank()
+     */    
+    private $owner;
+    /**
+     * @ORM\Column(type="string",length=255)
+     * @Assert\NotBlank()
+     */    
+    private $name;
+    /**
+     * @ORM\Column(type="string",length=255)
+     * @Assert\NotBlank()
+     */    
+    private $description;
 }

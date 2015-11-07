@@ -7,24 +7,47 @@ use Symfony\Component\Validator\Constraints as Assert;
  * @ORM\Entity
  */
 class Project
-{
-     /**
-     * @ORM\GeneratedValue
-     * @ORM\Id
-     * @ORM\Column(type="integer")
-     */ 
-    private $id;
-    
+{    
     /**
-     * @ORM\Column(type="string",unique=true,length=255)
+     * @ORM\Column(type="string",length=255)
+     * @ORM\Id
      * @Assert\NotBlank()
      */    
-    private $nameProject;
+    private $id;
+    /**
+     * @ORM\Column(type="string",length=255)
+     * @Assert\NotBlank()
+     */    
+    private $owner;
+    /**
+     * @ORM\Column(type="string",length=255)
+     * @Assert\NotBlank()
+     */    
+    private $name;
+    /**
+     * @ORM\Column(type="string",length=255)
+     * @Assert\NotBlank()
+     */    
+    private $description;
+
+    /**
+     * Set id
+     *
+     * @param string $id
+     *
+     * @return Project
+     */
+    public function setId($id)
+    {
+        $this->id = $id;
+
+        return $this;
+    }
 
     /**
      * Get id
      *
-     * @return integer
+     * @return string
      */
     public function getId()
     {
@@ -32,26 +55,74 @@ class Project
     }
 
     /**
-     * Set nameProject
+     * Set owner
      *
-     * @param string $nameProject
+     * @param string $owner
      *
      * @return Project
      */
-    public function setNameProject($nameProject)
+    public function setOwner($owner)
     {
-        $this->nameProject = $nameProject;
+        $this->owner = $owner;
 
         return $this;
     }
 
     /**
-     * Get nameProject
+     * Get owner
      *
      * @return string
      */
-    public function getNameProject()
+    public function getOwner()
     {
-        return $this->nameProject;
+        return $this->owner;
+    }
+
+    /**
+     * Set name
+     *
+     * @param string $name
+     *
+     * @return Project
+     */
+    public function setName($name)
+    {
+        $this->name = $name;
+
+        return $this;
+    }
+
+    /**
+     * Get name
+     *
+     * @return string
+     */
+    public function getName()
+    {
+        return $this->name;
+    }
+
+    /**
+     * Set description
+     *
+     * @param string $description
+     *
+     * @return Project
+     */
+    public function setDescription($description)
+    {
+        $this->description = $description;
+
+        return $this;
+    }
+
+    /**
+     * Get description
+     *
+     * @return string
+     */
+    public function getDescription()
+    {
+        return $this->description;
     }
 }
