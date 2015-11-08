@@ -22,4 +22,28 @@ Project:
     
 Sprint_creation:
     pattern: /Sprint/new/{owner}/{project}
-    defaults: { _controller: ProjectBundle:SprintController:SprintCreation }
+    defaults: { _controller: ProjectBundle:Sprint:SprintCreation }
+    
+Sprint_task_list:
+    pattern: /Sprint/list/{owner}/{project}/{sprintId}
+    defaults: { _controller: ProjectBundle:Sprint:SprintList }
+Sprint_task_delete:
+    pattern: /Sprint/list/{owner}/{project}/{sprintId}/{taskId}
+    defaults: { _controller: ProjectBundle:Sprint:SprintListDeleteTaskAction }
+
+go_to_Kanban:
+  pattern: /Kanban/{owner}/{project}/visualisation/
+  defaults: { _controller: ProjectBundle:Kanban:visualisation } 
+
+oG_Update_Achievement:
+  pattern: /Kanban/{owner}/{project}/Update_task_achievement_OG/{id}
+  defaults: { _controller: ProjectBundle:Kanban:Update_task_achievementoG }
+
+Done_Update_Achievement:
+  pattern: /Kanban/{owner}/{project}/Update_task_achievement_Done/{id}
+  defaults: { _controller: ProjectBundle:Kanban:Update_task_achievementD }
+
+ToDo_Update_Achievement:
+  pattern: /Kanban/{owner}/{project}/Update_task_achievement_ToDo/{id}
+  defaults: { _controller: ProjectBundle:Kanban:Update_task_achievementToDo }
+

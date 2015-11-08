@@ -14,7 +14,7 @@
                 <div class="panel-body">
                     <ul class="list-group">
                     {% for sprint in sprints%}
-                        <li class="list-group-item"><a href="{{ path('Sprint_task_list', 
+                        <li class="list-group-item"><a href="{{ path('Update_User_Story', 
 				            { 'owner': sprint.owner, 
 				            'project': sprint.project, 
 				            'sprintId': sprint.id })}}" 

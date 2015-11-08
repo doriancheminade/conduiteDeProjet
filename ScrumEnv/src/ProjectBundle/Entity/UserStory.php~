@@ -58,6 +58,20 @@ class UserStory
         return $this->id;
     }
 
+       /**
+     * Set id
+     *
+     * @param string $id
+     *
+     * @return UserStory
+     */
+    public function setId($id)
+    {
+        $this->id = $id;
+
+        return $this;
+    }
+
     /**
      * Set owner
      *
@@ -177,4 +191,6 @@ class UserStory
     {
         return $this->cost;
     }
+
+ 
 }

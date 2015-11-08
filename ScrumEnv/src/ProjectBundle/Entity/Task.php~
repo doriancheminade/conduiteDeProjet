@@ -23,7 +23,11 @@ class Task
      * @ORM\Column(type="string",length=255)
      * @Assert\NotBlank()
      */    
-    private $project;  
+    private $project; 
+    /**
+     * @ORM\Column(type="string",length=255)
+     */    
+    private $sprint;  
     /**
      * @ORM\Column(type="string",length=255)
      * @Assert\NotBlank()

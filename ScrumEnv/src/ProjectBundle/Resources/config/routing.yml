@@ -23,6 +23,13 @@ Project:
 Sprint_creation:
     pattern: /Sprint/new/{owner}/{project}
     defaults: { _controller: ProjectBundle:Sprint:SprintCreation }
+    
+Sprint_task_list:
+    pattern: /Sprint/list/{owner}/{project}/{sprintId}
+    defaults: { _controller: ProjectBundle:Sprint:SprintList }
+Sprint_task_delete:
+    pattern: /Sprint/list/{owner}/{project}/{sprintId}/{taskId}
+    defaults: { _controller: ProjectBundle:Sprint:SprintListDeleteTask }
 
 go_to_Kanban:
   pattern: /Kanban/{owner}/{project}/visualisation/

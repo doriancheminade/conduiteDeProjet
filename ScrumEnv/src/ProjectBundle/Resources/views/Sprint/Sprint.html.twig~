@@ -1,0 +1,44 @@
+<html>
+    <head>
+        {% block stylesheets %}
+	    <link href="{{ asset('bundles/testProject/css/main.css') }}" rel="stylesheet"  type="text/css"/>
+	    <link href="{{ asset('css/twbs/bootstrap.css') }}" rel="stylesheet" />
+	    {% endblock %}
+    </head>
+    <body>
+        {% block body %}
+            {{ include('ProjectBundle::navbar.html.twig') }}
+            <div class="panel panel-default">
+                <div class="panel-heading">
+                    <h1 class="panel-title">
+                        sprint tasks
+                        {#sprint.dateBegining|date('Y-m-d')#} : {#sprint.dateEnd|date('Y-m-d')#}
+                    </h1>
+                </div>
+                <div class="panel-body">
+                    <table class="table table-striped">
+                        <th>ID</th>
+                        <th>Description</th>
+                        <th>Cost</th>
+                        <th>Priority</th>
+                        <th>Delete</th>
+                       {% for task in taskList %} 
+                        <tr>
+                            <td>{{task.getId}}</td>
+                            <td>{{task.getDescription}}</td>
+                            <td>{{task.getCost}}</td>
+                            <td>{{task.getPriority}}</td>
+                            <td><a href="{{ path('Sprint_task_delete',
+                                {'owner':task.getOwner(),
+                                'project':task.getProject(),
+                                'sprintId':task.getSprint(),
+                                'taskId':task.getId()})}}">
+                            </td>
+                        </tr>
+                        {% endfor %}
+                    </table>
+                </div>
+            </div
+        {% endblock %}
+    </body>
+</html>

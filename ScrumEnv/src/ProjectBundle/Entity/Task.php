@@ -23,7 +23,11 @@ class Task
      * @ORM\Column(type="string",length=255)
      * @Assert\NotBlank()
      */    
-    private $project;  
+    private $project; 
+    /**
+     * @ORM\Column(type="string",length=255)
+     */    
+    private $sprint;  
     /**
      * @ORM\Column(type="string",length=255)
      * @Assert\NotBlank()
@@ -261,5 +265,29 @@ class Task
     public function getDescription()
     {
         return $this->description;
+    }
+
+    /**
+     * Set sprint
+     *
+     * @param string $sprint
+     *
+     * @return Task
+     */
+    public function setSprint($sprint)
+    {
+        $this->sprint = $sprint;
+
+        return $this;
+    }
+
+    /**
+     * Get sprint
+     *
+     * @return string
+     */
+    public function getSprint()
+    {
+        return $this->sprint;
     }
 }
