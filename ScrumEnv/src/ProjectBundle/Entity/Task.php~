@@ -13,7 +13,7 @@ class Task
      * @ORM\Id
      * @Assert\NotBlank()
      */    
-    private $id_task;
+    private $id;
     /**
      * @ORM\Column(type="string",length=255)
      * @Assert\NotBlank()
@@ -28,7 +28,7 @@ class Task
      * @ORM\Column(type="string",length=255)
      * @Assert\NotBlank()
      */    
-    private $description_task;  
+    private $description;  
     /**
      * @ORM\Column(type="string",length=255)
      * @Assert\NotBlank()
