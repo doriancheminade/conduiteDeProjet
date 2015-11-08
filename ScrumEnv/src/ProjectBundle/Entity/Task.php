@@ -46,14 +46,7 @@ class Task
     /**
      * @ORM\Column(type="string",length=255)
      */    
-    private $achievement_task;
-     /**
-     * @ORM\Column(type="string",length=255)
-     * @Assert\NotBlank()
-     */    
-    private $dependencies;
-
-    
+    private $achievement_task;    
 
     /**
      * Set id
