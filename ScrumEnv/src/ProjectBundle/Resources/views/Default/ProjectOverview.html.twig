@@ -15,7 +15,11 @@
                     <ul class="list-group">
                     {% for sprint in sprints%}
                         <li class="list-group-item"><a href="path/to/sprint" type="datetime">
-                        {{sprint.id}}
+                        <a href="{{ path('go_to_Kanban', 
+                    { 'owner': sprint.owner, 
+                    'project': sprint.project, 
+                    'sprint': sprint.getId }
+                    ) }}"> {{sprint.id}} </a>
                         {{" : "}}
                         {{sprint.dateBegining|date('Y-m-d')}}
                         {{" : "}}
