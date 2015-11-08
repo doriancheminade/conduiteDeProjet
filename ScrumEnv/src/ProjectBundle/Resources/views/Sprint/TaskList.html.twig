@@ -1,0 +1,57 @@
+
+<html>
+<head>
+	<link href="{{ asset('bundles/Project/css/main.css') }}" rel="stylesheet"  type="text/css"/>
+	<link href="{{ asset('css/twbs/bootstrap.css') }}" rel="stylesheet" />
+</head>
+<meta http-equiv="Content-Type" content="text/html; charset=utf-8" />
+	<body align="center">
+	<div id="Project">
+		
+			<h1 id="TitlePage">Liste des Taches</h1>
+			<br></br>
+			<div id="task">
+			<table align="center" border="1">
+				<tr bgcolor="#F8F8FF">
+				<th class="Backlog_column_int"> ID </th>
+				<th class="Backlog_column_string"> Describe task </th>
+				<th class="Backlog_column_int"> Time </th>
+				<th class="Backlog_column_int"> Achievement Task </th>
+				
+						{% for a in message %}
+
+				<tr>
+					<div>
+					<td class="IntUser">{{ a.getId }}</td>
+					<td class="DescriptionUser">{{ a.getdescription }}</td>
+					<td class="IntUser">{{ a.getCost }}</td>
+					<td class="IntUser">{{ a.getAchievementTask}}</td>
+
+
+
+				<td id="backlog_option"><a href="{{ path('Update_Task', { 'id': a.getId, 'owner': owner, 'project': project, 'sprint': sprint }) }}">	<button type="submit" class="btn btn-success" > Update   </button> </a></td>
+
+				<td>	<a href="{{ path('Delete_Task', { 'id': a.getId, 'owner': owner, 'project': project, 'sprint': sprint }) }}"><button  class="btn btn-danger" type="submit" > Delete   </button></a> </td>
+
+					<div>
+				</tr>
+
+			{% else %}
+				<tr>
+					<div>
+						<td class="IntUser"> empty </td>
+						<td class="DescriptionUser"> empty </td>
+						<td class="IntUser"> empty </td>
+						<td class="IntUser">  empty </td>
+					<div>
+				</tr>
+			{% endfor %}
+			</table>
+
+			</div>
+
+<br></br>
+			<a href="{{ path('go_to_task', { 'owner': owner, 'project': project, 'sprint': sprint}) }}"><button class="btn btn-success" type="submit" > Add Task   </button></a>
+	</div>
+	</body>
+</html>

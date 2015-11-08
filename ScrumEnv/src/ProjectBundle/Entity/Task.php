@@ -13,7 +13,7 @@ class Task
      * @ORM\Id
      * @Assert\NotBlank()
      */    
-    private $id;
+    private $Id;
     /**
      * @ORM\Column(type="string",length=255)
      * @Assert\NotBlank()
@@ -40,46 +40,44 @@ class Task
      * @Assert\NotBlank()
      */    
     private $cost;  
-    /**
-     * @ORM\Column(type="string",length=255)
-     * @Assert\NotBlank()
-     */    
-    private $priority;  
-
     
     /**
+     * @Assert\NotBlank()
      * @ORM\Column(type="string",length=255)
      */    
     private $achievement_task;
 
      /**
      * @ORM\Column(type="string",length=255)
-     * @Assert\NotBlank()
      */    
     private $dependencies;
 
+ 
+
+    
+
     /**
-     * Set idTask
+     * Set id
      *
-     * @param string $idTask
+     * @param string $id
      *
      * @return Task
      */
-    public function setIdTask($idTask)
+    public function setId($id)
     {
-        $this->id_task = $idTask;
+        $this->Id = $id;
 
         return $this;
     }
 
     /**
-     * Get idTask
+     * Get id
      *
      * @return string
      */
-    public function getIdTask()
+    public function getId()
     {
-        return $this->id_task;
+        return $this->Id;
     }
 
     /**
@@ -131,123 +129,27 @@ class Task
     }
 
     /**
-     * Set descriptionTask
+     * Set sprint
      *
-     * @param string $descriptionTask
+     * @param string $sprint
      *
      * @return Task
      */
-    public function setDescriptionTask($descriptionTask)
+    public function setSprint($sprint)
     {
-        $this->description_task = $descriptionTask;
+        $this->sprint = $sprint;
 
         return $this;
     }
 
     /**
-     * Get descriptionTask
+     * Get sprint
      *
      * @return string
      */
-    public function getDescriptionTask()
+    public function getSprint()
     {
-        return $this->description_task;
-    }
-
-    /**
-     * Set cost
-     *
-     * @param string $cost
-     *
-     * @return Task
-     */
-    public function setCost($cost)
-    {
-        $this->cost = $cost;
-
-        return $this;
-    }
-
-    /**
-     * Get cost
-     *
-     * @return string
-     */
-    public function getCost()
-    {
-        return $this->cost;
-    }
-
-    /**
-     * Set priority
-     *
-     * @param string $priority
-     *
-     * @return Task
-     */
-    public function setPriority($priority)
-    {
-        $this->priority = $priority;
-
-        return $this;
-    }
-
-    /**
-     * Get priority
-     *
-     * @return string
-     */
-    public function getPriority()
-    {
-        return $this->priority;
-    }
-
-    /**
-     * Set achievementTask
-     *
-     * @param string $achievementTask
-     *
-     * @return Task
-     */
-    public function setAchievementTask($achievementTask)
-    {
-        $this->achievement_task = $achievementTask;
-
-        return $this;
-    }
-
-    /**
-     * Get achievementTask
-     *
-     * @return string
-     */
-    public function getAchievementTask()
-    {
-        return $this->achievement_task;
-    }
-
-    /**
-     * Set id
-     *
-     * @param string $id
-     *
-     * @return Task
-     */
-    public function setId($id)
-    {
-        $this->id = $id;
-
-        return $this;
-    }
-
-    /**
-     * Get id
-     *
-     * @return string
-     */
-    public function getId()
-    {
-        return $this->id;
+        return $this->sprint;
     }
 
     /**
@@ -275,27 +177,51 @@ class Task
     }
 
     /**
-     * Set sprint
+     * Set cost
      *
-     * @param string $sprint
+     * @param string $cost
      *
      * @return Task
      */
-    public function setSprint($sprint)
+    public function setCost($cost)
     {
-        $this->sprint = $sprint;
+        $this->cost = $cost;
 
         return $this;
     }
 
     /**
-     * Get sprint
+     * Get cost
      *
      * @return string
      */
-    public function getSprint()
+    public function getCost()
     {
-        return $this->sprint;
+        return $this->cost;
+    }
+
+    /**
+     * Set achievementTask
+     *
+     * @param string $achievementTask
+     *
+     * @return Task
+     */
+    public function setAchievementTask($achievementTask)
+    {
+        $this->achievement_task = $achievementTask;
+
+        return $this;
+    }
+
+    /**
+     * Get achievementTask
+     *
+     * @return string
+     */
+    public function getAchievementTask()
+    {
+        return $this->achievement_task;
     }
 
     /**
