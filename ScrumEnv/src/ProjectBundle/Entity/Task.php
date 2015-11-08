@@ -43,36 +43,40 @@ class Task
      * @Assert\NotBlank()
      */    
     private $priority;  
-
-    
     /**
+     * @ORM\Column(type="string",length=255)
+     */    
+    private $achievement_task;
+     /**
      * @ORM\Column(type="string",length=255)
      * @Assert\NotBlank()
      */    
-    private $achievement_task;
+    private $dependencies;
+
+    
 
     /**
-     * Set idTask
+     * Set id
      *
-     * @param string $idTask
+     * @param string $id
      *
      * @return Task
      */
-    public function setIdTask($idTask)
+    public function setId($id)
     {
-        $this->id_task = $idTask;
+        $this->id = $id;
 
         return $this;
     }
 
     /**
-     * Get idTask
+     * Get id
      *
      * @return string
      */
-    public function getIdTask()
+    public function getId()
     {
-        return $this->id_task;
+        return $this->id;
     }
 
     /**
@@ -124,27 +128,51 @@ class Task
     }
 
     /**
-     * Set descriptionTask
+     * Set sprint
      *
-     * @param string $descriptionTask
+     * @param string $sprint
      *
      * @return Task
      */
-    public function setDescriptionTask($descriptionTask)
+    public function setSprint($sprint)
     {
-        $this->description_task = $descriptionTask;
+        $this->sprint = $sprint;
 
         return $this;
     }
 
     /**
-     * Get descriptionTask
+     * Get sprint
      *
      * @return string
      */
-    public function getDescriptionTask()
+    public function getSprint()
     {
-        return $this->description_task;
+        return $this->sprint;
+    }
+
+    /**
+     * Set description
+     *
+     * @param string $description
+     *
+     * @return Task
+     */
+    public function setDescription($description)
+    {
+        $this->description = $description;
+
+        return $this;
+    }
+
+    /**
+     * Get description
+     *
+     * @return string
+     */
+    public function getDescription()
+    {
+        return $this->description;
     }
 
     /**
@@ -220,74 +248,26 @@ class Task
     }
 
     /**
-     * Set id
+     * Set dependencies
      *
-     * @param string $id
+     * @param string $dependencies
      *
      * @return Task
      */
-    public function setId($id)
+    public function setDependencies($dependencies)
     {
-        $this->id = $id;
+        $this->dependencies = $dependencies;
 
         return $this;
     }
 
     /**
-     * Get id
+     * Get dependencies
      *
      * @return string
      */
-    public function getId()
+    public function getDependencies()
     {
-        return $this->id;
-    }
-
-    /**
-     * Set description
-     *
-     * @param string $description
-     *
-     * @return Task
-     */
-    public function setDescription($description)
-    {
-        $this->description = $description;
-
-        return $this;
-    }
-
-    /**
-     * Get description
-     *
-     * @return string
-     */
-    public function getDescription()
-    {
-        return $this->description;
-    }
-
-    /**
-     * Set sprint
-     *
-     * @param string $sprint
-     *
-     * @return Task
-     */
-    public function setSprint($sprint)
-    {
-        $this->sprint = $sprint;
-
-        return $this;
-    }
-
-    /**
-     * Get sprint
-     *
-     * @return string
-     */
-    public function getSprint()
-    {
-        return $this->sprint;
+        return $this->dependencies;
     }
 }

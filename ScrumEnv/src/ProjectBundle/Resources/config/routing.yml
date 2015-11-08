@@ -32,7 +32,7 @@ Sprint_task_delete:
     defaults: { _controller: ProjectBundle:Sprint:SprintListDeleteTask }
 
 go_to_Kanban:
-  pattern: /Kanban/{owner}/{project}/visualisation/
+  pattern: /Kanban/{owner}/{project}/{sprint}/visualisation/
   defaults: { _controller: ProjectBundle:Kanban:visualisation } 
 
 oG_Update_Achievement:
