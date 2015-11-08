@@ -34,24 +34,35 @@
 				    'id': a.getId }
 				    ) }}">	<button type="submit" class="btn btn-success" >Update</button> </a></td>
 
-				<td>	<a href="{{ path('Delete_User_Story', 
+				<td>	
+					<a href="{{ path('Delete_User_Story', 
 				    { 'owner': a.getOwner, 
 				    'project': a.getProject, 
 				    'id': a.getId }
 				    ) }}"><button  class="btn btn-danger" type="submit" >Delete</button></a> </td>
-
-					<div>
 				</tr>
 
 			{% else %}
-				<tr><td>no US found.</td></tr>
+				<tr>
+					<div>
+						<td class="IntUser"> empty </td>
+						<td class="DescriptionUser"> empty </td>
+						<td class="IntUser"> empty </td>
+						<td class="IntUser">  empty </td>
+					<div>
+				</tr>
 			{% endfor %}
-			</table>
-
 			</div>
+	</table>
+</div>
+					<a href="Add_UserStory"><button class="btn btn-primary" type="submit" > Add User Story   </button></a> </td>
+					<td> <a href="Project"><button class="btn btn-primary" type="submit" > return Project view  </button></a> 
+			
 <br></br>
-		<a href="Add_UserStory"><button class="btn btn-primary" type="submit" > Add User Story   </button></a>
-	</div>
+		
+
+
+
 	
 	</body>
 </html>

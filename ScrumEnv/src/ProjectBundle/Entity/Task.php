@@ -24,6 +24,12 @@ class Task
      * @Assert\NotBlank()
      */    
     private $project;  
+
+    /**
+     * @ORM\Column(type="string",length=255)
+     * @Assert\NotBlank()
+     */    
+    private $sprint; 
     /**
      * @ORM\Column(type="string",length=255)
      * @Assert\NotBlank()
@@ -43,9 +49,14 @@ class Task
     
     /**
      * @ORM\Column(type="string",length=255)
-     * @Assert\NotBlank()
      */    
     private $achievement_task;
+
+     /**
+     * @ORM\Column(type="string",length=255)
+     * @Assert\NotBlank()
+     */    
+    private $dependencies;
 
     /**
      * Set idTask
@@ -261,5 +272,53 @@ class Task
     public function getDescription()
     {
         return $this->description;
+    }
+
+    /**
+     * Set sprint
+     *
+     * @param string $sprint
+     *
+     * @return Task
+     */
+    public function setSprint($sprint)
+    {
+        $this->sprint = $sprint;
+
+        return $this;
+    }
+
+    /**
+     * Get sprint
+     *
+     * @return string
+     */
+    public function getSprint()
+    {
+        return $this->sprint;
+    }
+
+    /**
+     * Set dependencies
+     *
+     * @param string $dependencies
+     *
+     * @return Task
+     */
+    public function setDependencies($dependencies)
+    {
+        $this->dependencies = $dependencies;
+
+        return $this;
+    }
+
+    /**
+     * Get dependencies
+     *
+     * @return string
+     */
+    public function getDependencies()
+    {
+        return $this->dependencies;
     }
 }

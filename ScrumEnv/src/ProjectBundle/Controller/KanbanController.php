@@ -11,12 +11,13 @@ class KanbanController extends Controller
 {
 
 
-     public function visualisationAction($owner, $project){
+     public function visualisationAction($owner, $project, $sprint){
         $em = $this->container->get('doctrine')->getEntityManager();
 
         $US= $em->getRepository('ProjectBundle:Task')->findBy(
             array('owner' => $owner,
-                'project' => $project));
+                'project' => $project,
+                'sprint' => $sprint));
 
         return $this->container->get('templating')->renderResponse('ProjectBundle:Kanban:Kanban_visualisation.html.twig', 
         array(
