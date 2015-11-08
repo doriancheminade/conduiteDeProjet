@@ -13,7 +13,7 @@ class Task
      * @ORM\Id
      * @Assert\NotBlank()
      */    
-    private $id;
+    private $Id;
     /**
      * @ORM\Column(type="string",length=255)
      * @Assert\NotBlank()
@@ -38,21 +38,30 @@ class Task
      * @Assert\NotBlank()
      */    
     private $cost;  
+<<<<<<< HEAD
+    
+=======
     /**
      * @ORM\Column(type="string",length=255)
      * @Assert\NotBlank()
      */    
     private $priority;  
+>>>>>>> master
     /**
+     * @Assert\NotBlank()
      * @ORM\Column(type="string",length=255)
      */    
     private $achievement_task;
      /**
      * @ORM\Column(type="string",length=255)
-     * @Assert\NotBlank()
      */    
     private $dependencies;
 
+<<<<<<< HEAD
+ 
+
+    
+=======
     
 
     /**
@@ -270,4 +279,5 @@ class Task
     {
         return $this->dependencies;
     }
+>>>>>>> master
 }

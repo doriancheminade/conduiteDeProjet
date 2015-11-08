@@ -1,0 +1,54 @@
+<html>
+<head>
+	<link href="{{ asset('bundles/Project/css/main.css') }}" rel="stylesheet"  type="text/css"/>
+	<link href="{{ asset('css/twbs/bootstrap.css') }}" rel="stylesheet" />
+</head>
+<meta http-equiv="Content-Type" content="text/html; charset=utf-8" />
+	<body align="center" >
+	<div id="Project">
+			{% if up %}
+			<h1 id="TitlePage">Update a Task</h1>
+			{% endif %}
+			{% if up==null %}
+			<h1 id="TitlePage">Add a Task</h1>
+			{% endif %}
+
+			{% if message %}
+			<p>{{ message }}</p>
+			{% endif %}
+	
+<form  action="" method="post" {{ form_enctype(form) }}>
+	{{ form_start(form) }}
+	<table align="center" id="Add_Form">
+		<tr>
+			<td class="Add_Form_Column"> {{ form_label(form.Id) }} </td>
+			<td class="Add_Form_Column"> {{ form_widget(form.Id) }} </td>
+		</tr> 
+		<tr>
+			<td class="Add_Form_Column"> {{ form_label(form.description) }} </td>
+			<td class="Add_Form_Column"> {{ form_widget(form.description) }} </td>
+		</tr> 
+		<tr>
+			<td class="Add_Form_Column"> {{ form_label(form.cost) }} </td>
+			<td class="Add_Form_Column"> {{ form_widget(form.cost) }} </td>
+		</tr>
+		<tr>
+			<td class="Add_Form_Column"> {{ form_label(form.dependencies) }} </td>
+			<td class="Add_Form_Column"> {{ form_widget(form.dependencies) }} </td>
+		</tr>
+
+		<tr>
+			 <td class="Add_Form_Column"> <input class="btn btn-success" type="submit" /> </td>
+			
+		</tr>
+	</table>
+   
+
+    
+      
+    {{ form_end(form) }}
+</form>
+	<a href="{{ path('go_to_task_list', { 'owner': owner, 'project': project, 'sprint': sprint}) }}"><button class="btn btn-success" type="submit" > back to task_list   </button></a>
+</div>
+</body>
+</html>
