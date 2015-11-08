@@ -1,0 +1,43 @@
+<?php
+
+class USCreationTest extends PHPUnit_Extensions_SeleniumTestCase
+{
+    public function setUp()
+    {
+        $this->setBrowser('*firefox');
+        $this->setBrowserUrl('http://localhost:8000');
+    }    
+    public function testCreationOk()
+    {
+        $this->open("/ScrumTool/Backlog/bob/pacman2015/");
+        $this->click("css=button.btn.btn-primary");
+        $this->waitForPageToLoad("30000");
+        
+        $last = 0;
+        while($this->isElementPresent("//div[@id='backlog']/table/tbody/tr["$last"]/td[2]"))
+        {
+            $last = $last+1;
+        }
+        
+        $this->type("id=form_Id", "42");
+        $this->type("id=form_description", "ceci est une nouvelle US");
+        $this->type("id=form_priority", "42");
+        $this->type("id=form_cost", "24");
+        $this->click("css=input.btn.btn-success");
+        $this->waitForPageToLoad("30000");
+        $this->click("link=Back to backlog");
+        $this->waitForPageToLoad("30000");
+        for ($second = 0; ; $second++) {
+            if ($second >= 60) $this->fail("timeout");
+                try {
+                    if ($this->isElementPresent("//div[@id='backlog']/table/tbody/tr["$last"]/td[2]")) break;
+                } catch (Exception $e) {}
+            sleep(1);
+        }
+
+        $this->assertTrue($this->isElementPresent("//div[@id='backlog']/table/tbody/tr["$last"]/td[2]"));
+
+        
+    }  
+}
+?>

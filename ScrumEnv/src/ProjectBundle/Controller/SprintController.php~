@@ -68,7 +68,7 @@ class SprintController extends Controller
                 array('owner' => $owner,
                     'project' => $project,
                     'sprint' => $sprintId,
-                    'id' => $taskId));
+                    'id' => $taskId);
         if (!$task) 
         {
            throw new NotFoundHttpException("task not found");
