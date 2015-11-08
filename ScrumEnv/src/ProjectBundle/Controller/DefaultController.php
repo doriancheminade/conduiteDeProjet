@@ -50,27 +50,32 @@ class DefaultController extends Controller
         
     }
 
-    public function Add_UsAction($owner, $project)
-    {
+
+   public function Add_UsAction($owner, $project){
+
         $up ='';
         $message = '';
-        $User_Story = new UserStory();       
-       
-        $form = $this->createFormBuilder($User_Story)
+        $User_Story = new UserStory(); 
+
+         $form = $this->createFormBuilder($User_Story)
             ->add('description','text')
             ->add('priority','text')
             ->add('cost','text')
-         ->getForm();
+            ->getForm();
 
+        $User_Story -> setOwner($owner); 
+        $User_Story -> setProject($project);
 
          $request = $this->container->get('request');
 
           if ($request->getMethod() == 'POST') 
           {
             $form->bind($request);
-
+           $message =  $User_Story -> getId();
+           
             if ($form->isValid()) 
             {
+
                $em = $this->container->get('doctrine')->getEntityManager();
                $em->persist($User_Story);
                $em->flush();
@@ -141,5 +146,80 @@ class DefaultController extends Controller
 
           return $this->container->get('templating')->renderResponse('ProjectBundle:Default:Add_Us.html.twig',array(
         'form' => $form->createView(), 'message' => $message, 'up' => $up));
+    }
+
+
+     public function visualisationAction($owner, $project){
+        $em = $this->container->get('doctrine')->getEntityManager();
+
+        $US= $em->getRepository('ProjectBundle:Task')->findBy(
+            array('owner' => $owner,
+                'project' => $project));
+
+        return $this->container->get('templating')->renderResponse('ProjectBundle:Kanban:Kanban_visualisation.html.twig', 
+        array(
+        'kanban_us' => $US,
+        'owner' => $owner,
+        'project' => $project
+        ));
+    }
+
+    public function Update_task_achievementoGAction($owner, $project, $id){
+
+         $message = '';
+         $up = 'ok';
+         $em = $this->container->get('doctrine')->getEntityManager();
+         $Task = $em->find('ProjectBundle:Task', $id);
+         $US= $em->getRepository('ProjectBundle:Task')->findAll();
+
+
+         if (!$Task){
+            $message = "Aucune tache trouve";
+         }
+
+         else{
+            $Task -> setAchievementTask("onGoing");
+            $em->persist($Task);
+            $em->flush();
+         }
+          return $this->container->get('templating')->renderResponse('ProjectBundle:Kanban:Kanban_visualisation.html.twig',array('kanban_us' => $US, 'message' => $message, 'up' => $up,'owner' => $owner, 'project' => $project));
+    }
+
+    public function Update_task_achievementDAction($owner, $project, $id){
+
+         $message = '';
+         $up = 'ok';
+         $em = $this->container->get('doctrine')->getEntityManager();
+         $Task = $em->find('ProjectBundle:Task', $id);
+          $US= $em->getRepository('ProjectBundle:Task')->findAll();
+         if (!$Task){
+            $message = "Aucune tache trouve";
+         }
+
+         else{
+            $Task -> setAchievementTask("Done");
+            $em->persist($Task);
+            $em->flush();
+         }
+          return $this->container->get('templating')->renderResponse('ProjectBundle:Kanban:Kanban_visualisation.html.twig',array('kanban_us' => $US, 'message' => $message, 'up' => $up,'owner' => $owner, 'project' => $project));
+    }
+
+    public function Update_task_achievementToDoAction($owner, $project, $id){
+
+         $message = '';
+         $up = 'ok';
+         $em = $this->container->get('doctrine')->getEntityManager();
+         $Task = $em->find('ProjectBundle:Task', $id);
+          $US= $em->getRepository('ProjectBundle:Task')->findAll();
+         if (!$Task){
+            $message = "Aucune tache trouve";
+         }
+
+         else{
+            $Task -> setAchievementTask("ToDo");
+            $em->persist($Task);
+            $em->flush();
+         }
+          return $this->container->get('templating')->renderResponse('ProjectBundle:Kanban:Kanban_visualisation.html.twig',array('kanban_us' => $US, 'message' => $message, 'up' => $up,'owner' => $owner, 'project' => $project));
     }
 }

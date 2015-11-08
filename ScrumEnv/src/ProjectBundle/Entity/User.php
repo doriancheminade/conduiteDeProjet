@@ -14,4 +14,28 @@ class User
      * @Assert\NotBlank()
      */    
     private $id;
+
+    /**
+     * Set id
+     *
+     * @param string $id
+     *
+     * @return User
+     */
+    public function setId($id)
+    {
+        $this->id = $id;
+
+        return $this;
+    }
+
+    /**
+     * Get id
+     *
+     * @return string
+     */
+    public function getId()
+    {
+        return $this->id;
+    }
 }
