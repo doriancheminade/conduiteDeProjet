@@ -9,11 +9,11 @@ use Symfony\Component\Validator\Constraints as Assert;
 class UserStory
 {
 
-      /**
-     * @ORM\GeneratedValue
+     /**
+     * @ORM\Column(type="string",length=255)
      * @ORM\Id
-     * @ORM\Column(type="integer")
-     */    
+     * @Assert\NotBlank()
+     */        
     private $id;
     
     /**
