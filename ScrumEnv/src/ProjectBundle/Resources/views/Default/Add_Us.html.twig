@@ -20,6 +20,12 @@
 <form action="" method="post" {{ form_enctype(form) }}>
 	{{ form_start(form) }}
 	<table id="Add_Form">
+
+		<tr>
+			<td class="Add_Form_Column"> {{ form_label(form.Id) }} </td>
+			<td class="Add_Form_Column"> {{ form_widget(form.Id) }} </td>
+		</tr>
+
 		<tr>
 			<td class="Add_Form_Column"> {{ form_label(form.description) }} </td>
 			<td class="Add_Form_Column"> {{ form_widget(form.description) }} </td>

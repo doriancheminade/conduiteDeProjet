@@ -58,6 +58,7 @@ class DefaultController extends Controller
         $User_Story = new UserStory(); 
 
          $form = $this->createFormBuilder($User_Story)
+            ->add('Id','text')
             ->add('description','text')
             ->add('priority','text')
             ->add('cost','text')
