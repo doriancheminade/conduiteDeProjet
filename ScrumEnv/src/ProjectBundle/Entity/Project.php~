@@ -6,16 +6,14 @@ use Symfony\Component\Validator\Constraints as Assert;
 /**
  * @ORM\Entity
  */
-class UserStory
-{
-
-      /**
-     * @ORM\GeneratedValue
+class Project
+{    
+    /**
+     * @ORM\Column(type="string",length=255)
      * @ORM\Id
-     * @ORM\Column(type="integer")
+     * @Assert\NotBlank()
      */    
     private $id;
-    
     /**
      * @ORM\Column(type="string",length=255)
      * @Assert\NotBlank()
@@ -25,8 +23,7 @@ class UserStory
      * @ORM\Column(type="string",length=255)
      * @Assert\NotBlank()
      */    
-    private $project;
-
+    private $name;
     /**
      * @ORM\Column(type="string",length=255)
      * @Assert\NotBlank()
@@ -35,23 +32,23 @@ class UserStory
 
 
     /**
-     * @ORM\Column(type="integer")
-     * @Assert\NotBlank()
-     */    
-    private $priority;
+     * Set id
+     *
+     * @param string $id
+     *
+     * @return Project
+     */
+    public function setId($id)
+    {
+        $this->id = $id;
 
-    /**
-     * @ORM\Column(type="integer")
-     * @Assert\NotBlank()
-     */    
-    private $cost;
-
-    
+        return $this;
+    }
 
     /**
      * Get id
      *
-     * @return integer
+     * @return string
      */
     public function getId()
     {
@@ -63,7 +60,7 @@ class UserStory
      *
      * @param string $owner
      *
-     * @return UserStory
+     * @return Project
      */
     public function setOwner($owner)
     {
@@ -83,27 +80,27 @@ class UserStory
     }
 
     /**
-     * Set project
+     * Set name
      *
-     * @param string $project
+     * @param string $name
      *
-     * @return UserStory
+     * @return Project
      */
-    public function setProject($project)
+    public function setName($name)
     {
-        $this->project = $project;
+        $this->name = $name;
 
         return $this;
     }
 
     /**
-     * Get project
+     * Get name
      *
      * @return string
      */
-    public function getProject()
+    public function getName()
     {
-        return $this->project;
+        return $this->name;
     }
 
     /**
@@ -111,7 +108,7 @@ class UserStory
      *
      * @param string $description
      *
-     * @return UserStory
+     * @return Project
      */
     public function setDescription($description)
     {
@@ -128,53 +125,5 @@ class UserStory
     public function getDescription()
     {
         return $this->description;
-    }
-
-    /**
-     * Set priority
-     *
-     * @param integer $priority
-     *
-     * @return UserStory
-     */
-    public function setPriority($priority)
-    {
-        $this->priority = $priority;
-
-        return $this;
-    }
-
-    /**
-     * Get priority
-     *
-     * @return integer
-     */
-    public function getPriority()
-    {
-        return $this->priority;
-    }
-
-    /**
-     * Set cost
-     *
-     * @param integer $cost
-     *
-     * @return UserStory
-     */
-    public function setCost($cost)
-    {
-        $this->cost = $cost;
-
-        return $this;
-    }
-
-    /**
-     * Get cost
-     *
-     * @return integer
-     */
-    public function getCost()
-    {
-        return $this->cost;
     }
 }
