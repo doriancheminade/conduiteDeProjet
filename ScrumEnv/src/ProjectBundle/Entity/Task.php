@@ -13,7 +13,7 @@ class Task
      * @ORM\Id
      * @Assert\NotBlank()
      */    
-    private $id;
+    private $id_task;
     /**
      * @ORM\Column(type="string",length=255)
      * @Assert\NotBlank()
@@ -28,7 +28,7 @@ class Task
      * @ORM\Column(type="string",length=255)
      * @Assert\NotBlank()
      */    
-    private $description;  
+    private $description_task;  
     /**
      * @ORM\Column(type="string",length=255)
      * @Assert\NotBlank()
@@ -47,30 +47,28 @@ class Task
      */    
     private $achievement_task;
 
-
-    
     /**
-     * Set id
+     * Set idTask
      *
-     * @param string $id
+     * @param string $idTask
      *
      * @return Task
      */
-    public function setId($id)
+    public function setIdTask($idTask)
     {
-        $this->id = $id;
+        $this->id_task = $idTask;
 
         return $this;
     }
 
     /**
-     * Get id
+     * Get idTask
      *
      * @return string
      */
-    public function getId()
+    public function getIdTask()
     {
-        return $this->id;
+        return $this->id_task;
     }
 
     /**
@@ -122,27 +120,27 @@ class Task
     }
 
     /**
-     * Set description
+     * Set descriptionTask
      *
-     * @param string $description
+     * @param string $descriptionTask
      *
      * @return Task
      */
-    public function setDescription($description)
+    public function setDescriptionTask($descriptionTask)
     {
-        $this->description = $description;
+        $this->description_task = $descriptionTask;
 
         return $this;
     }
 
     /**
-     * Get description
+     * Get descriptionTask
      *
      * @return string
      */
-    public function getDescription()
+    public function getDescriptionTask()
     {
-        return $this->description;
+        return $this->description_task;
     }
 
     /**

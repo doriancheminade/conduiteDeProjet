@@ -50,13 +50,14 @@ class DefaultController extends Controller
         
     }
 
+
    public function Add_UsAction($owner, $project){
+
         $up ='';
         $message = '';
-
         $User_Story = new UserStory(); 
 
-        $form = $this->createFormBuilder($User_Story)
+         $form = $this->createFormBuilder($User_Story)
             ->add('description','text')
             ->add('priority','text')
             ->add('cost','text')
@@ -74,7 +75,7 @@ class DefaultController extends Controller
            
             if ($form->isValid()) 
             {
-                
+
                $em = $this->container->get('doctrine')->getEntityManager();
                $em->persist($User_Story);
                $em->flush();
@@ -146,6 +147,7 @@ class DefaultController extends Controller
           return $this->container->get('templating')->renderResponse('ProjectBundle:Default:Add_Us.html.twig',array(
         'form' => $form->createView(), 'message' => $message, 'up' => $up));
     }
+
 
      public function visualisationAction($owner, $project){
         $em = $this->container->get('doctrine')->getEntityManager();
