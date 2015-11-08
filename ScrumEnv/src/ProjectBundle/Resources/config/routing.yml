@@ -26,17 +26,17 @@ Sprint_creation:
 
 go_to_Kanban:
   pattern: /Kanban/{owner}/{project}/visualisation/
-  defaults: { _controller: ProjectBundle:Default:visualisation } 
+  defaults: { _controller: ProjectBundle:Kanban:visualisation } 
 
 oG_Update_Achievement:
   pattern: /Kanban/{owner}/{project}/Update_task_achievement_OG/{id}
-  defaults: { _controller: ProjectBundle:Default:Update_task_achievementoG }
+  defaults: { _controller: ProjectBundle:Kanban:Update_task_achievementoG }
 
 Done_Update_Achievement:
   pattern: /Kanban/{owner}/{project}/Update_task_achievement_Done/{id}
-  defaults: { _controller: ProjectBundle:Default:Update_task_achievementD }
+  defaults: { _controller: ProjectBundle:Kanban:Update_task_achievementD }
 
 ToDo_Update_Achievement:
   pattern: /Kanban/{owner}/{project}/Update_task_achievement_ToDo/{id}
-  defaults: { _controller: ProjectBundle:Default:Update_task_achievementToDo }
+  defaults: { _controller: ProjectBundle:Kanban:Update_task_achievementToDo }
 
