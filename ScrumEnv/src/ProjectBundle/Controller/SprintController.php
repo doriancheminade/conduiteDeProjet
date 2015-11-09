@@ -6,6 +6,7 @@ use Symfony\Component\HttpKernel\Exception\NotFoundHttpException;
 use Symfony\Bundle\FrameworkBundle\Controller\Controller;
 use Symfony\Component\HttpFoundation\Request;
 use ProjectBundle\Entity\Sprint;
+use ProjectBundle\Entity\Project;
 use ProjectBundle\Form\SprintForm;
 
 class SprintController extends Controller
@@ -54,11 +55,10 @@ class SprintController extends Controller
             ->findBy(
                 array('owner' => $owner,
                     'project' => $project,
-                    'sprint' => $sprintId),
-                array('id' => 'ASC')
+                    'sprint' => $sprintId)
              );
         return $this->render('ProjectBundle:Sprint:Sprint.html.twig',
-            array('sprint' => $sprint, 'taskList' => $taskList, 'project' => $project));
+            array('sprint' => $sprint, 'taskList' => $taskList, 'project' => $project, 'owner' =>$owner));
     }
     public function SprintListDeleteTaskAction($owner, $project, $sprintId, $taskId){
         

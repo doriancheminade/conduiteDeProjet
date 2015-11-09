@@ -2,9 +2,12 @@
     <head>
         {% block stylesheets %}
 	    <link href="{{ asset('css/twbs/bootstrap.css') }}" rel="stylesheet" />
+        <link href="{{ asset('bundles/Project/css/main.css') }}" rel="stylesheet"  type="text/css"/>
+
 	    {% endblock %}
     </head>
     <body>
+        <div id="project">
         {% block body %}
             {{ include('ProjectBundle::navbar.html.twig') }}
             <div class="panel panel-default">
@@ -15,8 +18,8 @@
                     <ul class="list-group">
                     {% for sprint in sprints%}
                         <li class="list-group-item"><a href="{{ path('Sprint_task_list', 
-				            { 'owner': sprint.owner, 
-				            'project': sprint.project, 
+				            { 'owner': sprint.getOwner, 
+				            'project': sprint.getProject, 
 				            'sprintId': sprint.id })}}" 
 				            type="datetime">
                         {{sprint.id}}
@@ -28,7 +31,8 @@
                     {% endfor %}
                     </ul>
                 </div>
-            </div
+            </div>
         {% endblock %}
+         </div>
     </body>
 </html>

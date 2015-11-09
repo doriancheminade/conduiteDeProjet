@@ -38,7 +38,15 @@
                             </td>
                         </tr>
                         {% endfor %}
+
                     </table>
+               
+                     <a href="{{ path('go_to_task',
+                                {'owner':owner,
+                                'project':sprint.getProject,
+                                'sprint':sprint.getId
+                                })}}"><button>Add task</button> </a>
+                               
                 </div>
             </div
         {% endblock %}

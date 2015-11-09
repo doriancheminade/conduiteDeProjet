@@ -13,7 +13,7 @@ class Task
      * @ORM\Id
      * @Assert\NotBlank()
      */    
-    private $Id;
+    private $id;
     /**
      * @ORM\Column(type="string",length=255)
      * @Assert\NotBlank()
@@ -38,31 +38,17 @@ class Task
      * @Assert\NotBlank()
      */    
     private $cost;  
-<<<<<<< HEAD
-    
-=======
-    /**
-     * @ORM\Column(type="string",length=255)
-     * @Assert\NotBlank()
-     */    
-    private $priority;  
->>>>>>> master
+
     /**
      * @Assert\NotBlank()
      * @ORM\Column(type="string",length=255)
      */    
     private $achievement_task;
+
      /**
      * @ORM\Column(type="string",length=255)
      */    
     private $dependencies;
-
-<<<<<<< HEAD
- 
-
-    
-=======
-    
 
     /**
      * Set id
@@ -73,7 +59,7 @@ class Task
      */
     public function setId($id)
     {
-        $this->id = $id;
+        $this->Id = $id;
 
         return $this;
     }
@@ -85,7 +71,7 @@ class Task
      */
     public function getId()
     {
-        return $this->id;
+        return $this->Id;
     }
 
     /**
@@ -209,30 +195,6 @@ class Task
     }
 
     /**
-     * Set priority
-     *
-     * @param string $priority
-     *
-     * @return Task
-     */
-    public function setPriority($priority)
-    {
-        $this->priority = $priority;
-
-        return $this;
-    }
-
-    /**
-     * Get priority
-     *
-     * @return string
-     */
-    public function getPriority()
-    {
-        return $this->priority;
-    }
-
-    /**
      * Set achievementTask
      *
      * @param string $achievementTask
@@ -279,5 +241,4 @@ class Task
     {
         return $this->dependencies;
     }
->>>>>>> master
 }
