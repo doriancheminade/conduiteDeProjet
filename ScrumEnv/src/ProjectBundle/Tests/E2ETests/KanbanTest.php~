@@ -9,7 +9,7 @@ class KanbanTest extends PHPUnit_Extensions_SeleniumTestCase
 
   public function testMyTestCase()
   {
-    $this->open("/ScrumTool/Kanban/bob/pacman2015/sprint 1/visualisation/");
+    $this->open("/ScrumTool/Kanban/bob/pacman2015/visualisation/");
     $this->click("link=oG");
     $this->waitForPageToLoad("30000");
     $this->click("link=Done");

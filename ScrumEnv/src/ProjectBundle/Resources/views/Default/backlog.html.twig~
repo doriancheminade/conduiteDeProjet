@@ -11,7 +11,7 @@
 		
 			<h1 id="TitlePage">backlog creation page</h1>
 			<div id="backlog">
-			<table id="table" border="1">
+			<table border="1">
 				<tr bgcolor="#F8F8FF">
 				<th class="Backlog_column_int"> ID </th>
 				<th class="Backlog_column_string"> Description </th>
