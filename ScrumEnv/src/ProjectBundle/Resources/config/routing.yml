@@ -27,7 +27,7 @@ Sprint_creation:
     defaults: { _controller: ProjectBundle:Sprint:SprintCreation }
     
 Sprint_task_list:
-    pattern: /Sprint/list/{owner}/{project}/{sprintId}
+    pattern: /Sprint/list/{owner}/{project}/{sprintId}/{kanban_view}
     defaults: { _controller: ProjectBundle:Sprint:SprintList }
 Sprint_task_delete:
     pattern: /Sprint/list/{owner}/{project}/{sprintId}/{taskId}

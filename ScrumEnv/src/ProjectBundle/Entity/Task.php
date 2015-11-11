@@ -50,6 +50,8 @@ class Task
      */    
     private $dependencies;
 
+   
+
     /**
      * Set id
      *
@@ -59,7 +61,7 @@ class Task
      */
     public function setId($id)
     {
-        $this->Id = $id;
+        $this->id = $id;
 
         return $this;
     }
@@ -71,7 +73,7 @@ class Task
      */
     public function getId()
     {
-        return $this->Id;
+        return $this->id;
     }
 
     /**

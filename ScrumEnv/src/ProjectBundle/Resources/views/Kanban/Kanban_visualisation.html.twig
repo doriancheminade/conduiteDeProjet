@@ -71,6 +71,8 @@
 			{% endfor %}
 			</table>
 
+			<a href="{{ path('Sprint_task_list', { 'owner': owner, 'project': project, 'sprintId': sprint, 'kanban_view':'kanban_view' }) }}"><button class="btn btn-success" type="submit" > back to task_list   </button></a>
+
 		 	
 	</body>
 </html>

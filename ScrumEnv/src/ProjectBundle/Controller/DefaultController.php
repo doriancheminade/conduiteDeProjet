@@ -159,7 +159,7 @@ class DefaultController extends Controller
         $Task = new Task();
 
         $form = $this->createFormBuilder($Task)
-            ->add('Id','text')
+            ->add('id','text')
             ->add('description','text')
             ->add('cost','text')
             ->add('dependencies','text')
@@ -210,14 +210,14 @@ class DefaultController extends Controller
             ->findOneBy(
             array('owner' => $owner,
                 'project' => $project,
-                'Id' => $id));
+                'id' => $id));
 
          if (!$Task){
             $message = "no US found";
          }
 
          $form = $this->createFormBuilder($Task)
-            ->add('Id','text')
+            ->add('id','text')
             ->add('description','text')
             ->add('cost','text')
             ->add('dependencies','text')
