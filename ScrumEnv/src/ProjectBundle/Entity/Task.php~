@@ -10,7 +10,7 @@ class Task
 {
     /**
      * @ORM\Column(type="string",length=255)
-     * @ORM\id
+     * @ORM\Id
      * @Assert\NotBlank()
      */    
     private $id;
@@ -49,6 +49,15 @@ class Task
      * @ORM\Column(type="string",length=255)
      */    
     private $dependencies;
+    
+    /**
+     * @ORM\Column(type="date",length=255, nullable=true)
+     */ 
+    private $dateBeginingReal = null; 
+    /**
+     * @ORM\Column(type="date",length=255, nullable=true)
+     */ 
+    private $dateEndReal = null;
 
     /**
      * Set id
@@ -240,5 +249,53 @@ class Task
     public function getDependencies()
     {
         return $this->dependencies;
+    }
+
+    /**
+     * Set dateBeginingReal
+     *
+     * @param \DateTime $dateBeginingReal
+     *
+     * @return Task
+     */
+    public function setDateBeginingReal($dateBeginingReal)
+    {
+        $this->dateBeginingReal = $dateBeginingReal;
+
+        return $this;
+    }
+
+    /**
+     * Get dateBeginingReal
+     *
+     * @return \DateTime
+     */
+    public function getDateBeginingReal()
+    {
+        return $this->dateBeginingReal;
+    }
+
+    /**
+     * Set dateEndReal
+     *
+     * @param \DateTime $dateEndReal
+     *
+     * @return Task
+     */
+    public function setDateEndReal($dateEndReal)
+    {
+        $this->dateEndReal = $dateEndReal;
+
+        return $this;
+    }
+
+    /**
+     * Get dateEndReal
+     *
+     * @return \DateTime
+     */
+    public function getDateEndReal()
+    {
+        return $this->dateEndReal;
     }
 }

@@ -32,7 +32,16 @@ class GanttController extends Controller
         $form->handleRequest($request);
         if ($form->isValid()) 
         {
-            //TODO:update task
+            $em = $this->getDoctrine()->getManager();
+            $uptask = $em->getRepository('AppBundle:Task')->findOneBy();
+            if (!$uptask) 
+            {
+                throw $this->createNotFoundException('No task found for id '.$task.getId());
+            }
+            $data = $form->getData();
+            $product->setDateBegining(data.dateBegining);
+            $product->setDateEnd(data.dateEnd);
+            $em->flush();
         }
         return $this->container->get('templating')->renderResponse('ProjectBundle:Gantt:GanttEditTask.html.twig',
             array('form' => $form->createView(), 'task' => $task));
