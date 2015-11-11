@@ -13,7 +13,7 @@ class Task
      * @ORM\Id
      * @Assert\NotBlank()
      */    
-    private $Id;
+    private $id;
     /**
      * @ORM\Column(type="string",length=255)
      * @Assert\NotBlank()
@@ -50,6 +50,8 @@ class Task
      */    
     private $dependencies;
 
+   
+
     /**
      * Set id
      *
@@ -59,7 +61,7 @@ class Task
      */
     public function setId($id)
     {
-        $this->Id = $id;
+        $this->id = $id;
 
         return $this;
     }
@@ -71,7 +73,7 @@ class Task
      */
     public function getId()
     {
-        return $this->Id;
+        return $this->id;
     }
 
     /**

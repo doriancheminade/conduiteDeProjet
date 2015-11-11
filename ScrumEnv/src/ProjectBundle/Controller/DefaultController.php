@@ -6,6 +6,8 @@ use Symfony\Component\HttpKernel\Exception\NotFoundHttpException;
 use Symfony\Bundle\FrameworkBundle\Controller\Controller;
 use ProjectBundle\Entity\UserStory;
 use ProjectBundle\Entity\Task;
+use ProjectBundle\Entity\Sprint;
+use ProjectBundle\Entity\Project;
 use ProjectBundle\Form\UserStoryForm;
 
 class DefaultController extends Controller
@@ -155,15 +157,15 @@ class DefaultController extends Controller
         $up ='';
         $message = '';
         $Task = new Task();
-       
+
         $form = $this->createFormBuilder($Task)
-            ->add('Id','text')
+            ->add('id','text')
             ->add('description','text')
             ->add('cost','text')
             ->add('dependencies','text')
          ->getForm();
 
-          $Task -> setAchievementTask('ToDo');
+         $Task -> setAchievementTask('ToDo');
          $Task -> setOwner($owner);
          $Task -> setProject($project);
          $Task -> setSprint($sprint);
@@ -175,8 +177,6 @@ class DefaultController extends Controller
             $form->bind($request);
             if ($form->isValid()) 
             {
-             
-              
                $em = $this->container->get('doctrine')->getEntityManager();
                $em->persist($Task);
                $em->flush();
@@ -210,14 +210,14 @@ class DefaultController extends Controller
             ->findOneBy(
             array('owner' => $owner,
                 'project' => $project,
-                'Id' => $id));
+                'id' => $id));
 
          if (!$Task){
             $message = "no US found";
          }
 
          $form = $this->createFormBuilder($Task)
-            ->add('Id','text')
+            ->add('id','text')
             ->add('description','text')
             ->add('cost','text')
             ->add('dependencies','text')

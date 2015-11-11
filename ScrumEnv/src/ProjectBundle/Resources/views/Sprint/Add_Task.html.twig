@@ -21,8 +21,8 @@
 	{{ form_start(form) }}
 	<table align="center" id="Add_Form">
 		<tr>
-			<td class="Add_Form_Column"> {{ form_label(form.Id) }} </td>
-			<td class="Add_Form_Column"> {{ form_widget(form.Id) }} </td>
+			<td class="Add_Form_Column"> {{ form_label(form.id) }} </td>
+			<td class="Add_Form_Column"> {{ form_widget(form.id) }} </td>
 		</tr> 
 		<tr>
 			<td class="Add_Form_Column"> {{ form_label(form.description) }} </td>
@@ -48,7 +48,8 @@
       
     {{ form_end(form) }}
 </form>
-	<a href="{{ path('go_to_task_list', { 'owner': owner, 'project': project, 'sprint': sprint}) }}"><button class="btn btn-success" type="submit" > back to task_list   </button></a>
+
+	<a href="{{ path('Sprint_task_list', { 'owner': owner, 'project': project, 'sprintId': sprint, 'kanban_view':'salut' }) }}"><button class="btn btn-success" type="submit" > back to task_list   </button></a>
 </div>
 </body>
 </html>
