@@ -1,6 +1,7 @@
 <html>
 {% block stylesheets %}
     <link href="{{ asset('css/twbs/bootstrap.css') }}" rel="stylesheet" />
+    <link href="{{ asset('bundles/Project/css/main.css') }}" rel="stylesheet"  type="text/css"/>
 {% endblock %}
 <nav class="navbar navbar-default">
     <div class="container-fluid">
@@ -9,13 +10,20 @@
         </div>
         <div>
             <ul class="nav navbar-nav">
-                <li>project:{{ project }}</li>
+                <li> <a> project:{{ project }} </a></li>
                 <li><a href="{{ path('go_to_backlog', 
 			    { 'owner': app.request.get('owner'),
 			    'project': app.request.get('project')}) }}">backlog</a></li>
                 <li><a href="{{ path('Sprint_creation', 
 			    { 'owner': app.request.get('owner'),
 			    'project': app.request.get('project')}) }}">new sprint</a></li>
+                
+                {% if kanban_view is defined%}
+                <li><a href="{{ path('go_to_Kanban', 
+                { 'owner': app.request.get('owner'),
+                'project': app.request.get('project'),
+                'sprint': app.request.get('sprintId')}) }}">Kanban sprint</a></li>
+                {% endif %}
 			    
             </ul>
         </div>

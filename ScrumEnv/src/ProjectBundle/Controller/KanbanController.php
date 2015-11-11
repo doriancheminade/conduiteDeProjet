@@ -23,7 +23,8 @@ class KanbanController extends Controller
         array(
         'kanban_us' => $US,
         'owner' => $owner,
-        'project' => $project
+        'project' => $project,
+        'sprint' => $sprint
         ));
     }
 

@@ -6,37 +6,61 @@
 	    {% endblock %}
     </head>
     <body>
+          <div id="sprint_creation">
         {% block body %}
             {{ include('ProjectBundle::navbar.html.twig') }}
             <h1>new sprint</h1>
             <form>
+                <table id='table_sprint'>
                 {{ form_start(form) }}
                 {{ form_errors(form) }}
+
+                <tr>
                 <div class="form-group">
-                    <label for="description">{{ form_label(form.id) }}</label>    
-			        {{ form_widget(form.id) }}
+                
+                <td>
+                    <label for="description">{{ form_label(form.id) }}</label>   </td> 
+			     <td>   {{ form_widget(form.id) }}</td>
 			    </div>
-			    
+			    </tr>
+
+
+                <tr>
                 <div class="form-group">
-                    <label for="description">{{ form_label(form.description) }}</label>    
-			        {{ form_widget(form.description) }}
+                    <td><label for="description">{{ form_label(form.description) }}</label>  </td>  
+			       <td> {{ form_widget(form.description) }}</td>
 			    </div>
-			    
+			     </tr>
+
+
+                 <tr>
 			    <div class="form-group">
-                    <label for="dateBeginging">{{ form_label(form.dateBegining) }}</label>
-			        {{ form_widget(form.dateBegining) }}
+                   <td>  <label for="dateBeginging">{{ form_label(form.dateBegining) }}</label> </td>
+			      <td>   {{ form_widget(form.dateBegining) }} </td>
 			    </div>
-			    
+			     </tr>
+
+
+                 <tr>
                 <div class="form-group">
-                    <label for="dateEnd">{{ form_label(form.dateEnd) }}</label>
-			        {{ form_widget(form.dateEnd) }}
+                  <td>   <label for="dateEnd">{{ form_label(form.dateEnd) }}</label></td> 
+			      <td>   {{ form_widget(form.dateEnd) }}</td> 
 			    </div>
-			    
-                <input class="btn btn-success" type="submit" >
-			    {# {{ form_label(form.create) }}
+			    </tr>
+
+
+               <tr>
+               <td> <input class="btn btn-success" type="submit" ></td>
+			   </tr>
+
+
+                {# {{ form_label(form.create) }}
                 {{ form_widget(form.create) }} #}
                 {{ form_end(form) }}
+                
+            </table>
             </form>
         {% endblock %}
+    </div>
     </body>
 </html>
