@@ -28,7 +28,7 @@ class KanbanController extends Controller
         ));
     }
 
-    public function Update_task_achievementoGAction($owner, $project, $id){
+    public function Update_task_achievementoGAction($owner, $project, $id, $sprint){
 
          $message = '';
          $up = 'ok';
@@ -46,10 +46,12 @@ class KanbanController extends Controller
             $em->persist($Task);
             $em->flush();
          }
-          return $this->container->get('templating')->renderResponse('ProjectBundle:Kanban:Kanban_visualisation.html.twig',array('kanban_us' => $US, 'message' => $message, 'up' => $up,'owner' => $owner, 'project' => $project));
-    }
+    
+          return $this->container->get('templating')->renderResponse('ProjectBundle:Kanban:Kanban_visualisation.html.twig',
+          array('kanban_us' => $US, 'message' => $message, 'up' => $up,'owner' => $owner, 'project' => $project,'sprint' => $sprint));
+      }
 
-    public function Update_task_achievementDAction($owner, $project, $id){
+    public function Update_task_achievementDAction($owner, $project, $id, $sprint){
 
          $message = '';
          $up = 'ok';
@@ -65,10 +67,10 @@ class KanbanController extends Controller
             $em->persist($Task);
             $em->flush();
          }
-          return $this->container->get('templating')->renderResponse('ProjectBundle:Kanban:Kanban_visualisation.html.twig',array('kanban_us' => $US, 'message' => $message, 'up' => $up,'owner' => $owner, 'project' => $project));
+          return $this->container->get('templating')->renderResponse('ProjectBundle:Kanban:Kanban_visualisation.html.twig',array('kanban_us' => $US, 'message' => $message, 'up' => $up,'owner' => $owner, 'project' => $project,'sprint' => $sprint));
     }
 
-    public function Update_task_achievementToDoAction($owner, $project, $id){
+    public function Update_task_achievementToDoAction($owner, $project, $id, $sprint){
 
          $message = '';
          $up = 'ok';
@@ -84,6 +86,6 @@ class KanbanController extends Controller
             $em->persist($Task);
             $em->flush();
          }
-          return $this->container->get('templating')->renderResponse('ProjectBundle:Kanban:Kanban_visualisation.html.twig',array('kanban_us' => $US, 'message' => $message, 'up' => $up,'owner' => $owner, 'project' => $project));
+          return $this->container->get('templating')->renderResponse('ProjectBundle:Kanban:Kanban_visualisation.html.twig',array('kanban_us' => $US, 'message' => $message, 'up' => $up,'owner' => $owner, 'project' => $project,'sprint' => $sprint));
     }
 }
