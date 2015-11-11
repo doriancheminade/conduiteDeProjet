@@ -1,0 +1,20 @@
+<html>
+    <head>
+        {% block stylesheets %}
+	    <link href="{{ asset('css/twbs/bootstrap.css') }}" rel="stylesheet" />
+	    <link href="{{ asset('css/ganttEdit.css') }}" rel="stylesheet" />
+	    {% endblock %}
+    </head>
+    <body>
+        {% block body %}
+            {{ include('ProjectBundle::navbar.html.twig') }}
+            <div class="panel panel-default scrollable-panel">
+            {% for task in taskList %}
+                <div class="panel-body">
+                {{ include('GanttEditTask.twig.html', { 'task': task }) }}
+                </div>
+            {% endfor %}
+            </div>
+        {% endblock %}
+    </body>
+</html>

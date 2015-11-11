@@ -45,7 +45,7 @@ class SprintController extends Controller
     {
         $em = $this->getDoctrine()->getManager();
         $sprint = $em->getRepository('ProjectBundle:Sprint')
-            ->findBy(
+            ->findOneBy(
                 array('owner' => $owner,
                     'project' => $project,
                     'id' => $sprintId));

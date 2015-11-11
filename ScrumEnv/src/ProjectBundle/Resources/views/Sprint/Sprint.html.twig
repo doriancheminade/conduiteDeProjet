@@ -20,14 +20,14 @@
                         <th>ID</th>
                         <th>Description</th>
                         <th>Cost</th>
-                        <th>Priority</th>
+                        <th>Current State</th>
                         <th>Delete</th>
                        {% for task in taskList %} 
                         <tr>
                             <td>{{task.getId}}</td>
                             <td>{{task.getDescription}}</td>
                             <td>{{task.getCost}}</td>
-                            <td>{{task.getPriority}}</td>
+                            <td>{{task.getAchievementTask}}</td>
                             <td><a href="{{ path('Sprint_task_delete',
                                 {'owner':task.getOwner(),
                                 'project':task.getProject(),
@@ -40,7 +40,13 @@
                         {% endfor %}
                     </table>
                 </div>
-            </div
+            </div>
+            <a href="{{ path('edit_real_gantt',
+                {'owner':sprint.getOwner(),
+                'project':sprint.getProject(),
+                'sprint':sprint.getId()})}}">
+                <button class="btn btn-success" >to real gantt</button>
+           </a>
         {% endblock %}
     </body>
 </html>

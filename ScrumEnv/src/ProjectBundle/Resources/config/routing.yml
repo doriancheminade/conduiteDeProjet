@@ -67,3 +67,7 @@ Delete_Task:
   pattern: /Task/deleteTask/{owner}/{project}/{sprint}/{id}
   defaults: { _controller: ProjectBundle:Default:Delete_Task } 
 
+
+edit_real_gantt:
+    pattern: /Gantt/Edit/{owner}/{project}/{sprint}
+    defaults: { _controller: ProjectBundle:Gantt:editGAntt }
