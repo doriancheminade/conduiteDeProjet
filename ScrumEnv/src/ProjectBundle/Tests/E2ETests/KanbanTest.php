@@ -4,12 +4,12 @@ class KanbanTest extends PHPUnit_Extensions_SeleniumTestCase
   protected function setUp()
   {
     $this->setBrowser("*chrome");
-    $this->setBrowserUrl("http://localhost/conduiteDeProjet/ScrumEnv/web/app_dev.php/ScrumTool/Project/bob/pacman2015");
+    $this->setBrowserUrl("http://localhost:8000");
   }
 
   public function testMyTestCase()
   {
-    $this->open("/conduiteDeProjet/ScrumEnv/web/app_dev.php/ScrumTool/Project/bob/pacman2015");
+    $this->open("/ScrumTool/Project/bob/pacman2015");
     $this->click("link=new sprint");
     $this->waitForPageToLoad("30000");
     $this->type("id=form_id", "sprint_1");
