@@ -9,9 +9,16 @@
 >
     <testsuites>
         <testsuite name="Project Test Suite">
-            <directory>../src/*/*Bundle/Tests</directory>
+         <!--   <directory>../src/*/*Bundle/Tests</directory>
             <directory>../src/*/Bundle/*Bundle/Tests</directory>
-            <directory>../src/*Bundle/Tests</directory>
+            <directory>../src/*Bundle/Tests</directory> -->
+            <file> Tests/E2ETests/KanbanTest.php </file>
+            <file> Tests/E2ETests/TaskModification.php </file>
+            <file> Tests/E2ETests/SprintCreationTest.php </file>
+            <file> Tests/E2ETests/USDeleteTest.php </file>
+            <file> Tests/E2ETests/USListCreationTest.php </file>
+            <file> Tests/E2ETests/USListTest.php </file>
+            <file> Tests/E2ETests/USListUpdateTest.php </file>
         </testsuite>
     </testsuites>
 
