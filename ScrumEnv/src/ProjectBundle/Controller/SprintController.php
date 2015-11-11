@@ -60,6 +60,10 @@ class SprintController extends Controller
         return $this->render('ProjectBundle:Sprint:Sprint.html.twig',
             array('sprint' => $sprintId, 'taskList' => $taskList, 'project' => $project, 'owner' =>$owner, 'kanban_view' => $kanban_view));
     }
+
+
+
+    
     public function SprintListDeleteTaskAction($owner, $project, $sprintId, $taskId){
         
         $em = $this->getDoctrine()->getManager();
@@ -69,9 +73,17 @@ class SprintController extends Controller
                     'project' => $project,
                     'sprint' => $sprintId,
                     'id' => $taskId));
-            
+        
+
+        if (!$task) 
+        {
+           throw new NotFoundHttpException("task not found");
+        }
+
         $em->remove($task);
         $em->flush();
+
+
         return new RedirectResponse($this->container->get('router')->generate('Sprint_task_list', 
             array('owner' => $owner, 'project' => $project, 'sprintId' => $sprintId, 'kanban_view' => 'ok')));
     }

@@ -17,11 +17,6 @@ class DefaultController extends Controller
         return $this->render('ProjectBundle:Default:index.html.twig', array('name' => $name));
     }
 
-    public function naviguerAction()
-    {
-    	$message = "hey";
-    	return $this->render('ProjectBundle:Default:backlog.html.twig', array('message' => $message ));
-    }
     
     public function ProjectOverviewAction($owner, $project){
         $em = $this->getDoctrine()->getManager();
@@ -48,7 +43,7 @@ class DefaultController extends Controller
 
         return $this->container->get('templating')->renderResponse('ProjectBundle:Default:backlog.html.twig', 
         array(
-        'message' => $US
+        'message' => $US, 'owner' => $owner, 'project' => $project
         ));
         
     }

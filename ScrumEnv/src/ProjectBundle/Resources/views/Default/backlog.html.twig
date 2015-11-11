@@ -56,7 +56,10 @@
 	</table>
 </div>
 					<a href="Add_UserStory"><button class="btn btn-primary" type="submit" > Add User Story   </button></a> </td>
-					<td> <a href="Project"><button class="btn btn-primary" type="submit" > return Project view  </button></a> 
+					<td> <a href="{{ path('Project', 
+				    { 'owner': owner, 
+				    'project': project})
+				     }}"><button class="btn btn-primary" type="submit" > return Project view  </button></a> 
 			
 <br></br>
 		
