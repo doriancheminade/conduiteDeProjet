@@ -60,7 +60,24 @@ class SprintController extends Controller
         return $this->render('ProjectBundle:Sprint:Sprint.html.twig',
             array('sprint' => $sprintId, 'taskList' => $taskList, 'project' => $project, 'owner' =>$owner, 'kanban_view' => $kanban_view));
     }
+     public function SprintListDoneAction($owner, $project, $sprintId, $kanban_view)
+    {
+        $em = $this->getDoctrine()->getManager();
+        $sprint = $em->getRepository('ProjectBundle:Sprint')
+            ->findBy(
+                array('owner' => $owner,
+                    'project' => $project,
+                    'id' => $sprintId));
 
+        $taskList = $em->getRepository('ProjectBundle:Task')
+            ->findBy(
+                array('owner' => $owner,
+                    'project' => $project,
+                    'sprint' => $sprintId)
+             );
+        return $this->render('ProjectBundle:Sprint:Tasklistdone.html.twig',
+            array('sprint' => $sprintId, 'taskList' => $taskList, 'project' => $project, 'owner' =>$owner, 'kanban_view' => $kanban_view));
+    }
 
 
     

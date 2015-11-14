@@ -175,7 +175,7 @@ class DefaultController extends Controller
                $em = $this->container->get('doctrine')->getEntityManager();
                $em->persist($Task);
                $em->flush();
-               $message='Tache ajouté avec succès !';
+               $message='Tache ajoutée avec succès !';
            }
         }
 
@@ -196,6 +196,7 @@ class DefaultController extends Controller
         ));
         
     }
+
      public function Update_TaskAction($owner, $project, $sprint, $id){
 
          $message = '';

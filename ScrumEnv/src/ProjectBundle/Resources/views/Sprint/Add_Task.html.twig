@@ -1,11 +1,15 @@
 <html>
 <head>
+	 {% block stylesheets %}
 	<link href="{{ asset('bundles/Project/css/main.css') }}" rel="stylesheet"  type="text/css"/>
 	<link href="{{ asset('css/twbs/bootstrap.css') }}" rel="stylesheet" />
+	{% endblock %}
 </head>
 <meta http-equiv="Content-Type" content="text/html; charset=utf-8" />
 	<body align="center" >
+		{% block body %}
 	<div id="Project">
+		{{ include('ProjectBundle::navbar.html.twig') }}
 			{% if up %}
 			<h1 id="TitlePage">Update a Task</h1>
 			{% endif %}
@@ -43,13 +47,11 @@
 		</tr>
 	</table>
    
-
-    
-      
     {{ form_end(form) }}
 </form>
 
-	<a href="{{ path('Sprint_task_list', { 'owner': owner, 'project': project, 'sprintId': sprint, 'kanban_view':'salut' }) }}"><button class="btn btn-success" type="submit" > back to task_list   </button></a>
+	<a href="{{ path('Sprint_task_list', { 'owner': owner, 'project': project, 'sprintId': sprint, 'kanban_view':'salut' }) }}"><button class="btn btn-primary" type="submit" > back to task_list   </button></a>
+	{% endblock %}
 </div>
 </body>
 </html>

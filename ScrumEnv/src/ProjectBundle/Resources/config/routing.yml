@@ -29,6 +29,12 @@ Sprint_creation:
 Sprint_task_list:
     pattern: /Sprint/list/{owner}/{project}/{sprintId}/{kanban_view}
     defaults: { _controller: ProjectBundle:Sprint:SprintList }
+
+Sprint_task_done:
+    pattern: /Sprint/listdone/{owner}/{project}/{sprintId}/{kanban_view}
+    defaults: { _controller: ProjectBundle:Sprint:SprintListDone }
+
+
 Sprint_task_delete:
     pattern: /Sprint/delete/{owner}/{project}/{sprintId}/{taskId}
     defaults: { _controller: ProjectBundle:Sprint:SprintListDeleteTask }
@@ -55,7 +61,11 @@ ToDo_Update_Achievement:
 
 go_to_task:
   pattern: /Task/Add_Task/{owner}/{project}/{sprint}
-  defaults: { _controller: ProjectBundle:Default:Add_Task }  
+  defaults: { _controller: ProjectBundle:Default:Add_Task }
+
+go_to_done:
+  pattern: /Task/List_Task_Done/{owner}/{project}/{sprint}
+  defaults: { _controller: ProjectBundle:Default:list_Task_Done } 
 
 Update_Task:
   pattern: /Task/update_Task/{owner}/{project}/{sprint}/{id}
