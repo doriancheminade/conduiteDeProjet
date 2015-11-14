@@ -6,17 +6,24 @@
 <meta http-equiv="Content-Type" content="text/html; charset=utf-8" />
 	<body >
 	<div id="Project">
+		
+		<div class="panel panel-default">
+                <div class="panel-heading">
+                    <h1 class="panel-title">
+                        Add user story
+                    </h1>
+                </div>
+                <div class="panel-body">
 			{% if up %}
-			<h1 id="TitlePage">Update a user_Story</h1>
+			<h1 ></h1>
 			{% endif %}
 			{% if up==null %}
-			<h1 id="TitlePage">Add a user_Story</h1>
+			<h1 ></h1>
 			{% endif %}
 
 			{% if message %}
 			<p>{{ message }}</p>
 			{% endif %}
-	
 <form action="" method="post" {{ form_enctype(form) }}>
 	{{ form_start(form) }}
 	<table id="Add_Form">
@@ -41,12 +48,16 @@
 
 		<tr>
 			 <td class="Add_Form_Column"> <input class="btn btn-success" type="submit" /> </td>
-		</tr>
-	</table>
-    {{ form_end(form) }}
-    <a href="{{ path('go_to_backlog', 
+			 <td> <a href="{{ path('go_to_backlog', 
 			    { 'owner': app.request.get('owner'),
-			    'project': app.request.get('project')}) }}"class="btn btn-info" role="button">Back to backlog</a> 
+			    'project': app.request.get('project')}) }}"class="btn btn-primary" role="button">Back to backlog</a> </td>
+		</tr>
+	
+	
+
+			    </table>
+    {{ form_end(form) }}
+   
 </form>
 </div>
 </body>

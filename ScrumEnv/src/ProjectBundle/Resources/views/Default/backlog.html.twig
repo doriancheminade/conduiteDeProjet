@@ -8,9 +8,16 @@
 <meta http-equiv="Content-Type" content="text/html; charset=utf-8" />
 	<body >
 	<div id="Project">
-		
-			<h1 id="TitlePage">backlog creation page</h1>
-			<div id="backlog">
+		{{ include('ProjectBundle::navbar.html.twig') }}
+		 <div class="panel panel-default">
+                <div class="panel-heading">
+                    <h1 class="panel-title">
+                        Backlog
+                    </h1>
+                </div>
+                <div class="panel-body">
+			
+				
 			<table id="table" border="1">
 				<tr bgcolor="#F8F8FF">
 				<th class="Backlog_column_int"> ID </th>
@@ -55,13 +62,13 @@
 			</div>
 	</table>
 </div>
+<br></br>
 					<a href="Add_UserStory"><button class="btn btn-primary" type="submit" > Add User Story   </button></a> </td>
 					<td> <a href="{{ path('Project', 
 				    { 'owner': owner, 
 				    'project': project})
-				     }}"><button class="btn btn-primary" type="submit" > return Project view  </button></a> 
+				     }}"><button class="btn btn-primary" type="submit" > Return Project view  </button></a> 
 			
-<br></br>
 		
 
 

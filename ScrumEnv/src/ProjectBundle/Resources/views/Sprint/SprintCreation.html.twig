@@ -5,13 +5,22 @@
 	    <link href="{{ asset('css/twbs/bootstrap.css') }}" rel="stylesheet" />
 	    {% endblock %}
     </head>
+    <meta http-equiv="Content-Type" content="text/html; charset=utf-8" />
     <body>
-          <div id="sprint_creation">
+      
+          <div id="Project">
         {% block body %}
             {{ include('ProjectBundle::navbar.html.twig') }}
-            <h1>new sprint</h1>
+            <div class="panel panel-default">
+                <div class="panel-heading">
+                    <h1 class="panel-title">
+                       New sprint
+                    </h1>
+                </div>
+                <div class="panel-body">
+            
             <form>
-                <table id='table_sprint'>
+                <table align="center" id='table_sprint'>
                 {{ form_start(form) }}
                 {{ form_errors(form) }}
 
@@ -62,5 +71,6 @@
             </form>
         {% endblock %}
     </div>
+ 
     </body>
 </html>

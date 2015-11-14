@@ -10,11 +10,18 @@
 		{% block body %}
 	<div id="Project">
 		{{ include('ProjectBundle::navbar.html.twig') }}
+		<div class="panel panel-default">
+                <div class="panel-heading">
+                    <h1 class="panel-title">
+                        Add a task
+                    </h1>
+                </div>
+                <div class="panel-body">
 			{% if up %}
-			<h1 id="TitlePage">Update a Task</h1>
+			<h1 id="TitlePage"></h1>
 			{% endif %}
 			{% if up==null %}
-			<h1 id="TitlePage">Add a Task</h1>
+			<h1 id="TitlePage"></h1>
 			{% endif %}
 
 			{% if message %}
@@ -43,6 +50,7 @@
 
 		<tr>
 			 <td class="Add_Form_Column"> <input class="btn btn-success" type="submit" /> </td>
+			 <td><a href="{{ path('Sprint_task_list', { 'owner': owner, 'project': project, 'sprintId': sprint, 'kanban_view':'salut' }) }}"class="btn btn-primary" role="button" > back to task_list   </a></td>
 			
 		</tr>
 	</table>
@@ -50,7 +58,7 @@
     {{ form_end(form) }}
 </form>
 
-	<a href="{{ path('Sprint_task_list', { 'owner': owner, 'project': project, 'sprintId': sprint, 'kanban_view':'salut' }) }}"><button class="btn btn-primary" type="submit" > back to task_list   </button></a>
+	
 	{% endblock %}
 </div>
 </body>
