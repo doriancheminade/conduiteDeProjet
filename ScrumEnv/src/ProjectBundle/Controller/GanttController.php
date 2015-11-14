@@ -7,11 +7,14 @@ use Symfony\Bundle\FrameworkBundle\Controller\Controller;
 use ProjectBundle\Entity\Task;
 use ProjectBundle\Entity\Sprint;
 
+use Symfony\Component\Serializer\Serializer;
+use Symfony\Component\Serializer\Encoder\JsonEncoder;
+use Symfony\Component\Serializer\Normalizer\GetSetMethodNormalizer;
+
 class GanttController extends Controller
 {
     public function drawAction($sprint,$taskList)
     {
-        
     }
     
     public function newGanttAction()
@@ -57,8 +60,17 @@ class GanttController extends Controller
                     'sprint' => $sprint),
                 array('id' => 'ASC')
              );
+             
+        
+        $encoders = array(new JsonEncoder());
+        $normalizers = array(new GetSetMethodNormalizer());
+
+        $serializer = new Serializer($normalizers, $encoders);
+
+        $jsonTaskList = $serializer->serialize($taskList, 'json');
         
         return $this->render('ProjectBundle:Gantt:GanttEdit.html.twig', 
-            array('owner' => $owner, 'project' => $project, 'sprint' => $sprint, 'taskList' => $taskList));
+            array('owner' => $owner, 'project' => $project, 'sprint' => $sprint, 'taskList' => $taskList, 
+            'jsonTaskList' => $jsonTaskList));
     }
 }

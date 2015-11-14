@@ -1,18 +1,27 @@
 <html>
     <head>
-        {% block stylesheets %}
-	    <link href="{{ asset('css/twbs/bootstrap.css') }}" rel="stylesheet" />
-	    <link href="{{ asset('css/ganttEdit.css') }}" rel="stylesheet" />
-	    {% endblock %}
+	    {% stylesheets 
+	        '@bootstrap_less'        
+	    %}
+            <link rel="stylesheet" href="{{ asset_url }}" type="text/css" />
+        {% endstylesheets %}
+        {% javascripts 
+            'bootstrap_js'            
+        %}
+            <script type="text/javascript" src="{{ asset_url }}" canvas="canvas" resize="true"></script>
+        {% endjavascripts %}
     </head>
     <body>
         {% block body %}
             {{ include('ProjectBundle::navbar.html.twig') }}
-            <!-- TODO:draw the gantt chart here -->
+            
+            <!-- TODO:draw the gantt chart here --> 
+            
+            {{ include('ProjectBundle:Gantt:GanttDraw.html.twig') }}
+            
             <div class="panel panel-default scrollable-panel">
             {% for task in taskList %}
                 <div class="panel-body">
-                {# include('ProjectBundle::Gantt/GanttEditTask.html.twig', { 'task': task }) #}
                 {% render(controller('ProjectBundle:GAntt:editGAnttTask',{ 'task': task })) %}
                 </div>
             {% endfor %}
