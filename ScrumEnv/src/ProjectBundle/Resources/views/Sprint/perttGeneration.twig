@@ -1,0 +1,28 @@
+<?xml version="1.0" encoding="utf-8"?>
+<!DOCTYPE svg PUBLIC "-//W3C//DTD SVG 20010904//EN"
+"http://www.w3.org/TR/2001/REC-SVG-20010904/DTD/svg10.dtd">
+<html>
+<head>
+	<link href="{{ asset('bundles/Project/css/main.css') }}" rel="stylesheet"  type="text/css"/>
+	<link href="{{ asset('css/twbs/bootstrap.css') }}" rel="stylesheet" />
+     
+   
+
+    </style>
+<meta http-equiv="Content-Type" content="text/html; charset=utf-8" />
+	<body align="center">
+	<div id="Project">
+		<div id="canvas"></div>
+			<h1 id="TitlePage">Pertt generation</h1>
+			
+	<a href="{{ path('Sprint_task_list', { 'owner': owner, 'project': project, 'sprintId': sprint, 'kanban_view':'salut' }) }}"><button class="btn btn-success" type="submit" > back to task_list   </button></a>
+</div>
+</body>
+  s{% block javascripts %}
+  {% javascripts '@ProjectBundle/Resources/public/js/*' %}
+			  <script src="{{ asset_url }}"></script>
+	{% endjavascripts %}
+	{% endblock %}
+</html>
+
+ 

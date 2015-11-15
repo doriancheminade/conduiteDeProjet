@@ -21,6 +21,7 @@ Project:
     defaults: { _controller: ProjectBundle:Default:ProjectOverview }
     
 
+
     
 Sprint_creation:
     pattern: /Sprint/new/{owner}/{project}
@@ -32,6 +33,14 @@ Sprint_task_list:
 Sprint_task_delete:
     pattern: /Sprint/delete/{owner}/{project}/{sprintId}/{taskId}
     defaults: { _controller: ProjectBundle:Sprint:SprintListDeleteTask }
+
+go_to_task:
+  pattern: /Task/Add_Task/{owner}/{project}/{sprint}
+  defaults: { _controller: ProjectBundle:Default:Add_Task }  
+
+Update_Task:
+  pattern: /Task/update_Task/{owner}/{project}/{sprint}/{id}
+  defaults: { _controller: ProjectBundle:Default:Update_Task } 
 
 
 
@@ -53,15 +62,6 @@ ToDo_Update_Achievement:
 
 
 
-go_to_task:
-  pattern: /Task/Add_Task/{owner}/{project}/{sprint}
-  defaults: { _controller: ProjectBundle:Default:Add_Task }  
-
-Update_Task:
-  pattern: /Task/update_Task/{owner}/{project}/{sprint}/{id}
-  defaults: { _controller: ProjectBundle:Default:Update_Task } 
-
-Delete_Task:
-  pattern: /Task/deleteTask/{owner}/{project}/{sprint}/{id}
-  defaults: { _controller: ProjectBundle:Default:Delete_Task } 
-
+generate_pertt:
+  pattern: /Pertt/{owner}/{project}/{sprint}
+  defaults: { _controller: ProjectBundle:Pertt:generate_pertt } 
