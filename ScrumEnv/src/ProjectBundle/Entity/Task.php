@@ -58,6 +58,10 @@ class Task
      * @ORM\Column(type="date",length=255, nullable=true)
      */ 
     private $dateEndReal = null;
+    /**
+     * @ORM\Column(type="string",length=255, nullable=true)
+     */ 
+    private $developer = null;
 
     /**
      * Set id
@@ -297,5 +301,29 @@ class Task
     public function getDateEndReal()
     {
         return $this->dateEndReal;
+    }
+
+    /**
+     * Set developer
+     *
+     * @param string $developer
+     *
+     * @return Task
+     */
+    public function setDeveloper($developer)
+    {
+        $this->developer = $developer;
+
+        return $this;
+    }
+
+    /**
+     * Get developer
+     *
+     * @return string
+     */
+    public function getDeveloper()
+    {
+        return $this->developer;
     }
 }

@@ -15,11 +15,18 @@
         {% block body %}
             {{ include('ProjectBundle::navbar.html.twig') }}
             
-            <!-- TODO:draw the gantt chart here --> 
+            <script>
+                var jsonTaskList = {{ jsonTaskList|json_encode }}
+            </script>
+            {{ include('ProjectBundle:Gantt:GanttDraw.html.twig', {'jsonTaskList': jsonTaskList}) }}
             
-            {{ include('ProjectBundle:Gantt:GanttDraw.html.twig') }}
-            
-            
+            <div class="panel panel-default scrollable-panel">
+            {% for task in taskList %}
+                <div class="panel-body">
+                {% render(controller('ProjectBundle:GAntt:editGAnttTask',{ 'task': task })) %}
+                </div>
+            {% endfor %}
+            </div>
         {% endblock %}
     </body>
 </html>

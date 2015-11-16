@@ -1,23 +1,40 @@
 $(function() {
     "use strict";
 
-    var today = moment();
-    var andTwoHours = moment().add(2, "hours");
-
-    var today_friendly = "/Date(" + today.valueOf() + ")/";
-    var next_friendly = "/Date(" + andTwoHours.valueOf() + ")/";
-
+    var source = [];
+    for(var i=0; i<jsonTaskList.length; i++){
+        if (jsonTaskList[i].dateBeginingReal && jsonTaskList[i].dateEndReal && jsonTaskList[i].developer){
+            var isNew = true;
+            var j=0;
+            for(; j<source.length; j++){
+                if(source.name == jsonTaskList[i].developer){
+                    source[j].values += {
+                        from: "/Date("+jsonTaskList[i].dateBeginingReal.timestamp+")/",
+                        to: "/Date("+jsonTaskList[i].dateEndReal.timestamp+")/",
+                        label: jsonTaskList[i].id,
+                        customClass: "ganttRed"
+                          
+                    };
+                }
+            }
+            if(isNew){
+                source[j] = {
+                    name: jsonTaskList[i].developer,
+                    desc: jsonTaskList[i].description,
+                    values: [{
+                        from: "/Date("+jsonTaskList[i].dateBeginingReal.timestamp+")/",
+                        to: "/Date("+jsonTaskList[i].dateEndReal.timestamp+")/",
+                        label: jsonTaskList[i].id,
+                        customClass: "ganttRed"
+                    }]
+                };
+            }
+        }
+    }
+    console.log("source");
+    console.log(source);
     $(".gantt").gantt({
-        source: [{
-            name: "Testing",
-            desc: " ",
-            values: [{
-                from: today_friendly,
-                to: next_friendly,
-                label: "Test",
-                customClass: "ganttRed"
-            }]
-        }],
+        source: source,
         scale: "hours",
         minScale: "hours",
         navigate: "scroll"
