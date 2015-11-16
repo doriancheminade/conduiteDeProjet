@@ -49,6 +49,19 @@ class Task
      * @ORM\Column(type="string",length=255)
      */    
     private $dependencies;
+    
+    /**
+     * @ORM\Column(type="date",length=255, nullable=true)
+     */ 
+    private $dateBeginingReal = null; 
+    /**
+     * @ORM\Column(type="date",length=255, nullable=true)
+     */ 
+    private $dateEndReal = null;
+    /**
+     * @ORM\Column(type="string",length=255, nullable=true)
+     */ 
+    private $developer = null;
 
    
 
@@ -242,5 +255,77 @@ class Task
     public function getDependencies()
     {
         return $this->dependencies;
+    }
+
+    /**
+     * Set dateBeginingReal
+     *
+     * @param \DateTime $dateBeginingReal
+     *
+     * @return Task
+     */
+    public function setDateBeginingReal($dateBeginingReal)
+    {
+        $this->dateBeginingReal = $dateBeginingReal;
+
+        return $this;
+    }
+
+    /**
+     * Get dateBeginingReal
+     *
+     * @return \DateTime
+     */
+    public function getDateBeginingReal()
+    {
+        return $this->dateBeginingReal;
+    }
+
+    /**
+     * Set dateEndReal
+     *
+     * @param \DateTime $dateEndReal
+     *
+     * @return Task
+     */
+    public function setDateEndReal($dateEndReal)
+    {
+        $this->dateEndReal = $dateEndReal;
+
+        return $this;
+    }
+
+    /**
+     * Get dateEndReal
+     *
+     * @return \DateTime
+     */
+    public function getDateEndReal()
+    {
+        return $this->dateEndReal;
+    }
+
+    /**
+     * Set developer
+     *
+     * @param string $developer
+     *
+     * @return Task
+     */
+    public function setDeveloper($developer)
+    {
+        $this->developer = $developer;
+
+        return $this;
+    }
+
+    /**
+     * Get developer
+     *
+     * @return string
+     */
+    public function getDeveloper()
+    {
+        return $this->developer;
     }
 }

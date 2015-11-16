@@ -6,6 +6,24 @@
     "autoload": {
         "psr-4": { "": "src/" }
     },
+    "repositories": [
+        {
+            "type": "package",
+            "package": {
+                "name": "taitems/jQuery.Gantt",
+                "version": "1.0",
+                "dist": {
+                    "url": "https://github.com/taitems/jQuery.Gantt/archive/master.zip",
+                    "type": "zip"
+                },
+                "source": {
+                    "url": "https://github.com/taitems/jQuery.Gantt.git",
+                    "type": "git",
+                    "reference": "dev-master"
+                }
+            }
+        }
+    ],
     "require": {
         "php": ">=5.3.9",
         "symfony/symfony": "2.7.*",
@@ -19,7 +37,8 @@
         "incenteev/composer-parameter-handler": "~2.0",
         "twbs/bootstrap": "^3.3",
         "phpunit/phpunit-selenium": "1.4.*",
-        "doctrine/doctrine-fixtures-bundle": "^2.2"
+        "doctrine/doctrine-fixtures-bundle": "^2.2",        
+        "taitems/jQuery.Gantt": "1.0",
     },
     "require-dev": {
         "sensio/generator-bundle": "~2.3",
@@ -55,7 +74,8 @@
             "file": "app/config/parameters.yml"
         },
         "branch-alias": {
-            "dev-master": "2.7-dev"
+            "dev-master": "2.7-dev",
+            "keep-outdated":true
         }
     }
 }

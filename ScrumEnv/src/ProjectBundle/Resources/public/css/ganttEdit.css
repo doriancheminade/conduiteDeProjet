@@ -1,0 +1,5 @@
+.scrollable-panel {
+    height: auto;
+    max-height: 300px;
+    overflow-x: hidden;
+}
