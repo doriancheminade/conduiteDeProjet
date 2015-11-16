@@ -31,8 +31,7 @@
 
 				<td id="backlog_option"><a href="{{ path('Update_Task', { 'id': a.getId, 'owner': owner, 'project': project, 'sprint': sprint }) }}">	<button type="submit" class="btn btn-success" > Update   </button> </a></td>
 
-				<td>	<a href="{{ path('Delete_Task', { 'id': a.getId, 'owner': owner, 'project': project, 'sprint': sprint }) }}"><button  class="btn btn-danger" type="submit" > Delete   </button></a> </td>
-
+				<td><a href="{{ path('Sprint_task_delete', { 'taskId': a.getId, 'owner': owner, 'project': project, 'sprint': sprint, 'pertt_view' : 'ok', 'kanban_view' : 'ok' }) }}"><button  class="btn btn-danger" type="submit" > Delete   </button></a> </td>
 					<div>
 				</tr>
 

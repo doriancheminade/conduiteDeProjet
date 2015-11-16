@@ -42,7 +42,7 @@ class SprintController extends Controller
         return $this->render('ProjectBundle:Sprint:SprintCreation.html.twig', 
             array('owner' => $owner, 'project' => $project, 'form' => $form->createView()));
     }
-    public function SprintListAction($owner, $project, $sprintId, $kanban_view)
+    public function SprintListAction($owner, $project, $sprintId, $kanban_view, $pertt_view)
     {
         $em = $this->getDoctrine()->getManager();
         $sprint = $em->getRepository('ProjectBundle:Sprint')
@@ -58,13 +58,13 @@ class SprintController extends Controller
                     'sprint' => $sprintId)
              );
         return $this->render('ProjectBundle:Sprint:Sprint.html.twig',
-            array('sprint' => $sprintId, 'taskList' => $taskList, 'project' => $project, 'owner' =>$owner, 'kanban_view' => $kanban_view));
+            array('sprint' => $sprintId, 'taskList' => $taskList, 'project' => $project, 'owner' =>$owner, 'kanban_view' => $kanban_view, 'pertt_view' => $pertt_view));
     }
 
 
 
     
-    public function SprintListDeleteTaskAction($owner, $project, $sprintId, $taskId){
+    public function SprintListDeleteTaskAction($owner, $project, $sprintId, $taskId ){
         
         $em = $this->getDoctrine()->getManager();
         $task = $em->getRepository('ProjectBundle:Task')
@@ -85,6 +85,6 @@ class SprintController extends Controller
 
 
         return new RedirectResponse($this->container->get('router')->generate('Sprint_task_list', 
-            array('owner' => $owner, 'project' => $project, 'sprintId' => $sprintId, 'kanban_view' => 'ok')));
+            array('owner' => $owner, 'project' => $project, 'sprintId' => $sprintId, 'kanban_view' => 'ok', 'pertt_view' => 'ok')));
     }
 }

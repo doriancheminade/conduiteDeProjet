@@ -24,6 +24,13 @@
                 'project': app.request.get('project'),
                 'sprint': app.request.get('sprintId')}) }}">Kanban sprint</a></li>
                 {% endif %}
+
+                 {% if pertt_view is defined%}
+                <li><a href="{{ path('generate_pertt', 
+                { 'owner': app.request.get('owner'),
+                'project': app.request.get('project'),
+                'sprint': app.request.get('sprintId')}) }}">pertt sprint</a></li>
+                {% endif %}
 			    
             </ul>
         </div>

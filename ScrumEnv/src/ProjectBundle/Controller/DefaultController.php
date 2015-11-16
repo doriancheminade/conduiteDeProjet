@@ -152,6 +152,8 @@ class DefaultController extends Controller
         $up ='';
         $message = '';
         $Task = new Task();
+        $em = $this->container->get('doctrine')->getEntityManager();
+  
 
         $form = $this->createFormBuilder($Task)
             ->add('id','text')
@@ -168,34 +170,25 @@ class DefaultController extends Controller
 
           if ($request->getMethod() == 'POST') 
           {
-
+          
             $form->bind($request);
-            if ($form->isValid()) 
-            {
-               $em = $this->container->get('doctrine')->getEntityManager();
-               $em->persist($Task);
-               $em->flush();
-               $message='Tache ajouté avec succès !';
-           }
-        }
+
+               if ($form->isValid()) 
+                   {
+                       $em->persist($Task);
+                       $em->flush();
+                       $message='Tache ajouté avec succès !';
+                  }
+              
+              
+            }
+            
+        
 
         return $this->container->get('templating')->renderResponse('ProjectBundle:Sprint:Add_Task.html.twig',array(
         'form' => $form->createView(), 'message' => $message,'up' => $up, 'owner' => $owner, 'project' => $project, 'sprint' => $sprint));
     }
- public function list_TaskAction($owner, $project, $sprint){
-        $em = $this->container->get('doctrine')->getEntityManager();
 
-        $Task= $em->getRepository('ProjectBundle:Task')->findBy(
-            array('owner' => $owner,
-                'project' => $project,
-                'sprint' => $sprint));
-
-        return $this->container->get('templating')->renderResponse('ProjectBundle:Sprint:TaskList.html.twig', 
-        array(
-        'message' => $Task, 'owner' => $owner, 'project' => $project, 'sprint' => $sprint
-        ));
-        
-    }
      public function Update_TaskAction($owner, $project, $sprint, $id){
 
          $message = '';
@@ -239,30 +232,5 @@ class DefaultController extends Controller
           return $this->container->get('templating')->renderResponse('ProjectBundle:Sprint:Add_Task.html.twig',array(
         'form' => $form->createView(), 'message' => $message, 'up' => $up, 'owner' => $owner, 'project' => $project, 'sprint' => $sprint));
     }
-
-     public function Delete_TaskAction($owner, $project,$sprint, $id)
-    {
-        $em = $this->container->get('doctrine')->getEntityManager();
-        $User_Story = $em->getRepository('ProjectBundle:Task')
-            ->findOneBy(
-            array('owner' => $owner,
-                'project' => $project,
-                'sprint' => $sprint,
-                'Id' => $id));
-            
-        if (!$User_Story) 
-        {
-           throw new NotFoundHttpException("User_Story not found");
-        }
-            
-        $em->remove($User_Story);
-        $em->flush();        
-
-
-      return new RedirectResponse($this->container->get('router')->generate('go_to_task_list', array('owner' => $owner, 'project' => $project, 'sprint' => $sprint)));
-    }
-
-
-
-     
+ 
 }
