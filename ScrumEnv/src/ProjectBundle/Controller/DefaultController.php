@@ -165,7 +165,9 @@ class DefaultController extends Controller
          $Task -> setAchievementTask('ToDo');
          $Task -> setOwner($owner);
          $Task -> setProject($project);
-         $Task -> setSprint($sprint);
+         $Task -> setSprint($sprint);    
+
+
          $request = $this->container->get('request');
 
           if ($request->getMethod() == 'POST') 
