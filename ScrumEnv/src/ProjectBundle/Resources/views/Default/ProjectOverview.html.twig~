@@ -14,27 +14,35 @@
                 <div class="panel-body">
                     <ul class="list-group">
                     {% for sprint in sprints%}
-<<<<<<< HEAD
                         <li class="list-group-item"><a href="{{ path('Sprint_task_list', 
 				            { 'owner': sprint.owner, 
 				            'project': sprint.project, 
 				            'sprintId': sprint.id })}}" 
 				            type="datetime">
                         {{sprint.id}}
-=======
-                        <li class="list-group-item"><a href="path/to/sprint" type="datetime">
-                        <a href="{{ path('go_to_Kanban', 
-                    { 'owner': sprint.owner, 
-                    'project': sprint.project, 
-                    'sprint': sprint.getId }
-                    ) }}"> {{sprint.id}} </a>
->>>>>>> 9a1af6e0929e553665fdcd4e8e1d6b0587c8e8df
                         {{" : "}}
                         {{sprint.dateBegining|date('Y-m-d')}}
                         {{" : "}}
                         {{sprint.dateEnd|date('Y-m-d')}}
                         </a></li>
                     {% endfor %}
+                    </ul>
+                </div>
+                <div class="panel-body">
+                    <ul class="list-group">
+                        {% if repo==NULL %}
+                        <li class="list-group-item">no repository linked to this project</li>
+                        <li class="list-group-item"><a href="{{ path('add_repo', 
+				            { 'owner': owner, 
+				            'project': project}) }}">
+				            add repository
+				        </a></li>
+				        {% else %}
+				        <li class="list-group-item">
+                        <li class="list-group-item">repository for this project</li>
+				            {{repo.Owner}}{{" : "}}{{repo.repoName}}{{" : "}}{{repo.type}}
+				        </li>
+				        {% endif %}
                     </ul>
                 </div>
             </div

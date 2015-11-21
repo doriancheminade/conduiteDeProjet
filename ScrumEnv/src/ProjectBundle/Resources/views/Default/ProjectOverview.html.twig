@@ -28,6 +28,23 @@
                     {% endfor %}
                     </ul>
                 </div>
+                <div class="panel-body">
+                    <ul class="list-group">
+                        {% if repo==NULL %}
+                        <li class="list-group-item">no repository linked to this project</li>
+                        <li class="list-group-item"><a href="{{ path('add_repo', 
+				            { 'owner': owner, 
+				            'project': project}) }}">
+				            add repository
+				        </a></li>
+				        {% else %}
+				        <li class="list-group-item">repository for this project</li>
+                        <li class="list-group-item">
+				            {{repo.Owner}}{{" : "}}{{repo.repoName}}{{" : "}}{{repo.type}}
+				        </li>
+				        {% endif %}
+                    </ul>
+                </div>
             </div
         {% endblock %}
     </body>

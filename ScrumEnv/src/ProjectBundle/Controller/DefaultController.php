@@ -29,8 +29,13 @@ class DefaultController extends Controller
                     'project' => $project),
                 array('id' => 'ASC')
              );
+         $repo = $em->getRepository('ProjectBundle:Repository')
+            ->findOneBy(
+                array('owner' => $owner,
+                    'project' => $project));
     
-        return $this->render('ProjectBundle:Default:ProjectOverview.html.twig', array('owner' => $owner, 'project' => $project, 'sprints' => $sprints));
+        return $this->render('ProjectBundle:Default:ProjectOverview.html.twig', 
+            array('owner' => $owner, 'project' => $project, 'sprints' => $sprints, 'repo' => $repo));
     }
 
     public function listAction($owner, $project)
