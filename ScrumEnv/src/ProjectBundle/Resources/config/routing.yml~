@@ -72,9 +72,14 @@ edit_real_gantt:
     pattern: /Gantt/Edit/{owner}/{project}/{sprint}
     defaults: { _controller: ProjectBundle:Gantt:editGAntt }
     
+    
 add_repo:
     pattern: /Repo/add/{owner}/{project}
     defaults: { _controller: ProjectBundle:Repo:AddRepo }
-get_repo:
-    pattern: /Repo/get/{owner}/{project}
-    defaults: { _controller: ProjectBundle:Repo:GetRepo }
+get_commits:
+    pattern: /Repo/getCommits/{owner}/{repo}
+    defaults: { _controller: ProjectBundle:Repo:GetCommits }
+services:
+     repo_getCommits:
+        class: ProjectBundle\Services\RepositoryManager
+        arguments:    ['repoOwner', 'repoName']

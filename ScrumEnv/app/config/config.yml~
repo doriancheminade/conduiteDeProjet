@@ -8,6 +8,11 @@ imports:
 parameters:
     locale: en
 
+services:
+     repo_getCommits:
+        class: ProjectBundle\Services\RepositoryManager
+        arguments:    ['repoOwner', 'repoName']
+
 framework:
     #esi:             ~
     #translator:      { fallbacks: ["%locale%"] }
@@ -75,7 +80,7 @@ assetic:
         taitems_js:
             inputs:
                 - '%kernel.root_dir%/../vendor/taitems/jQuery.Gantt/js/jquery.min.js'
-                - '%kernel.root_dir%/../vendor/taitems/jQuery.Gantt/js/jquery.fn.gantt.js
+                - '%kernel.root_dir%/../vendor/taitems/jQuery.Gantt/js/jquery.fn.gantt.js'
         taitems_css:
             inputs:
                 - '%kernel.root_dir%/../vendor/taitems/jQuery.Gantt/css/style.css'

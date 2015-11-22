@@ -7,6 +7,7 @@ use Symfony\Bundle\FrameworkBundle\Controller\Controller;
 use Symfony\Component\Form\Extension\Core\ChoiceList\ChoiceList;
 use ProjectBundle\Entity\Repository;
 
+
 class RepoController extends Controller
 {
    public function AddRepoAction($owner, $project)
@@ -39,5 +40,16 @@ class RepoController extends Controller
         }
         return $this->container->get('templating')->renderResponse('ProjectBundle:Repo:addRepo.html.twig',
             array('form' => $form->createView(), 'owner' => $owner, 'project' => $project));
-   } 
+   }   
+    public function getCommitsAction($owner, $repo)
+    {
+        $url = 'https://api.github.com/repos/'.$owner.'/'.$repo.'/commits';
+        $parameters="";
+        $output = $this->get('api_caller')->call(new HttpGetJson($url, $parameters));
+        return $output;
+    }
+    public function commitsByTaskAction($taskId)
+    {
+        return "";
+    }
 }

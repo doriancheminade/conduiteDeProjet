@@ -47,6 +47,12 @@
                 'sprint':sprint.getId()})}}">
                 <button class="btn btn-success" >to real gantt</button>
            </a>
+            <a href="{{ path('go_to_Kanban',
+                {'owner':sprint.getOwner(),
+                'project':sprint.getProject(),
+                'sprint':sprint.getId()})}}">
+                <button class="btn btn-success" >to kanban</button>
+           </a>
         {% endblock %}
     </body>
 </html>

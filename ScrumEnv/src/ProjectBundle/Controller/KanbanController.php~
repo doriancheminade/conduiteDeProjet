@@ -24,7 +24,7 @@ class KanbanController extends Controller
         $repo = $em->getRepository('ProjectBundle:Repository')->findOneBy(
             array('owner' => $owner,
                 'project' => $project)); 
-        $commits = "vide";
+        $commits = "";
         if($repo){
             $repoManager = new RepositoryManager();
             $list = $repoManager->getCommitsAction($repo->getRepoOwner(), $repo->getRepoName());

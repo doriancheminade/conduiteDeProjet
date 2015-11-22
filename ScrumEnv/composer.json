@@ -39,7 +39,9 @@
         "phpunit/phpunit-selenium": "1.4.*",
         "doctrine/doctrine-fixtures-bundle": "^2.2",        
         "taitems/jQuery.Gantt": "1.0",
-        "components/jquery": "^2.1"
+        "components/jquery": "^2.1",
+        "sensio/buzz-bundle": "dev-master",
+        "leaseweb/api-caller-bundle": "^1.2"
     },
     "require-dev": {
         "sensio/generator-bundle": "~2.3",

@@ -10,15 +10,15 @@
         <div>
             <ul class="nav navbar-nav">
                 <li><h4>project:{{ project }}</h4></li>
-                <li><a href="{{ path('Project', 
-			    { 'owner': app.request.get('owner'),
-			    'project': app.request.get('project')}) }}">project</a></li>
                 <li><a href="{{ path('go_to_backlog', 
 			    { 'owner': app.request.get('owner'),
 			    'project': app.request.get('project')}) }}">backlog</a></li>
                 <li><a href="{{ path('Sprint_creation', 
 			    { 'owner': app.request.get('owner'),
 			    'project': app.request.get('project')}) }}">new sprint</a></li>
+                <li><a href="{{ path('Project', 
+			    { 'owner': app.request.get('owner'),
+			    'project': app.request.get('project')}) }}">project</a></li>
             </ul>
         </div>
     </div>

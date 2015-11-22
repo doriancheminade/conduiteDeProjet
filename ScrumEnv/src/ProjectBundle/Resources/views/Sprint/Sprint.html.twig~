@@ -45,7 +45,7 @@
                 {'owner':sprint.getOwner(),
                 'project':sprint.getProject(),
                 'sprint':sprint.getId()})}}">
-                <button class="btn btn-success" >real gantt</button>
+                <button class="btn btn-success" >to real gantt</button>
            </a>
         {% endblock %}
     </body>
