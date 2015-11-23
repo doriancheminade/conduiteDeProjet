@@ -1,0 +1,24 @@
+<?php
+class GanttRealTest extends PHPUnit_Extensions_SeleniumTestCase
+{
+  protected function setUp()
+  {
+    $this->setBrowser("*firefox");
+    $this->setBrowserUrl("http://localhost:8000");
+  }
+
+  public function testLinkRepoAndCheckOk()
+  {
+  
+  
+  
+    $this->open("/ScrumTool/Kanban/bob/pacman2015/sprint%201/visualisation/");
+    $this->waitForPageToLoad("30000");
+    $this->assertEquals("[T1]events: forgot to add lifes", $this->getText("//div[@id='Kanban']/table/tbody/tr[3]/td[2]"));
+    $this->assertEquals("[T1]events: pacman moves, pacman dies", $this->getText("//div[@id='Kanban']/table/tbody/tr[4]/td[2]"));
+    $this->assertEquals("[T2]ai: fantoms move now", $this->getText("//div[@id='Kanban']/table[2]/tbody/tr[3]/td[2]"));
+    $this->assertEquals("[T3]textures: level 1 done", $this->getText("//div[@id='Kanban']/table[3]/tbody/tr[3]/td[2]"));
+
+  }
+}
+?>
