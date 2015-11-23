@@ -1,41 +1,24 @@
 <?php
 namespace ProjectBundle\Entity;
+
+use FOS\UserBundle\Model\User as BaseUser;
 use Doctrine\ORM\Mapping as ORM;
-use Symfony\Component\Validator\Constraints as Assert;
 
 /**
  * @ORM\Entity
  */
-class User
+class User extends BaseUser
 {
     /**
-     * @ORM\Column(type="string",length=255)
      * @ORM\Id
-     * @Assert\NotBlank()
-     */    
-    private $id;
-
-    /**
-     * Set id
-     *
-     * @param string $id
-     *
-     * @return User
+     * @ORM\Column(type="integer")
+     * @ORM\GeneratedValue(strategy="AUTO")
      */
-    public function setId($id)
-    {
-        $this->id = $id;
+    protected $id;
 
-        return $this;
-    }
-
-    /**
-     * Get id
-     *
-     * @return string
-     */
-    public function getId()
+    public function __construct()
     {
-        return $this->id;
+        parent::__construct();
+        // your own logic
     }
 }

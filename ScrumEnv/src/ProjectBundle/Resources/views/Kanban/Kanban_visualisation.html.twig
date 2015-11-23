@@ -5,74 +5,74 @@
 	<link href="{{ asset('css/twbs/bootstrap.css') }}" rel="stylesheet" />
 </head>
 <meta http-equiv="Content-Type" content="text/html; charset=utf-8" />
-	<body >
+<body >
 	<div id="Project_Kanban">
 		
-			<h1 id="TitlePage_kanban">Welcome on kanban page</h1>
-			<div id="Kanban">
+		<h1 id="TitlePage_kanban">Welcome on kanban page</h1>
+		<div id="Kanban">
 			
 			<table>
-			<th class="IDTask"> ID </th>
-			<th class="DescriptionTask"> ToDo </th>
-			
-			{% for a in kanban_us %}
+				<th class="IDTask"> ID </th>
+				<th class="DescriptionTask"> ToDo </th>
+				
+				{% for a in kanban_us %}
 
-			{% if a.getAchievementTask == 'ToDo' %}
-			
+				{% if a.getAchievementTask == 'ToDo' %}
+				
 				<tr>
 					<div>
 
-					<td class="IDTask">{{ a.getId }}</td>
-					<td class="DescriptionTask">{{ a.getDescription }}
-				 <a class="line_option" href="{{ path('oG_Update_Achievement', { 'id': a.getId, 'owner': owner, 'project': project,'sprint': sprint}) }}"> oG </a>
-				 <a class="line_option" href="{{ path('Done_Update_Achievement', { 'id': a.getId, 'owner': owner, 'project': project,'sprint': sprint}) }}"> Done </a></td>
-				</div>
+						<td class="IDTask">{{ a.getId }}</td>
+						<td class="DescriptionTask">{{ a.getDescription }}
+							<a class="line_option" href="{{ path('oG_Update_Achievement', { 'id': a.getId, 'owner': owner, 'project': project,'sprint': sprint}) }}"> oG </a>
+							<a class="line_option" href="{{ path('Done_Update_Achievement', { 'id': a.getId, 'owner': owner, 'project': project,'sprint': sprint}) }}"> Done </a></td>
+						</div>
 
-				</tr>
-			{% endif %}
-			{% endfor %}
-			</table>
-
-
-
-			<table>
-			<th class="IDTask"> ID </th>
-			<th class="DescriptionTask"> onGoing </th>
-			{% for a in kanban_us %}
-			{% if a.getAchievementTask == 'onGoing' %}
-				<tr>
-					<div>
-
-					<td class="IDTask">{{ a.getId }}</td>
-					<td class="DescriptionTask">{{ a.getDescription }}
-					<a class="line_option" href="{{ path('ToDo_Update_Achievement', { 'id': a.getId, 'owner': owner, 'project': project,'sprint': sprint}) }}"> ToDo </a>
-				    <a class="line_option" href="{{ path('Done_Update_Achievement', { 'id': a.getId, 'owner': owner, 'project': project,'sprint': sprint}) }}"> Done </a></td>
-					</div>
-				</tr>
-			{% endif %}
-			{% endfor %}
-			</table>
+					</tr>
+					{% endif %}
+					{% endfor %}
+				</table>
 
 
-			<table>
-			<th class="IDTask"> ID </th>
-			<th class="DescriptionTask"> Done </th>
-			{% for a in kanban_us %}
-			{% if a.getAchievementTask == 'Done' %}
-				<tr>
-					<div>
-					<td class="IDTask">{{ a.getId }}</td>
-					<td class="DescriptionTask">{{ a.getDescription }}
-					<a class="line_option" href="{{ path('ToDo_Update_Achievement', { 'id': a.getId, 'owner': owner, 'project': project,'sprint': sprint}) }}"> ToDo </a>
-				    <a class="line_option" href="{{ path('oG_Update_Achievement', { 'id': a.getId, 'owner': owner, 'project': project,'sprint': sprint}) }}"> onGoing </a></td>
-					</div>
-				</tr>
-			{% endif %}
-			{% endfor %}
-			</table>
 
-			<a href="{{ path('Sprint_task_list', { 'owner': owner, 'project': project, 'sprintId': sprint, 'kanban_view':'ok', 'pertt_view' : 'ok' }) }}"><button class="btn btn-success" type="submit" > back to task_list   </button></a>
+				<table>
+					<th class="IDTask"> ID </th>
+					<th class="DescriptionTask"> onGoing </th>
+					{% for a in kanban_us %}
+					{% if a.getAchievementTask == 'onGoing' %}
+					<tr>
+						<div>
 
-		 	
-	</body>
-</html>
+							<td class="IDTask">{{ a.getId }}</td>
+							<td class="DescriptionTask">{{ a.getDescription }}
+								<a class="line_option" href="{{ path('ToDo_Update_Achievement', { 'id': a.getId, 'owner': owner, 'project': project,'sprint': sprint}) }}"> ToDo </a>
+								<a class="line_option" href="{{ path('Done_Update_Achievement', { 'id': a.getId, 'owner': owner, 'project': project,'sprint': sprint}) }}"> Done </a></td>
+							</div>
+						</tr>
+						{% endif %}
+						{% endfor %}
+					</table>
+
+
+					<table>
+						<th class="IDTask"> ID </th>
+						<th class="DescriptionTask"> Done </th>
+						{% for a in kanban_us %}
+						{% if a.getAchievementTask == 'Done' %}
+						<tr>
+							<div>
+								<td class="IDTask">{{ a.getId }}</td>
+								<td class="DescriptionTask">{{ a.getDescription }}
+									<a class="line_option" href="{{ path('ToDo_Update_Achievement', { 'id': a.getId, 'owner': owner, 'project': project,'sprint': sprint}) }}"> ToDo </a>
+									<a class="line_option" href="{{ path('oG_Update_Achievement', { 'id': a.getId, 'owner': owner, 'project': project,'sprint': sprint}) }}"> onGoing </a></td>
+								</div>
+							</tr>
+							{% endif %}
+							{% endfor %}
+						</table>
+
+						<a href="{{ path('Sprint_task_list', { 'owner': owner, 'project': project, 'sprintId': sprint, 'kanban_view':'ok', 'pertt_view' : 'ok' }) }}"><button class="btn btn-success" type="submit" > back to task_list   </button></a>
+
+						
+					</body>
+					</html>

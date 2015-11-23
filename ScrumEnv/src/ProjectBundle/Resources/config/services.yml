@@ -1,4 +1,7 @@
 services:
-#    test_project.example:
-#        class: test\ProjectBundle\Example
-#        arguments: [@service_id, "plain_value", %parameter%]
+    app_user.registration_complet:
+        class: ProjectBundle\EventListener\RegistrationConfirmListener
+        arguments: [@router]
+        tags:
+            - { name: kernel.event_subscriber }
+

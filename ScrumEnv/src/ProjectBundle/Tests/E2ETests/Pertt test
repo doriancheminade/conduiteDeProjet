@@ -1,0 +1,75 @@
+<?php
+class Example extends PHPUnit_Extensions_SeleniumTestCase
+{
+  protected function setUp()
+  {
+    $this->setBrowser("*chrome");
+    $this->setBrowserUrl("http://localhost/conduiteDeProjet/ScrumEnv/web/app_dev.php/register/");
+  }
+
+  public function testMyTestCase()
+  {
+    $this->open("/conduiteDeProjet/ScrumEnv/web/app_dev.php/register/");
+    $this->type("id=fos_user_registration_form_email", "guillaume.verdugo@gmail.com");
+    $this->type("id=fos_user_registration_form_username", "guillaume");
+    $this->type("id=fos_user_registration_form_plainPassword_first", "root");
+    $this->type("id=fos_user_registration_form_plainPassword_second", "root");
+    $this->click("css=input[type=\"submit\"]");
+    $this->waitForPageToLoad("30000");
+    $this->type("id=password", "root");
+    $this->type("id=username", "guillaume");
+    $this->click("css=input[type=\"submit\"]");
+    $this->waitForPageToLoad("30000");
+    $this->click("css=button");
+    $this->waitForPageToLoad("30000");
+    $this->type("id=form_id", "test_project");
+    $this->type("id=form_name", "project1");
+    $this->type("id=form_description", "try to generate gant");
+    $this->click("css=input.btn.btn-success");
+    $this->waitForPageToLoad("30000");
+    $this->click("link=Back to your profil");
+    $this->waitForPageToLoad("30000");
+    $this->click("//a[contains(text(),'test_project\n                     : \n                    try to generate gant')]");
+    $this->waitForPageToLoad("30000");
+    $this->click("link=new sprint");
+    $this->waitForPageToLoad("30000");
+    $this->type("id=form_id", "sprint_1");
+    $this->type("id=form_description", "test for pertt");
+    $this->select("id=form_dateEnd_year", "label=2012");
+    $this->click("css=input.btn.btn-success");
+    $this->waitForPageToLoad("30000");
+    $this->type("id=form_id", "sprint_2");
+    $this->click("css=input.btn.btn-success");
+    $this->waitForPageToLoad("30000");
+    $this->click("css=a[type=\"datetime\"]");
+    $this->waitForPageToLoad("30000");
+    $this->click("css=button");
+    $this->waitForPageToLoad("30000");
+    $this->type("id=form_id", "task1");
+    $this->type("id=form_description", "task for pertt");
+    $this->type("id=form_cost", "2");
+    $this->type("id=form_dependencies", "depart");
+    $this->click("css=input.btn.btn-success");
+    $this->waitForPageToLoad("30000");
+    $this->type("id=form_id", "task2");
+    $this->type("id=form_cost", "1");
+    $this->click("css=input.btn.btn-success");
+    $this->waitForPageToLoad("30000");
+    $this->type("id=form_id", "task3");
+    $this->type("id=form_cost", "4");
+    $this->type("id=form_dependencies", "task1");
+    $this->click("css=input.btn.btn-success");
+    $this->waitForPageToLoad("30000");
+    $this->type("id=form_id", "task4");
+    $this->type("id=form_cost", "2");
+    $this->type("id=form_dependencies", "task3");
+    $this->click("css=input.btn.btn-success");
+    $this->waitForPageToLoad("30000");
+    $this->click("css=button.btn.btn-success");
+    $this->waitForPageToLoad("30000");
+    $this->click("link=pertt sprint");
+    $this->waitForPageToLoad("30000");
+    $this->click("id=2");
+  }
+}
+?>

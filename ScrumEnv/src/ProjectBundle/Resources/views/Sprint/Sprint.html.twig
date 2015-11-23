@@ -1,67 +1,67 @@
 <html>
-    <head>
-        {% block stylesheets %}
-	    <link href="{{ asset('bundles/Project/css/main.css') }}" rel="stylesheet"  type="text/css"/>
-	    <link href="{{ asset('css/twbs/bootstrap.css') }}" rel="stylesheet" />
-	    {% endblock %}
-    </head>
-    <body>
-        {% block body %}
-        <div id="project">
-            {{ include('ProjectBundle::navbar.html.twig') }}
-            <div class="panel panel-default">
-                <div class="panel-heading">
-                    <h1 class="panel-title">
-                        sprint tasks
-                        {#sprint.dateBegining|date('Y-m-d')#} : {#sprint.dateEnd|date('Y-m-d')#}
-                    </h1>
-                </div>
-                <div class="panel-body">
-                    <table class="table table-striped">
-                        <th>ID</th>
-                        <th>Description</th>
-                        <th>Cost</th>
-                        <th>Delete</th>
-                        <th>Update</th>
-
-                       {% for task in taskList %} 
-                        <tr>
-                            <td>{{task.getId}}</td>
-                            <td>{{task.getDescription}}</td>
-                            <td>{{task.getCost}}</td>
-                            <td><a href="{{ path('Sprint_task_delete',
-                                {'owner':task.getOwner(),
-                                'project':task.getProject(),
-                                'sprintId':task.getSprint(),
-                                'taskId':task.getId(), 
-                                 'kanban_view' : 'ok',
-                            'pertt_view' : 'ok'
-                            })}}">
-                                <button class="btn btn-success" >Delete</button>
-                                </a>
-                            </td>
-                            <td><a href="{{ path('Update_Task',
-                                {'owner':task.getOwner(),
-                                'project':task.getProject(),
-                                'sprint':task.getSprint(),
-                                'id':task.getId()})}}">
-                                <button class="btn btn-success" >update</button>
-                                </a>
-                            </td>
-                        </tr>
-                        {% endfor %}
-
-                    </table>
-               
-                     <a href="{{ path('go_to_task',
-                                {'owner':owner,
-                                'project':project,
-                                'sprint':sprint
-                                })}}"><button>Add task</button> </a>
-                               
-                </div>
+<head>
+    {% block stylesheets %}
+    <link href="{{ asset('bundles/Project/css/main.css') }}" rel="stylesheet"  type="text/css"/>
+    <link href="{{ asset('css/twbs/bootstrap.css') }}" rel="stylesheet" />
+    {% endblock %}
+</head>
+<body>
+    {% block body %}
+    <div id="project">
+        {{ include('ProjectBundle::navbar.html.twig') }}
+        <div class="panel panel-default">
+            <div class="panel-heading">
+                <h1 class="panel-title">
+                    sprint tasks
+                    {#sprint.dateBegining|date('Y-m-d')#} : {#sprint.dateEnd|date('Y-m-d')#}
+                </h1>
             </div>
-        {% endblock %}
-    </div>
-    </body>
+            <div class="panel-body">
+                <table class="table table-striped">
+                    <th>ID</th>
+                    <th>Description</th>
+                    <th>Cost</th>
+                    <th>Delete</th>
+                    <th>Update</th>
+
+                    {% for task in taskList %} 
+                    <tr>
+                        <td>{{task.getId}}</td>
+                        <td>{{task.getDescription}}</td>
+                        <td>{{task.getCost}}</td>
+                        <td><a href="{{ path('Sprint_task_delete',
+                            {'owner':task.getOwner(),
+                            'project':task.getProject(),
+                            'sprintId':task.getSprint(),
+                            'taskId':task.getId(), 
+                            'kanban_view' : 'ok',
+                            'pertt_view' : 'ok'
+                        })}}">
+                        <button class="btn btn-success" >Delete</button>
+                    </a>
+                </td>
+                <td><a href="{{ path('Update_Task',
+                    {'owner':task.getOwner(),
+                    'project':task.getProject(),
+                    'sprint':task.getSprint(),
+                    'id':task.getId()})}}">
+                    <button class="btn btn-success" >update</button>
+                </a>
+            </td>
+        </tr>
+        {% endfor %}
+
+    </table>
+    
+    <a href="{{ path('go_to_task',
+    {'owner':owner,
+    'project':project,
+    'sprint':sprint
+})}}"><button>Add task</button> </a>
+
+</div>
+</div>
+{% endblock %}
+</div>
+</body>
 </html>

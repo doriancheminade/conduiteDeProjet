@@ -2,39 +2,39 @@
 <head>
 	<link href="{{ asset('bundles/Project/css/main.css') }}" rel="stylesheet"  type="text/css"/>
 	<link href="{{ asset('css/twbs/bootstrap.css') }}" rel="stylesheet" />
-  {% block javascripts %}
-  {% javascripts '@ProjectBundle/Resources/public/js/jquery-1.8.2.js'
-  				 '@ProjectBundle/Resources/public/js/raphael.js'
-  				 '@ProjectBundle/Resources/public/js/dracula_graph.js'
-  				 '@ProjectBundle/Resources/public/js/dracula_graffle.js'
-  				 '@ProjectBundle/Resources/public/js/dracula_algorithms.js'
-  				 '@ProjectBundle/Resources/public/js/classes.js'
-  				 
-   %}
-			  <script src="{{ asset_url }}"></script>
+	{% block javascripts %}
+	{% javascripts '@ProjectBundle/Resources/public/js/jquery-1.8.2.js'
+	'@ProjectBundle/Resources/public/js/raphael.js'
+	'@ProjectBundle/Resources/public/js/dracula_graph.js'
+	'@ProjectBundle/Resources/public/js/dracula_graffle.js'
+	'@ProjectBundle/Resources/public/js/dracula_algorithms.js'
+	'@ProjectBundle/Resources/public/js/classes.js'
+	
+	%}
+	<script src="{{ asset_url }}"></script>
 	{% endjavascripts %}
 	{% endblock %}
 </head>
 <meta http-equiv="Content-Type" content="text/html; charset=utf-8" />
-	<body align="center" >
+<body align="center" >
 	<div id="Project">
 		
-			<h1 id="TitlePage">Pertt generation</h1>
+		<h1 id="TitlePage">Pertt generation</h1>
+		
+		<div id="canvas">
+			{% for task in tasks %}
+			<script type="text/javascript">
+			nosorted('{{task.getId}}', '{{task.getDependencies}}', {{task.getCost}});
+			</script>	
 			
-			<div id="canvas">
-					{% for task in tasks %}
-							<script type="text/javascript">
-		   						nosorted('{{task.getId}}', '{{task.getDependencies}}', {{task.getCost}});
-							</script>	
-						
-					{% endfor %}
-					<script type="text/javascript">
-   						 display();
-					</script>	
+			{% endfor %}
+			<script type="text/javascript">
+			display();
+			</script>	
 
-			</div>
-	<a href="{{ path('Sprint_task_list', { 'owner': owner, 'project': project, 'sprintId': sprint, 'kanban_view':'salut', 'pertt_view' : 'ok' }) }}"><button class="btn btn-success" type="submit" > back to task_list   </button></a>
-</div>
+		</div>
+		<a href="{{ path('Sprint_task_list', { 'owner': owner, 'project': project, 'sprintId': sprint, 'kanban_view':'salut', 'pertt_view' : 'ok' }) }}"><button class="btn btn-success" type="submit" > back to task_list   </button></a>
+	</div>
 </body>
 
 

@@ -15,4 +15,30 @@ class Dependencies
      * @Assert\NotBlank()
      */    
     private $id;
+
+    
+
+    /**
+     * Set id
+     *
+     * @param string $id
+     *
+     * @return Dependencies
+     */
+    public function setId($id)
+    {
+        $this->id = $id;
+
+        return $this;
+    }
+
+    /**
+     * Get id
+     *
+     * @return string
+     */
+    public function getId()
+    {
+        return $this->id;
+    }
 }

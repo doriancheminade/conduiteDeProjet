@@ -1,67 +1,75 @@
 #TODO: homepage that list projects for each user  
 
+user_profil:
+    pattern: /user/users/
+    defaults: { _controller: ProjectBundle:Default:users }
+    
+Project:
+    pattern: /user/Project/{owner}/{project}
+    defaults: { _controller: ProjectBundle:Default:ProjectOverview }
+
+add_project:    
+    pattern: /user/addProject/{owner}
+    defaults: { _controller: ProjectBundle:Default:Add_project }
+
+
 go_to_backlog:
-  pattern: /Backlog/{owner}/{project}/
+  pattern: /user/Backlog/{owner}/{project}/
   defaults: { _controller: ProjectBundle:Default:list }   
 
 go_to_User_Story:
-  pattern: /Backlog/{owner}/{project}/Add_UserStory/
+  pattern: /user/Backlog/{owner}/{project}/Add_UserStory/
   defaults: { _controller: ProjectBundle:Default:Add_Us }   
 
 Delete_User_Story:
-  pattern: /Backlog/{owner}/{project}/delete_UserStory/{id}
+  pattern: /user/Backlog/{owner}/{project}/delete_UserStory/{id}
   defaults: { _controller: ProjectBundle:Default:Delete_Us }   
 
 Update_User_Story:
-  pattern: /Backlog/{owner}/{project}/update_UserStory/{id}
+  pattern: /user/Backlog/{owner}/{project}/update_UserStory/{id}
   defaults: { _controller: ProjectBundle:Default:Update_Us }   
   
-Project:
-    pattern: /Project/{owner}/{project}
-    defaults: { _controller: ProjectBundle:Default:ProjectOverview }
-    
-
 
     
 Sprint_creation:
-    pattern: /Sprint/new/{owner}/{project}
+    pattern: /user/Sprint/new/{owner}/{project}
     defaults: { _controller: ProjectBundle:Sprint:SprintCreation }
     
 Sprint_task_list:
-    pattern: /Sprint/list/{owner}/{project}/{sprintId}/{kanban_view}/{pertt_view}
+    pattern: /user/Sprint/list/{owner}/{project}/{sprintId}/{kanban_view}/{pertt_view}
     defaults: { _controller: ProjectBundle:Sprint:SprintList }
 Sprint_task_delete:
-    pattern: /Sprint/delete/{owner}/{project}/{sprintId}/{taskId}
+    pattern: /user/Sprint/delete/{owner}/{project}/{sprintId}/{taskId}
     defaults: { _controller: ProjectBundle:Sprint:SprintListDeleteTask }
 
 go_to_task:
-  pattern: /Task/Add_Task/{owner}/{project}/{sprint}
+  pattern: /user/Task/Add_Task/{owner}/{project}/{sprint}
   defaults: { _controller: ProjectBundle:Default:Add_Task }  
 
 Update_Task:
-  pattern: /Task/update_Task/{owner}/{project}/{sprint}/{id}
+  pattern: /user/Task/update_Task/{owner}/{project}/{sprint}/{id}
   defaults: { _controller: ProjectBundle:Default:Update_Task } 
 
 
 
 go_to_Kanban:
-  pattern: /Kanban/{owner}/{project}/{sprint}/visualisation/
+  pattern: /user/Kanban/{owner}/{project}/{sprint}/visualisation/
   defaults: { _controller: ProjectBundle:Kanban:visualisation } 
 
 oG_Update_Achievement:
-  pattern: /Kanban/{owner}/{project}/{sprint}/Update_task_achievement_OG/{id}
+  pattern: /user/Kanban/{owner}/{project}/{sprint}/Update_task_achievement_OG/{id}
   defaults: { _controller: ProjectBundle:Kanban:Update_task_achievementoG }
 
 Done_Update_Achievement:
-  pattern: /Kanban/{owner}/{project}/{sprint}/Update_task_achievement_Done/{id}
+  pattern: /user/Kanban/{owner}/{project}/{sprint}/Update_task_achievement_Done/{id}
   defaults: { _controller: ProjectBundle:Kanban:Update_task_achievementD }
 
 ToDo_Update_Achievement:
-  pattern: /Kanban/{owner}/{project}/{sprint}/Update_task_achievement_ToDo/{id}
+  pattern: /user/Kanban/{owner}/{project}/{sprint}/Update_task_achievement_ToDo/{id}
   defaults: { _controller: ProjectBundle:Kanban:Update_task_achievementToDo }
 
 
 
 generate_pertt:
-  pattern: /Pertt/{owner}/{project}/{sprint}
+  pattern: /user/Pertt/{owner}/{project}/{sprint}
   defaults: { _controller: ProjectBundle:Pertt:generate_pertt } 

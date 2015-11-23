@@ -4,7 +4,7 @@
 	<link href="{{ asset('css/twbs/bootstrap.css') }}" rel="stylesheet" />
 </head>
 <meta http-equiv="Content-Type" content="text/html; charset=utf-8" />
-<body align="center" >
+<body >
 	<div id="Project">
 
 		{% block body %}
@@ -17,51 +17,43 @@
 				{% if up==null %}
 				<h3 class="panel-title">Add</h3>
 				{% endif %}
-				
+
 			</div>
 			<div class="panel-body">
-				
+
 
 				{% if message %}
 				<p>{{ message }}</p>
 				{% endif %}
-				
-				<form  action="" method="post" {{ form_enctype(form) }}>
+
+				<form action="" method="post" {{ form_enctype(form) }}>
 					{{ form_start(form) }}
-					<table align="center" id="Add_Form">
+					<table id="Add_Form">
+
 						<tr>
 							<td class="Add_Form_Column"> {{ form_label(form.id) }} </td>
 							<td class="Add_Form_Column"> {{ form_widget(form.id) }} </td>
+						</tr>
+
+						<tr>
+							<td class="Add_Form_Column"> {{ form_label(form.name) }} </td>
+							<td class="Add_Form_Column"> {{ form_widget(form.name) }} </td>
 						</tr> 
 						<tr>
 							<td class="Add_Form_Column"> {{ form_label(form.description) }} </td>
 							<td class="Add_Form_Column"> {{ form_widget(form.description) }} </td>
-						</tr> 
-						<tr>
-							<td class="Add_Form_Column"> {{ form_label(form.cost) }} </td>
-							<td class="Add_Form_Column"> {{ form_widget(form.cost) }} </td>
 						</tr>
-						<tr>
-							<td class="Add_Form_Column"> {{ form_label(form.dependencies) }} </td>
-							<td class="Add_Form_Column"> {{ form_widget(form.dependencies) }}  </td>
-						</tr>
+
 
 						<tr>
 							<td class="Add_Form_Column"> <input class="btn btn-success" type="submit" /> </td>
-							
 						</tr>
 					</table>
-					
-
-					
-					
 					{{ form_end(form) }}
+					<a href="{{ path('user_profil')}}"class="btn btn-info" role="button">Back to your profil</a> 
 				</form>
-
-				<a href="{{ path('Sprint_task_list', { 'owner': owner, 'project': project, 'sprintId': sprint, 'kanban_view':'salut', 'pertt_view' : 'ok' }) }}"><button class="btn btn-success" type="submit" > back to task_list   </button></a>
 			</div>
-
 		</div>
 		{% endblock %}
 	</body>
-	</html>
+</html>

@@ -6,10 +6,11 @@
 <nav class="navbar navbar-default">
     <div class="container-fluid">
         <div class="navbar-header">
-            <a class="navbar-brand" href="/ScrumTool/">homepage</a>
+            <a class="navbar-brand" href="{{ path('user_profil') }}">homepage</a>
         </div>
         <div>
             <ul class="nav navbar-nav">
+                 {% if project is defined%}
                 <li> <a> project:{{ project }} </a></li>
                 <li><a href="{{ path('go_to_backlog', 
 			    { 'owner': app.request.get('owner'),
@@ -17,7 +18,7 @@
                 <li><a href="{{ path('Sprint_creation', 
 			    { 'owner': app.request.get('owner'),
 			    'project': app.request.get('project')}) }}">new sprint</a></li>
-                
+                 {% endif %}
                 {% if kanban_view is defined%}
                 <li><a href="{{ path('go_to_Kanban', 
                 { 'owner': app.request.get('owner'),
@@ -30,10 +31,12 @@
                 { 'owner': app.request.get('owner'),
                 'project': app.request.get('project'),
                 'sprint': app.request.get('sprintId')}) }}">pertt sprint</a></li>
-                {% endif %}
-			    
+                {% endif %}		    
             </ul>
         </div>
+
     </div>
+
 </nav>
+
 </html>

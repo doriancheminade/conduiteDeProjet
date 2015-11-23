@@ -6,48 +6,59 @@
 <meta http-equiv="Content-Type" content="text/html; charset=utf-8" />
 	<body >
 	<div id="Project">
-			{% if up %}
-			<h1 id="TitlePage">Update a user_Story</h1>
-			{% endif %}
-			{% if up==null %}
-			<h1 id="TitlePage">Add a user_Story</h1>
-			{% endif %}
+
+		{% block body %}
+            {{ include('ProjectBundle::navbar.html.twig') }}
+           <div class="panel panel-default">
+                <div class="panel-heading">
+                	{% if up %}
+						<h3 class="panel-title">Update</h3>
+					{% endif %}
+					{% if up==null %}
+						<h3 class="panel-title">Add</h3>
+					{% endif %}
+                    
+                </div>
+                <div class="panel-body">
+		
 
 			{% if message %}
 			<p>{{ message }}</p>
 			{% endif %}
 	
-<form action="" method="post" {{ form_enctype(form) }}>
-	{{ form_start(form) }}
-	<table id="Add_Form">
+			<form action="" method="post" {{ form_enctype(form) }}>
+				{{ form_start(form) }}
+				<table id="Add_Form">
 
-		<tr>
-			<td class="Add_Form_Column"> {{ form_label(form.Id) }} </td>
-			<td class="Add_Form_Column"> {{ form_widget(form.Id) }} </td>
-		</tr>
+					<tr>
+						<td class="Add_Form_Column"> {{ form_label(form.Id) }} </td>
+						<td class="Add_Form_Column"> {{ form_widget(form.Id) }} </td>
+					</tr>
 
-		<tr>
-			<td class="Add_Form_Column"> {{ form_label(form.description) }} </td>
-			<td class="Add_Form_Column"> {{ form_widget(form.description) }} </td>
-		</tr> 
-		<tr>
-			<td class="Add_Form_Column"> {{ form_label(form.priority) }} </td>
-			<td class="Add_Form_Column"> {{ form_widget(form.priority) }} </td>
-		</tr>
-		<tr>
-			<td class="Add_Form_Column"> {{ form_label(form.cost) }} </td>
-			<td class="Add_Form_Column"> {{ form_widget(form.cost) }} </td>
-		</tr>
+					<tr>
+						<td class="Add_Form_Column"> {{ form_label(form.description) }} </td>
+						<td class="Add_Form_Column"> {{ form_widget(form.description) }} </td>
+					</tr> 
+					<tr>
+						<td class="Add_Form_Column"> {{ form_label(form.priority) }} </td>
+						<td class="Add_Form_Column"> {{ form_widget(form.priority) }} </td>
+					</tr>
+					<tr>
+						<td class="Add_Form_Column"> {{ form_label(form.cost) }} </td>
+						<td class="Add_Form_Column"> {{ form_widget(form.cost) }} </td>
+					</tr>
 
-		<tr>
-			 <td class="Add_Form_Column"> <input class="btn btn-success" type="submit" /> </td>
-		</tr>
-	</table>
-    {{ form_end(form) }}
-    <a href="{{ path('go_to_backlog', 
-			    { 'owner': app.request.get('owner'),
-			    'project': app.request.get('project')}) }}"class="btn btn-info" role="button">Back to backlog</a> 
-</form>
-</div>
+					<tr>
+						 <td class="Add_Form_Column"> <input class="btn btn-success" type="submit" /> </td>
+					</tr>
+				</table>
+			    {{ form_end(form) }}
+			    <a href="{{ path('go_to_backlog', 
+						    { 'owner': app.request.get('owner'),
+						    'project': app.request.get('project')}) }}"class="btn btn-info" role="button">Back to backlog</a> 
+			</form>
+		</div>
+	</div>
+{% endblock %}
 </body>
 </html>

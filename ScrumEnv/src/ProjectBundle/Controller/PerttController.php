@@ -14,11 +14,11 @@ class PerttController extends Controller
 
         $em = $this->getDoctrine()->getManager();
         $Tasks_sprint = $em->getRepository('ProjectBundle:Task')
-            ->findBy(
-                array('sprint' => $sprint,
-                      'owner' => $owner,
-                      'project' => $project
-                    ));    
+        ->findBy(
+            array('sprint' => $sprint,
+              'owner' => $owner,
+              'project' => $project
+              ));    
 
         return $this->container->get('templating')->renderResponse('ProjectBundle:Sprint:perttGeneration.html.twig',array('owner' => $owner, 'project' => $project, 'sprint' => $sprint, 'tasks' => $Tasks_sprint));
     }

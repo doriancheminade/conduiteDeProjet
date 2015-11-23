@@ -1,0 +1,39 @@
+<html>
+<head>
+    {% block stylesheets %}
+    <link href="{{ asset('css/twbs/bootstrap.css') }}" rel="stylesheet" />
+    <link href="{{ asset('bundles/Project/css/main.css') }}" rel="stylesheet"  type="text/css"/>
+
+    {% endblock %}
+</head>
+<body>
+    <div id="project">
+        {% block body %}
+        {{ include('ProjectBundle::navbar.html.twig') }}
+        <div class="panel panel-default">
+            <div class="panel-heading">
+                <h3 class="panel-title">Projects</h3>
+            </div>
+            <div class="panel-body">
+                <ul class="list-group">
+                    {% for project in projects %}
+                    <li class="list-group-item"><a href="{{ path('Project', 
+                        { 'owner': owner, 
+                        'project': project.id
+                    })}}" 
+                    type="datetime">
+                    {{project.id}}
+                    {{" : "}}
+                    {{project.description}}
+                </a></li>
+                {% endfor %}
+            </ul>
+        </div>
+         <a href="{{ path('add_project',
+                    {'owner':owner
+                })}}"><button>Add project</button> </a>
+    </div>
+    {% endblock %}
+</div>
+</body>
+</html>

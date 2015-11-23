@@ -1,40 +1,40 @@
 <html>
-    <head>
-        {% block stylesheets %}
-	    <link href="{{ asset('css/twbs/bootstrap.css') }}" rel="stylesheet" />
-        <link href="{{ asset('bundles/Project/css/main.css') }}" rel="stylesheet"  type="text/css"/>
+<head>
+    {% block stylesheets %}
+    <link href="{{ asset('css/twbs/bootstrap.css') }}" rel="stylesheet" />
+    <link href="{{ asset('bundles/Project/css/main.css') }}" rel="stylesheet"  type="text/css"/>
 
-	    {% endblock %}
-    </head>
-    <body>
-        <div id="project">
+    {% endblock %}
+</head>
+<body>
+    <div id="project">
         {% block body %}
-            {{ include('ProjectBundle::navbar.html.twig') }}
-            <div class="panel panel-default">
-                <div class="panel-heading">
-                    <h3 class="panel-title">sprint list</h3>
-                </div>
-                <div class="panel-body">
-                    <ul class="list-group">
+        {{ include('ProjectBundle::navbar.html.twig') }}
+        <div class="panel panel-default">
+            <div class="panel-heading">
+                <h3 class="panel-title">sprint list</h3>
+            </div>
+            <div class="panel-body">
+                <ul class="list-group">
                     {% for sprint in sprints%}
-                        <li class="list-group-item"><a href="{{ path('Sprint_task_list', 
-				            { 'owner': owner, 
-				            'project': project, 
-				            'sprintId': sprint.id,
-                            'kanban_view' : 'ok',
-                            'pertt_view' : 'ok'})}}" 
-				            type="datetime">
+                    <li class="list-group-item"><a href="{{ path('Sprint_task_list', 
+                        { 'owner': owner, 
+                        'project': project, 
+                        'sprintId': sprint.id,
+                        'kanban_view' : 'ok',
+                        'pertt_view' : 'ok'})}}" 
+                        type="datetime">
                         {{sprint.id}}
                         {{" : "}}
                         {{sprint.dateBegining|date('Y-m-d')}}
                         {{" : "}}
                         {{sprint.dateEnd|date('Y-m-d')}}
-                        </a></li>
+                    </a></li>
                     {% endfor %}
-                    </ul>
-                </div>
+                </ul>
             </div>
+        </div>
         {% endblock %}
-         </div>
-    </body>
+    </div>
+</body>
 </html>

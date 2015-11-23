@@ -22,12 +22,12 @@ class SprintController extends Controller
         $sprint->setDateEnd(new \DateTime('+1 week'));
         
         $form = $this->createFormBuilder($sprint)            
-            ->add('description')
-            ->add('id')
-            ->add('dateBegining')
-            ->add('dateEnd')
-            ->getForm();
-            
+        ->add('description')
+        ->add('id')
+        ->add('dateBegining')
+        ->add('dateEnd')
+        ->getForm();
+        
         $form->submit($request);
         
         if ($form->isValid()) 
@@ -46,17 +46,17 @@ class SprintController extends Controller
     {
         $em = $this->getDoctrine()->getManager();
         $sprint = $em->getRepository('ProjectBundle:Sprint')
-            ->findBy(
-                array('owner' => $owner,
-                    'project' => $project,
-                    'id' => $sprintId));
+        ->findBy(
+            array('owner' => $owner,
+                'project' => $project,
+                'id' => $sprintId));
 
         $taskList = $em->getRepository('ProjectBundle:Task')
-            ->findBy(
-                array('owner' => $owner,
-                    'project' => $project,
-                    'sprint' => $sprintId)
-             );
+        ->findBy(
+            array('owner' => $owner,
+                'project' => $project,
+                'sprint' => $sprintId)
+            );
         return $this->render('ProjectBundle:Sprint:Sprint.html.twig',
             array('sprint' => $sprintId, 'taskList' => $taskList, 'project' => $project, 'owner' =>$owner, 'kanban_view' => $kanban_view, 'pertt_view' => $pertt_view));
     }
@@ -68,23 +68,23 @@ class SprintController extends Controller
         
         $em = $this->getDoctrine()->getManager();
         $task = $em->getRepository('ProjectBundle:Task')
-            ->findOneBy(
-                array('owner' => $owner,
-                    'project' => $project,
-                    'sprint' => $sprintId,
-                    'id' => $taskId));
+        ->findOneBy(
+            array('owner' => $owner,
+                'project' => $project,
+                'sprint' => $sprintId,
+                'id' => $taskId));
         
 
         if (!$task) 
         {
-           throw new NotFoundHttpException("task not found");
-        }
+         throw new NotFoundHttpException("task not found");
+     }
 
-        $em->remove($task);
-        $em->flush();
+     $em->remove($task);
+     $em->flush();
 
 
-        return new RedirectResponse($this->container->get('router')->generate('Sprint_task_list', 
-            array('owner' => $owner, 'project' => $project, 'sprintId' => $sprintId, 'kanban_view' => 'ok', 'pertt_view' => 'ok')));
-    }
+     return new RedirectResponse($this->container->get('router')->generate('Sprint_task_list', 
+        array('owner' => $owner, 'project' => $project, 'sprintId' => $sprintId, 'kanban_view' => 'ok', 'pertt_view' => 'ok')));
+ }
 }

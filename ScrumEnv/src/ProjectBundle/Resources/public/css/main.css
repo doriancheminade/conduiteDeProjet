@@ -1,14 +1,35 @@
+/************************************************************************************************* Global ********************************************************************************************/
+
+
 body{
-	background-color: white;
+	background-color: #E6E6FA;
 }
 
-#Project{
-	width:50%;
-	height:50%;
-	margin:auto;
-	background-color: #E6E6FA;
+td,th {
 	text-align: center;
-	
+	font-size: 12px;
+}
+
+table{
+	border-collapse: collapse;
+	float:left;
+	margin-bottom: 20px;
+}
+
+a{
+	text-decoration: none;
+}
+
+/************************************************************************************************* Backlog ********************************************************************************************/
+
+
+#Project{
+	width:1200px;
+	height:600px;
+	margin:auto;
+	background-color: lightgrey;
+	text-align: center;
+	padding: 20px;
 }
 
 #TitlePage{
@@ -16,26 +37,7 @@ body{
 	font-size: 40px;
 	text-align: center;
 }
-	
-.IntUser, .DescriptionUser{
 
-	background-color: white;
-	text-align: center;
-	border:1px solid black;
-}
-
-.DescriptionUser{
-	width:700px;
-}
-
-.IntUser, .backlog_option{
-	width:100px;
-}
-
-
-td {
-	text-align: center;
-}
 
 #Backlog_column{
 	font-weight: bold;
@@ -45,12 +47,9 @@ td {
 	background-color: white;
 }
 
-table{
-	border-collapse: collapse;
-}
 
 #Add_Form{
-	width:50%;
+	width:100%;
 	text-align: center;
 	margin: auto;
 }
@@ -60,6 +59,81 @@ table{
 	font-weight: bold;
 }
 
-a{
-	text-decoration: none;
+.line_option{
+	float:right;
+	border:1px solid black;
+	width:70px;
+	color:black;
+}
+
+.updateDelete{
+	width: 115px;
+}
+
+	
+.IntUser, .DescriptionUser,.IDTask,.DescriptionTask{
+	background-color: white;
+	text-align: center;
+	border:1px solid black;
+}
+
+.DescriptionUser{
+	width:700px;
+}
+
+
+
+.IntUser, .backlog_option{
+	width:100px;
+}
+
+
+/************************************************************************************************* Kanban ********************************************************************************************/
+
+
+
+#Project_Kanban{
+	width:1500px;
+	height:650px;
+	margin:auto;
+	background-color: lightgrey;
+	text-align: center;
+}
+
+.DescriptionTask{
+	width:410px;
+}
+
+.IDTask{
+	width:75px;
+}
+
+
+#Kanban{
+		margin-left: 20px;
+		margin-top: 30px;
+}
+
+#TitlePage_kanban{
+	color:blue;
+	font-size: 40px;
+	text-align: center;
+	padding-top:20px;
+}
+
+
+/************************************************************************************************* Project ********************************************************************************************/
+
+
+#sprint_creation{
+	width:800px;
+	height:500px;
+	margin:auto;
+	background-color: lightgrey;
+	text-align: center;
+	padding: 20px;
+}
+
+#table_sprint{
+	margin-left: 35%;
 }

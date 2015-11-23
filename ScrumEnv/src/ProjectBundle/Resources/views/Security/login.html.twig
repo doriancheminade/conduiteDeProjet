@@ -1,0 +1,35 @@
+
+<html>
+    <head>
+        {% block stylesheets %}
+	    <link href="{{ asset('css/twbs/bootstrap.css') }}" rel="stylesheet" />
+        <link href="{{ asset('bundles/Project/css/main.css') }}" rel="stylesheet"  type="text/css"/>
+
+	    {% endblock %}
+    </head>
+    <body>
+        <div id="project">
+        {% block body %}
+            {{ include('ProjectBundle::navbar.html.twig') }}
+       
+        {% endblock %}
+        {% if error %}
+    <div>{{ error.message }}</div>
+		{% endif %}
+
+			<form action="{{ path('user_profil') }}" method="POST">
+			    <label for="username"> Username:</label>
+			    <input type="text" id="username" name="_username" value="{{ last_username }}" />
+
+			    <label for="password">Password:</label>
+			    <input type="password" id="password" name="_password" />
+
+			    <input type="hidden" name="_target_path" value="user_profil" />
+
+			    <input type="submit"/>
+			</form>
+         </div>
+    </body>
+</html>
+
+
