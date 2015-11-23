@@ -27,8 +27,8 @@ class KanbanController extends Controller
         $commits = "";
         if($repo){
             $repoManager = new RepositoryManager();
-            $list = $repoManager->getCommitsAction($repo->getRepoOwner(), $repo->getRepoName());
-            $commits = $list;
+            $commitList = $repoManager->getCommitsAction($repo->getRepoOwner(), $repo->getRepoName());
+            $commits = $repoManager->commitsByTaskAction($US, $commitList);
         }
         return $this->container->get('templating')->renderResponse('ProjectBundle:Kanban:Kanban_visualisation.html.twig', 
         array(

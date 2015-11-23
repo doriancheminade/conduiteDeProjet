@@ -10,7 +10,6 @@
 		
 			<h1 id="TitlePage_kanban">Welcome on kanban page</h1>
 			<div id="Kanban">
-			{{ commits }}
 			<table>
 			<th class="IDTask"> ID </th>
 			<th class="DescriptionTask"> ToDo </th>
@@ -20,13 +19,20 @@
 			{% if a.getAchievementTask == 'ToDo' %}
 			
 				<tr>
-					<div>
-
 					<td class="IDTask">{{ a.getId }}</td>
 					<td class="DescriptionTask">{{ a.getDescription }}
 				 <a class="line_option" href="{{ path('oG_Update_Achievement', { 'id': a.getId, 'owner': owner, 'project': project}) }}"> onGoing </a>
 				 <a class="line_option" href="{{ path('Done_Update_Achievement', { 'id': a.getId, 'owner': owner, 'project': project}) }}"> Done </a></td>
-				</div>
+				 {% for id,list in commits %}
+				     {% if id==a.getId %}
+				         {% for commit in list %}
+				             <tr>
+				                <td></td>
+				                <td>{{commit}}</td>
+				             </tr>
+				         {% endfor %}
+				     {% endif %}
+				 {% endfor %}
 
 				</tr>
 			{% endif %}
@@ -49,6 +55,16 @@
 				    <a class="line_option" href="{{ path('Done_Update_Achievement', { 'id': a.getId, 'owner': owner, 'project': project}) }}"> Done </a></td>
 					</div>
 				</tr>
+				 {% for id,list in commits %}
+				     {% if id==a.getId %}
+				         {% for commit in list %}
+				             <tr>
+				                <td></td>
+				                <td>{{commit}}</td>
+				             </tr>
+				         {% endfor %}
+				     {% endif %}
+				 {% endfor %}
 			{% endif %}
 			{% endfor %}
 			</table>
@@ -67,6 +83,16 @@
 				    <a class="line_option" href="{{ path('oG_Update_Achievement', { 'id': a.getId, 'owner': owner, 'project': project}) }}"> onGoing </a></td>
 					</div>
 				</tr>
+				 {% for id,list in commits %}
+				     {% if id==a.getId %}
+				         {% for commit in list %}
+				             <tr>
+				                <td></td>
+				                <td>{{commit}}</td>
+				             </tr>
+				         {% endfor %}
+				     {% endif %}
+				 {% endfor %}
 			{% endif %}
 			{% endfor %}
 			</table>

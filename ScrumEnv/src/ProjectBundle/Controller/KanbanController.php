@@ -24,11 +24,11 @@ class KanbanController extends Controller
         $repo = $em->getRepository('ProjectBundle:Repository')->findOneBy(
             array('owner' => $owner,
                 'project' => $project)); 
-        $commits = "vide";
+        $commits = array();
         if($repo){
             $repoManager = new RepositoryManager();
-            $list = $repoManager->getCommitsAction($repo->getRepoOwner(), $repo->getRepoName());
-            $commits = $list;
+            $commitList = $repoManager->getCommitsAction($repo->getRepoOwner(), $repo->getRepoName());
+            $commits = $repoManager->commitsByTaskAction($US, $commitList);
         }
         return $this->container->get('templating')->renderResponse('ProjectBundle:Kanban:Kanban_visualisation.html.twig', 
         array(
