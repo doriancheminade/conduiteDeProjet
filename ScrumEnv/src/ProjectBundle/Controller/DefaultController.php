@@ -34,7 +34,7 @@ class DefaultController extends Controller
         $projects = $em->getRepository('ProjectBundle:Project')
         ->findBy(
             array('owner' => $owner,
-               ));
+             ));
         return $this->render('ProjectBundle:Default:user_profile.html.twig',  array('owner' => $owner, 'projects' => $projects));
     }
 
@@ -95,19 +95,19 @@ class DefaultController extends Controller
             if ($form->isValid()) 
             {
 
-             $em = $this->container->get('doctrine')->getEntityManager();
-             $em->persist($User_Story);
-             $em->flush();
-             $message='User Story succesfully added';
-         }
-     }
+               $em = $this->container->get('doctrine')->getEntityManager();
+               $em->persist($User_Story);
+               $em->flush();
+               $message='User Story succesfully added';
+           }
+       }
 
-     return $this->container->get('templating')->renderResponse('ProjectBundle:Default:Add_Us.html.twig',array(
+       return $this->container->get('templating')->renderResponse('ProjectBundle:Default:Add_Us.html.twig',array(
         'form' => $form->createView(), 'message' => $message,'up' => $up));
- }
+   }
 
- public function Delete_UsAction($owner, $project, $id)
- {
+   public function Delete_UsAction($owner, $project, $id)
+   {
     $em = $this->container->get('doctrine')->getEntityManager();
     $User_Story = $em->getRepository('ProjectBundle:UserStory')
     ->findOneBy(
@@ -117,29 +117,29 @@ class DefaultController extends Controller
     
     if (!$User_Story) 
     {
-     throw new NotFoundHttpException("User_Story not found");
- }
- 
- $em->remove($User_Story);
- $em->flush();        
+       throw new NotFoundHttpException("User_Story not found");
+   }
+   
+   $em->remove($User_Story);
+   $em->flush();        
 
 
- return new RedirectResponse($this->container->get('router')->generate('go_to_backlog', array('owner' => $owner, 'project' => $project)));
+   return new RedirectResponse($this->container->get('router')->generate('go_to_backlog', array('owner' => $owner, 'project' => $project)));
 }
 
 public function Update_UsAction($owner, $project, $id)
 {
 
-   $message = '';
-   $up = 'ok';
-   $em = $this->container->get('doctrine')->getEntityManager();
-   $User_Story = $em->getRepository('ProjectBundle:UserStory')
-   ->findOneBy(
+ $message = '';
+ $up = 'ok';
+ $em = $this->container->get('doctrine')->getEntityManager();
+ $User_Story = $em->getRepository('ProjectBundle:UserStory')
+ ->findOneBy(
     array('owner' => $owner,
         'project' => $project,
         'id' => $id));
 
-   if (!$User_Story){
+ if (!$User_Story){
     $message = "no US found";
 }
 
@@ -197,92 +197,99 @@ public function Add_TaskAction($owner, $project, $sprint){
 
         if ($form->isValid()) 
         {
-         $em->persist($Task);
-         $em->flush();
-         $message='Tache ajouté avec succès !';
-     }
-     
-     
- }
- 
- 
+           $em->persist($Task);
+           $em->flush();
+           $message='Tache ajouté avec succès !';
+       }
+       
+       
+   }
+   
+   
 
- return $this->container->get('templating')->renderResponse('ProjectBundle:Sprint:Add_Task.html.twig',array(
+   return $this->container->get('templating')->renderResponse('ProjectBundle:Sprint:Add_Task.html.twig',array(
     'form' => $form->createView(), 'message' => $message,'up' => $up, 'owner' => $owner, 'project' => $project, 'sprint' => $sprint));
 }
 
 public function Update_TaskAction($owner, $project, $sprint, $id){
 
-       $message = '';
-       $up = 'ok';
-       $em = $this->container->get('doctrine')->getEntityManager();
-       $Task = $em->getRepository('ProjectBundle:Task')
-       ->findOneBy(
-        array('owner' => $owner,
-            'project' => $project,
-            'id' => $id));
+ $message = '';
+ $up = 'ok';
+ $em = $this->container->get('doctrine')->getEntityManager();
+ $Task = $em->getRepository('ProjectBundle:Task')
+ ->findOneBy(
+    array('owner' => $owner,
+        'project' => $project,
+        'id' => $id));
 
-       if (!$Task){
-        $message = "no US found";
+ if (!$Task){
+    $message = "no US found";
+}
+
+$form = $this->createFormBuilder($Task)
+->add('id','text')
+->add('description','text')
+->add('cost','text')
+->add('dependencies','text')
+->getForm();
+
+
+$Task -> setAchievementTask('ToDo');
+$Task -> setOwner($owner);
+$Task -> setProject($project);
+$Task -> setSprint($sprint);    
+
+
+$request = $this->container->get('request');
+
+if ($request->getMethod() == 'POST') 
+{
+  
+    $form->bind($request);
+
+    if ($form->isValid()) 
+    {
+        $em->persist($Task);
+        $em->flush();
+        $message='Tache modifié avec succès !';
     }
+    else{
+        $message = 'Form not valid';
+    }
+}
 
-    $form = $this->createFormBuilder($Task)
+return $this->container->get('templating')->renderResponse('ProjectBundle:Sprint:Add_Task.html.twig',array(
+    'form' => $form->createView(), 'message' => $message, 'up' => $up, 'owner' => $owner, 'project' => $project, 'sprint' => $sprint));
+}
+
+public function Add_projectAction($owner){
+
+    $up ='';
+    $message = '';
+    $Project = new Project(); 
+
+    $form = $this->createFormBuilder($Project)
     ->add('id','text')
+    ->add('name','text')
     ->add('description','text')
-    ->add('cost','text')
-    ->add('dependencies','text')
     ->getForm();
 
-
+    $Project -> setOwner($owner); 
     $request = $this->container->get('request');
 
     if ($request->getMethod() == 'POST') 
     {
         $form->bind($request);
-
         if ($form->isValid()) 
         {
-            $em->persist($Task);
-            $em->flush();
-            $message='Tache modifié avec succès !';
-        }
-        else{
-            $message = 'Form not valid';
-        }
-    }
 
-    return $this->container->get('templating')->renderResponse('ProjectBundle:Sprint:Add_Task.html.twig',array(
-        'form' => $form->createView(), 'message' => $message, 'up' => $up, 'owner' => $owner, 'project' => $project, 'sprint' => $sprint));
-    }
-
-public function Add_projectAction($owner){
-
-            $up ='';
-            $message = '';
-            $Project = new Project(); 
-
-            $form = $this->createFormBuilder($Project)
-            ->add('id','text')
-            ->add('name','text')
-            ->add('description','text')
-            ->getForm();
-
-            $Project -> setOwner($owner); 
-            $request = $this->container->get('request');
-
-            if ($request->getMethod() == 'POST') 
-            {
-                $form->bind($request);
-                if ($form->isValid()) 
-                {
-
-                 $em = $this->container->get('doctrine')->getEntityManager();
-                 $em->persist($Project);
-                 $em->flush();
-                 $message='Project succesfully added';
-             }
-         }
-         return $this->container->get('templating')->renderResponse('ProjectBundle:Default:Add_project.html.twig',array(
+           $em = $this->container->get('doctrine')->getEntityManager();
+           $em->persist($Project);
+           $em->flush();
+           $message='Project succesfully added';
+       }
+   }
+   return $this->container->get('templating')->renderResponse('ProjectBundle:Default:Add_project.html.twig',array(
     'form' => $form->createView(), 'message' => $message, 'owner' => $owner, 'up' => ''));
- }
+}
 }
