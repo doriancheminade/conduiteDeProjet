@@ -34,9 +34,11 @@ public function Update_task_achievementoGAction($owner, $project, $id, $sprint){
    $up = 'ok';
    $em = $this->container->get('doctrine')->getEntityManager();
    $Task = $em->find('ProjectBundle:Task', $id);
-   $US= $em->getRepository('ProjectBundle:Task')->findAll();
-
-
+     $US= $em->getRepository('ProjectBundle:Task')->findBy(
+        array('owner' => $owner,
+            'project' => $project,
+            'sprint' => $sprint));
+     
    if (!$Task){
     $message = "Aucune tache trouve";
 }
@@ -57,7 +59,10 @@ public function Update_task_achievementDAction($owner, $project, $id, $sprint){
    $up = 'ok';
    $em = $this->container->get('doctrine')->getEntityManager();
    $Task = $em->find('ProjectBundle:Task', $id);
-   $US= $em->getRepository('ProjectBundle:Task')->findAll();
+      $US= $em->getRepository('ProjectBundle:Task')->findBy(
+        array('owner' => $owner,
+            'project' => $project,
+            'sprint' => $sprint));
    if (!$Task){
     $message = "Aucune tache trouve";
 }
@@ -76,7 +81,10 @@ public function Update_task_achievementToDoAction($owner, $project, $id, $sprint
    $up = 'ok';
    $em = $this->container->get('doctrine')->getEntityManager();
    $Task = $em->find('ProjectBundle:Task', $id);
-   $US= $em->getRepository('ProjectBundle:Task')->findAll();
+      $US= $em->getRepository('ProjectBundle:Task')->findBy(
+        array('owner' => $owner,
+            'project' => $project,
+            'sprint' => $sprint));
    if (!$Task){
     $message = "Aucune tache trouve";
 }

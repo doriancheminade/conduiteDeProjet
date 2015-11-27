@@ -93,11 +93,13 @@ a{
 
 
 #Project_Kanban{
-	width:1500px;
+	width:1600px;
 	height:650px;
 	margin:auto;
 	background-color: lightgrey;
 	text-align: center;
+	 padding: 15px;
+
 }
 
 .DescriptionTask{
@@ -112,6 +114,7 @@ a{
 #Kanban{
 		margin-left: 20px;
 		margin-top: 30px;
+		min-height: 400px;
 }
 
 #TitlePage_kanban{
