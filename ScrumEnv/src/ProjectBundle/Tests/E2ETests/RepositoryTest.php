@@ -1,5 +1,5 @@
 <?php
-class GanttRealTest extends PHPUnit_Extensions_SeleniumTestCase
+class RepositoryTest extends PHPUnit_Extensions_SeleniumTestCase
 {
   protected function setUp()
   {

@@ -1,5 +1,7 @@
 <h3>{{ task.getId() }} : {{ task.getDescription() }}</h3>
-
-{{ form_start(form) }}
-{{ form_widget(form) }}
-{{ form_end(form) }}
+<div class="jumbotron">
+    {{ var_dump(task.getDateBegining()) }}
+    {{ form_start(form) }}
+    {{ form_widget(form) }}
+    {{ form_end(form) }}
+</div>
