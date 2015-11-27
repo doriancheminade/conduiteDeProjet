@@ -75,3 +75,7 @@ Delete_Task:
   pattern: /Task/deleteTask/{owner}/{project}/{sprint}/{id}
   defaults: { _controller: ProjectBundle:Default:Delete_Task } 
 
+Bdc:
+  pattern: /Sprint/bdc/{owner}/{project}/{sprintId}/{kanban_view}
+  defaults: { _controller: ProjectBundle:Bdc:bdc } 
+
