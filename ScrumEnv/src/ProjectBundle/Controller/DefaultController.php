@@ -168,6 +168,14 @@ return $this->container->get('templating')->renderResponse('ProjectBundle:Defaul
     'form' => $form->createView(), 'message' => $message, 'up' => $up));
 }
 
+public function help_backlogAction($owner, $project)
+{
+
+ 
+return $this->container->get('templating')->renderResponse('ProjectBundle:Default:help_backlog.html.twig',array(
+   'owner' => $owner, 'project' => $project));
+}
+
 public function Add_TaskAction($owner, $project, $sprint){
     $up ='';
     $message = '';

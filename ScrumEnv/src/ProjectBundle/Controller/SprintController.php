@@ -87,4 +87,12 @@ class SprintController extends Controller
      return new RedirectResponse($this->container->get('router')->generate('Sprint_task_list', 
         array('owner' => $owner, 'project' => $project, 'sprintId' => $sprintId, 'kanban_view' => 'ok', 'pertt_view' => 'ok')));
  }
+
+ public function help_sprintAction($owner, $project)
+    {
+
+     
+    return $this->container->get('templating')->renderResponse('ProjectBundle:Sprint:help_sprint.html.twig',array(
+       'owner' => $owner, 'project' => $project));
+    }
 }

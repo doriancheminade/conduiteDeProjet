@@ -1,0 +1,36 @@
+
+<html>
+<head>
+
+	<link href="{{ asset('bundles/Project/css/main.css') }}" rel="stylesheet"  type="text/css"/>
+	<link href="{{ asset('css/twbs/bootstrap.css') }}" rel="stylesheet" />
+</head>
+<meta http-equiv="Content-Type" content="text/html; charset=utf-8" />
+<body >
+	<div id="Project_help">
+		{% block body %}
+		{{ include('ProjectBundle::navbar.html.twig') }}
+		<div class="panel panel-default">
+			<div class="panel-heading">
+				<h3 class="panel-title">Backlog</h3>
+			</div>
+			<div class="panel-body">
+				<div id="backlog">
+					<h1> What’s a sprint? </h1>
+					</br>
+					<p> In product development, a sprint is a set period of time during which specific work has to be completed and made ready for review. It’s the product owner and the team with choose exactly what work need to be accomplished during this sprint. The development team has the final say when it comes to determining how much work can realistically be accomplished during this sprint. To determine work, you need to find an average between amount of points of user stories and the number of sprints. The duration of a sprint is determined by the scrum master, the team's facilitator. Traditionally, a sprint lasts 30 days. The goal of a sprint it’s to find after each how many points the team does. With these data you can find how much the project will cost and you can follow more easily the achievement of the project.
+					In a sprint you can add tasks, do a Kanban, do a Pertt and diagrams Gantt. These things are explicated later in their own part.
+ 					</p>
+
+ 					<h1> How to add sprint? </h1>
+					</br>
+					<p>You have to click on nav-bar called new sprint. After you arrive on a page with a form you need to complete. There are an id, a description, a starting date and an end date. After you validate your form and if the form is correct the sprint it’s add on list. After go on homepage to see the list.
+ 					</p>
+				</div>
+
+			<a href="{{ path('Project',{ 'owner': owner, 'project': project})}}"><button class="btn btn-primary" type="submit" > back to project </button></a> 
+			</div>
+		</div>	
+		{% endblock %}
+	</body>
+</html>

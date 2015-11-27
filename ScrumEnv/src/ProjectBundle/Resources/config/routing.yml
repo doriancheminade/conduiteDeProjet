@@ -15,10 +15,14 @@ add_project:
 
 go_to_backlog:
   pattern: /user/Backlog/{owner}/{project}/
-  defaults: { _controller: ProjectBundle:Default:list }   
+  defaults: { _controller: ProjectBundle:Default:list }
+
+help_backlog:
+  pattern: /user/help_Backlog/{owner}/{project}/
+  defaults: { _controller: ProjectBundle:Default:help_backlog }   
 
 go_to_User_Story:
-  pattern: /user/Backlog/{owner}/{project}/Add_UserStory/
+  pattern: /user/Backlog/{owner}/{project}/UserStory/
   defaults: { _controller: ProjectBundle:Default:Add_Us }   
 
 Delete_User_Story:
@@ -41,6 +45,11 @@ Sprint_task_list:
 Sprint_task_delete:
     pattern: /user/Sprint/delete/{owner}/{project}/{sprintId}/{taskId}
     defaults: { _controller: ProjectBundle:Sprint:SprintListDeleteTask }
+
+help_sprint:
+  pattern: /user/help_sprint/{owner}/{project}/
+  defaults: { _controller: ProjectBundle:Sprint:help_sprint }   
+
 
 go_to_task:
   pattern: /user/Task/Add_Task/{owner}/{project}/{sprint}

@@ -1,0 +1,41 @@
+
+<html>
+<head>
+
+	<link href="{{ asset('bundles/Project/css/main.css') }}" rel="stylesheet"  type="text/css"/>
+	<link href="{{ asset('css/twbs/bootstrap.css') }}" rel="stylesheet" />
+</head>
+<meta http-equiv="Content-Type" content="text/html; charset=utf-8" />
+<body >
+	<div id="Project_help">
+		{% block body %}
+		{{ include('ProjectBundle::navbar.html.twig') }}
+		<div class="panel panel-default">
+			<div class="panel-heading">
+				<h3 class="panel-title">Backlog</h3>
+			</div>
+			<div class="panel-body">
+				<div id="backlog">
+					<h1> What’s a backlog? </h1>
+					</br>
+					<p> A backlog is a list of user stories which are features that the MoE maybe go realize. It’s the first step of a scrum project. All the user stories representing the features which the software need or sufficient to complete or release for a project. During the project we can add or delete a user story which we find sensible or not because scrum it’s agile. As we said before if an item does not contribute to the project’s goal, it should be removed. As contrary if is necessary we should add it. 
+					For us the backlog is an array which is composed by 4 columns. There are the id of the user story, the description of the user story, the priority and the order of it.
+ 					</p>
+
+ 					<h1> How to add user story? </h1>
+					</br>
+					<p>This page is the backlog visualisation. You can see basically all the fields are with value empty because obviously when you access this page for the first time you never add an item in this project. To add a user story you need to click on button called “add User story”. When you click on it, you have redirected to another page which contains the fourth fields needed. The Id need a String which allow us to identifier it. It have to be significant against the user story you need to add. With id you have to fill a quick of it, a priority which is a number and the difficulty which is too an integer. There is a model of user story description that you can use for simplicity. It’s “As <person, function> I want <action, task, function> in order to <result, added value>”. When you are filled all fields you need to click on button “valider” to add this user story. If the submit succeed you see a message before the fields “User Story successfully added” else you can see an error message. If you want you can add following several user stories but you need to pay attention to the id because for each project a user story id is unique!  When you have finished to add user stories you can back to the visualisation with the button “back to backlog” and all the user stories are appeared in it. 
+ 					</p>
+
+ 					<h1> How to delete or update a user story? </h1>
+					</br>
+					<p> For all user stories you can see two options buttons. You can delete a user story if you find you don’t need it or it’s useless. Secondly we can modify a user story if we need to change the id, the description, the priority or the difficulty. To modify it you have to click on update button and you arrive on the same page as the addition of user stories. The difference between the twice is situated in the refilling of the fields. Basically in update page the fields are filling with the different value of the user story to modify. So you replace as you want and you click on button called “valider” to apply the modification on user story. Then you can go on backlog visualisation with button “back to backlog”.
+ 					</p>
+				</div>
+
+			<a href="{{ path('go_to_backlog',{ 'owner': owner, 'project': project})}}"><button class="btn btn-primary" type="submit" > back to backlog  </button></a> 
+			</div>
+		</div>	
+		{% endblock %}
+	</body>
+</html>
