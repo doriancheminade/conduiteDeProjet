@@ -20,26 +20,19 @@ class BdcController extends Controller
 
 JpGraph::load();
 JpGraph::module('line');
-/* $dql = "SELECT SUM(cost) AS cost FROM ProjectBundle\Entity\Task " .
-       "WHERE sprint = ?5";
-       $dql->flush(); */
-/*$em = $this->container->get('doctrine')->getEntityManager();
- $query = $this->_em->createQuery("SELECT SUM(cost) FROM Task WHERE      ");
-  $query->setParameter('id', $id);
-  */
+
 /*$em = $this->getDoctrine()->getManager();
         $tasklist = $em->getRepository('ProjectBundle:Task')
         ->findBy(
         array('cost' => $cost), //these are the parameters for the search 
         array('sprint' => $sprintId)); // this is to order the list
    
-    //now you can sum up by date
-  /*  for Task in tasklist
+   
+    for Task in tasklist
     {
-     //do something
+     
     } */
-    /*$qb->add('select', 'SUM(u.id)')
-   ->add('from', 'User u') */
+   
  
 $graph = new \Graph(300,300);
 $ydata = array("",56, 43, 27, 12, 8,"");
