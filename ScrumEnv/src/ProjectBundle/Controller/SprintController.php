@@ -51,6 +51,7 @@ class SprintController extends Controller
                 'project' => $project,
                 'id' => $sprintId));
 
+
         $taskList = $em->getRepository('ProjectBundle:Task')
         ->findBy(
             array('owner' => $owner,

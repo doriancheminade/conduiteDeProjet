@@ -1,0 +1,32 @@
+<html>
+    <head>
+	    {% stylesheets 
+	        '@bootstrap_less'        
+	    %}
+            <link rel="stylesheet" href="{{ asset_url }}" type="text/css" />
+        {% endstylesheets %}
+        {% javascripts 
+            'bootstrap_js'            
+        %}
+            <script type="text/javascript" src="{{ asset_url }}" canvas="canvas" resize="true"></script>
+        {% endjavascripts %}
+    </head>
+    <body>
+        {% block body %}
+            {{ include('ProjectBundle::navbar.html.twig') }}
+            
+            <script>
+                var jsonTaskList = {{ jsonTaskList|json_encode }}
+            </script>
+            {{ include('ProjectBundle:Gantt:GanttDraw.html.twig', {'jsonTaskList': jsonTaskList}) }}
+            
+            <div class="panel panel-default scrollable-panel">
+            {% for task in taskList %}
+                <div class="panel-body">
+                {% render(controller('ProjectBundle:GAntt:editGAnttTask',{ 'task': task })) %}
+                </div>
+            {% endfor %}
+            </div>
+        {% endblock %}
+    </body>
+</html>

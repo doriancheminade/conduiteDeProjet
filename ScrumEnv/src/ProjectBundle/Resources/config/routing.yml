@@ -77,8 +77,10 @@ ToDo_Update_Achievement:
   pattern: /user/Kanban/{owner}/{project}/{sprint}/Update_task_achievement_ToDo/{id}
   defaults: { _controller: ProjectBundle:Kanban:Update_task_achievementToDo }
 
-
-
 generate_pertt:
   pattern: /user/Pertt/{owner}/{project}/{sprint}
   defaults: { _controller: ProjectBundle:Pertt:generate_pertt } 
+
+edit_real_gantt:
+    pattern: /user/Gantt/Edit/{owner}/{project}/{sprint}
+    defaults: { _controller: ProjectBundle:Gantt:editGAntt }

@@ -1,0 +1,22 @@
+<html>
+{% stylesheets 
+    '@taitems_css' 
+    '@ProjectBundle/Resources/public/css/ganttChart.css'        
+%}
+    <link rel="stylesheet" href="{{ asset_url }}" type="text/css" />
+{% endstylesheets %}
+{% javascripts 
+    'jquery_js'
+    '@taitems_js' 
+    "http://cdnjs.cloudflare.com/ajax/libs/moment.js/2.8.4/moment.min.js"
+    '@ProjectBundle/Resources/public/js/gantt.js'            
+%}
+    <script type="text/javascript" src="{{ asset_url }}" canvas="canvas" resize="true"></script>
+{% endjavascripts %}
+{% block body %}
+    <!-- TODO:draw the gantt chart here --> 
+               
+    <div class="gantt"></div>
+{% endblock %}
+</html>        
+
