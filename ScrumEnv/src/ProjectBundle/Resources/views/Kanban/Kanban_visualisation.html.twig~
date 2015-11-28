@@ -21,6 +21,11 @@
 				<tr>
 					<td class="IDTask">{{ a.getId }}</td>
 					<td class="DescriptionTask">{{ a.getDescription }}
+<<<<<<< HEAD
+				 <a class="line_option" href="{{ path('oG_Update_Achievement', { 'id': a.getId, 'owner': owner, 'project': project,'sprint': sprint}) }}"> oG </a>
+				 <a class="line_option" href="{{ path('Done_Update_Achievement', { 'id': a.getId, 'owner': owner, 'project': project,'sprint': sprint}) }}"> Done </a></td>
+				</div>
+=======
 				 <a class="line_option" href="{{ path('oG_Update_Achievement', { 'id': a.getId, 'owner': owner, 'project': project}) }}"> onGoing </a>
 				 <a class="line_option" href="{{ path('Done_Update_Achievement', { 'id': a.getId, 'owner': owner, 'project': project}) }}"> Done </a></td>
 				 {% for id,list in commits %}
@@ -33,6 +38,7 @@
 				         {% endfor %}
 				     {% endif %}
 				 {% endfor %}
+>>>>>>> dorian
 
 				</tr>
 			{% endif %}

@@ -1,0 +1,20 @@
+<html>
+{% stylesheets       
+    '@bootstrap_less'
+%}
+    <link rel="stylesheet" href="{{ asset_url }}" type="text/css" />
+{% endstylesheets %}
+{% javascripts     
+    'bootstrap_js'         
+%}
+    <script type="text/javascript" src="{{ asset_url }}" canvas="canvas" resize="true"></script>
+{% endjavascripts %}
+{% block body %} 
+    {{ include('ProjectBundle::navbar.html.twig') }}
+    add repo
+    {{ form_start(form) }}
+    {{ form_widget(form) }}
+    {{ form_end(form) }}
+{% endblock %}
+</html>        
+

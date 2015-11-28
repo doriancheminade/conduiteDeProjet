@@ -10,22 +10,31 @@
         </div>
         <div>
             <ul class="nav navbar-nav">
+<<<<<<< HEAD
+                <li> <a> project:{{ project }} </a></li>
+=======
                 <li><h4>project:{{ project }}</h4></li>
                 <li><a href="{{ path('Project', 
 			    { 'owner': app.request.get('owner'),
 			    'project': app.request.get('project')}) }}">project</a></li>
+>>>>>>> dorian
                 <li><a href="{{ path('go_to_backlog', 
 			    { 'owner': app.request.get('owner'),
 			    'project': app.request.get('project')}) }}">backlog</a></li>
                 <li><a href="{{ path('Sprint_creation', 
 			    { 'owner': app.request.get('owner'),
 			    'project': app.request.get('project')}) }}">new sprint</a></li>
+<<<<<<< HEAD
+                
                 {% if kanban_view is defined%}
                 <li><a href="{{ path('go_to_Kanban', 
                 { 'owner': app.request.get('owner'),
                 'project': app.request.get('project'),
                 'sprint': app.request.get('sprintId')}) }}">Kanban sprint</a></li>
                 {% endif %}
+			    
+=======
+>>>>>>> dorian
             </ul>
         </div>
     </div>

@@ -35,8 +35,11 @@ class KanbanController extends Controller
         'kanban_us' => $US,
         'owner' => $owner,
         'project' => $project,
+<<<<<<< HEAD
         'sprint' => $sprint
+=======
         'commits' => $commits
+>>>>>>> dorian
         ));
     }
 

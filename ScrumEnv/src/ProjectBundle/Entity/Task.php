@@ -51,11 +51,11 @@ class Task
     private $dependencies;
     
     /**
-     * @ORM\Column(type="date",length=255, nullable=true)
+     * @ORM\Column(type="datetime",length=255, nullable=true)
      */ 
     private $dateBeginingReal = null; 
     /**
-     * @ORM\Column(type="date",length=255, nullable=true)
+     * @ORM\Column(type="datetime",length=255, nullable=true)
      */ 
     private $dateEndReal = null;
     /**

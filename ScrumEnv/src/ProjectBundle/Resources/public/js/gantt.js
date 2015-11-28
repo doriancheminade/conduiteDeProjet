@@ -9,8 +9,8 @@ $(function() {
             for(; j<source.length; j++){
                 if(source.name == jsonTaskList[i].developer){
                     source[j].values += {
-                        from: "/Date("+jsonTaskList[i].dateBeginingReal.timestamp+")/",
-                        to: "/Date("+jsonTaskList[i].dateEndReal.timestamp+")/",
+                        from: "/Date("+jsonTaskList[i].dateBeginingReal.timestamp*1000+")/",
+                        to: "/Date("+jsonTaskList[i].dateEndReal.timestamp*1000+")/",
                         label: jsonTaskList[i].id,
                         customClass: "ganttRed"
                           
@@ -22,8 +22,8 @@ $(function() {
                     name: jsonTaskList[i].developer,
                     desc: jsonTaskList[i].description,
                     values: [{
-                        from: "/Date("+jsonTaskList[i].dateBeginingReal.timestamp+")/",
-                        to: "/Date("+jsonTaskList[i].dateEndReal.timestamp+")/",
+                        from: "/Date("+jsonTaskList[i].dateBeginingReal.timestamp*1000+")/",
+                        to: "/Date("+jsonTaskList[i].dateEndReal.timestamp*1000+")/",
                         label: jsonTaskList[i].id,
                         customClass: "ganttRed"
                     }]
@@ -31,8 +31,6 @@ $(function() {
             }
         }
     }
-    console.log("source");
-    console.log(source);
     $(".gantt").gantt({
         source: source,
         scale: "hours",
