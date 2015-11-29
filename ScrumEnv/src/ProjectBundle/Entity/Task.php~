@@ -49,10 +49,6 @@ class Task
      * @ORM\Column(type="string",length=255)
      */    
     private $dependencies;
-<<<<<<< HEAD
-
-   
-=======
     
     /**
      * @ORM\Column(type="date",length=255, nullable=true)
@@ -66,6 +62,8 @@ class Task
      * @ORM\Column(type="string",length=255, nullable=true)
      */ 
     private $developer = null;
+
+   
 
     /**
      * Set id
@@ -330,5 +328,10 @@ class Task
     {
         return $this->developer;
     }
->>>>>>> dorian
+    /**
+     * @var string
+     */
+    private $achievementTask;
+
+
 }

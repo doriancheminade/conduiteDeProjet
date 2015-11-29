@@ -28,7 +28,14 @@
                         {{sprint.dateBegining|date('Y-m-d')}}
                         {{" : "}}
                         {{sprint.dateEnd|date('Y-m-d')}}
-                        </a></li>
+                        </a>
+                        <a href="{{ path('create_previsionelle_gantt', 
+                                      { 'owner': owner, 
+                                        'project': project,
+                                        'sprint': sprint.id})}}">
+                     <button class="btn btn-primary" type="submit" >diagramme de Gantt</button></a>
+
+                        </li>
                     {% endfor %}
                     </ul>
                 </div>

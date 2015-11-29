@@ -1,0 +1,49 @@
+<html>
+    <head>
+	    {% stylesheets 
+	        '@bootstrap_less'        
+	    %}
+            <link rel="stylesheet" href="{{ asset_url }}" type="text/css" />
+            <link rel="stylesheet" href="{{ asset('dhtmlx_gantt/codebase/dhtmlxgantt.css') }}" type="text/css"/>
+        {% endstylesheets %}
+        {% javascripts 
+            'bootstrap_js'            
+        %}
+            <script type="text/javascript" src="{{ asset_url }}" canvas="canvas" resize="true"></script>
+            <script src="{{ asset('dhtmlx_gantt/codebase/dhtmlxgantt.js') }}"></script>
+        {% endjavascripts %}
+        <style type="text/css" media="screen">
+            html, body{
+            margin:0px;
+            padding:0px;
+            height:100%;
+            overflow:hidden;
+            }   
+        </style>
+    </head>
+    <body>
+        {% block body %}
+            {{ include('ProjectBundle::navbar.html.twig') }}
+             <script>
+                var jsonTaskList = {{ jsonTaskList|raw }}
+
+            </script>
+            {{ include('ProjectBundle:Gantt:GanttDraw.html.twig', {'jsonTaskList': jsonTaskList}) }}
+            
+            <section id="gantt_here" style='width:100%; height:100%;'></section>
+            
+            {% block scripts %}
+    <script type="text/javascript">
+        $(function () {
+            gantt.init("gantt_here");
+            gantt.parse (ganttData);
+            
+
+        })
+    </script>  
+{% endblock %}
+        {% endblock %}
+
+
+    </body>
+</html> 

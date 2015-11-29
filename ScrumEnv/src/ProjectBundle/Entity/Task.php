@@ -328,4 +328,10 @@ class Task
     {
         return $this->developer;
     }
+    /**
+     * @var string
+     */
+    private $achievementTask;
+
+
 }
