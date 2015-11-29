@@ -3,7 +3,9 @@
 user_profil:
     pattern: /user/users/
     defaults: { _controller: ProjectBundle:Default:users }
-    
+
+
+
 Project:
     pattern: /user/Project/{owner}/{project}
     defaults: { _controller: ProjectBundle:Default:ProjectOverview }
@@ -13,43 +15,52 @@ add_project:
     defaults: { _controller: ProjectBundle:Default:Add_project }
 
 
+
+
 go_to_backlog:
   pattern: /user/Backlog/{owner}/{project}/
   defaults: { _controller: ProjectBundle:Default:list }
 
 help_backlog:
   pattern: /user/help_Backlog/{owner}/{project}/
-  defaults: { _controller: ProjectBundle:Default:help_backlog }   
+  defaults: { _controller: ProjectBundle:Default:help_backlog }
 
-go_to_User_Story:
+Add_UserStory:
   pattern: /user/Backlog/{owner}/{project}/UserStory/
-  defaults: { _controller: ProjectBundle:Default:Add_Us }   
+  defaults: { _controller: ProjectBundle:Default:Add_Us }
 
 Delete_User_Story:
   pattern: /user/Backlog/{owner}/{project}/delete_UserStory/{id}
-  defaults: { _controller: ProjectBundle:Default:Delete_Us }   
+  defaults: { _controller: ProjectBundle:Default:Delete_Us }
 
 Update_User_Story:
   pattern: /user/Backlog/{owner}/{project}/update_UserStory/{id}
-  defaults: { _controller: ProjectBundle:Default:Update_Us }   
-  
+  defaults: { _controller: ProjectBundle:Default:Update_Us }
 
-    
+
+
+
 Sprint_creation:
     pattern: /user/Sprint/new/{owner}/{project}
     defaults: { _controller: ProjectBundle:Sprint:SprintCreation }
-    
+
+help_sprint:
+  pattern: /user/help_sprint/{owner}/{project}/
+  defaults: { _controller: ProjectBundle:Sprint:help_sprint }
+
+
+
 Sprint_task_list:
     pattern: /user/Sprint/list/{owner}/{project}/{sprintId}/{kanban_view}/{pertt_view}
     defaults: { _controller: ProjectBundle:Sprint:SprintList }
+
 Sprint_task_delete:
     pattern: /user/Sprint/delete/{owner}/{project}/{sprintId}/{taskId}
     defaults: { _controller: ProjectBundle:Sprint:SprintListDeleteTask }
 
-help_sprint:
-  pattern: /user/help_sprint/{owner}/{project}/
-  defaults: { _controller: ProjectBundle:Sprint:help_sprint }   
-
+Sprint_task_done:
+    pattern: /user/Sprint/listdone/{owner}/{project}/{sprintId}/{kanban_view}
+    defaults: { _controller: ProjectBundle:Sprint:SprintListDone }
 
 go_to_task:
   pattern: /user/Task/Add_Task/{owner}/{project}/{sprint}
@@ -58,6 +69,7 @@ go_to_task:
 Update_Task:
   pattern: /user/Task/update_Task/{owner}/{project}/{sprint}/{id}
   defaults: { _controller: ProjectBundle:Default:Update_Task } 
+
 
 
 
@@ -77,6 +89,13 @@ ToDo_Update_Achievement:
   pattern: /user/Kanban/{owner}/{project}/{sprint}/Update_task_achievement_ToDo/{id}
   defaults: { _controller: ProjectBundle:Kanban:Update_task_achievementToDo }
 
+
+
+
+create_previsionelle_gantt:
+    pattern: /user/Gantt/Create/{owner}/{project}/{sprint}
+    defaults: { _controller: ProjectBundle:PreGantt:draw }  
+
 generate_pertt:
   pattern: /user/Pertt/{owner}/{project}/{sprint}
   defaults: { _controller: ProjectBundle:Pertt:generate_pertt } 
@@ -84,3 +103,19 @@ generate_pertt:
 edit_real_gantt:
     pattern: /user/Gantt/Edit/{owner}/{project}/{sprint}
     defaults: { _controller: ProjectBundle:Gantt:editGAntt }
+
+
+
+add_repo:
+    pattern: /user/Repo/add/{owner}/{project}
+    defaults: { _controller: ProjectBundle:Repo:AddRepo }
+get_commits:
+    pattern: /user/Repo/getCommits/{owner}/{repo}
+    defaults: { _controller: ProjectBundle:Repo:GetCommits }
+
+
+Bdc:
+    pattern: /user/Sprint/bdc/{owner}/{project}/{sprintId}/{kanban_view}
+    defaults: { _controller: ProjectBundle:Bdc:bdc } 
+
+

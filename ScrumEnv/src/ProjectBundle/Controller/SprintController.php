@@ -59,7 +59,7 @@ class SprintController extends Controller
                 'sprint' => $sprintId)
             );
         return $this->render('ProjectBundle:Sprint:Sprint.html.twig',
-            array('sprint' => $sprintId, 'taskList' => $taskList, 'project' => $project, 'owner' =>$owner, 'kanban_view' => $kanban_view, 'pertt_view' => $pertt_view));
+            array('sprint' => $sprintId, 'taskList' => $taskList, 'project' => $project, 'owner' =>$owner, 'kanban_view' => $kanban_view, 'pertt_view' => $pertt_view, 'gantt_real' => 'ok', 'task_done' => 'ok', 'bdc' => 'ok', 'pre_gantt' => 'ok'));
     }
 
 
@@ -86,7 +86,7 @@ class SprintController extends Controller
 
 
      return new RedirectResponse($this->container->get('router')->generate('Sprint_task_list', 
-        array('owner' => $owner, 'project' => $project, 'sprintId' => $sprintId, 'kanban_view' => 'ok', 'pertt_view' => 'ok')));
+        array('owner' => $owner, 'project' => $project, 'sprintId' => $sprintId, 'kanban_view' => 'ok', 'pertt_view' => 'ok','gantt_real' => 'ok', 'pre_gantt' => 'ok')));
  }
 
  public function help_sprintAction($owner, $project)
@@ -95,5 +95,25 @@ class SprintController extends Controller
      
     return $this->container->get('templating')->renderResponse('ProjectBundle:Sprint:help_sprint.html.twig',array(
        'owner' => $owner, 'project' => $project));
+    }
+
+
+      public function SprintListDoneAction($owner, $project, $sprintId, $kanban_view)
+    {
+        $em = $this->getDoctrine()->getManager();
+        $sprint = $em->getRepository('ProjectBundle:Sprint')
+            ->findOneBy(
+                array('owner' => $owner,
+                    'project' => $project,
+                    'id' => $sprintId));
+
+        $taskList = $em->getRepository('ProjectBundle:Task')
+            ->findBy(
+                array('owner' => $owner,
+                    'project' => $project,
+                    'sprint' => $sprintId)
+             );
+        return $this->render('ProjectBundle:Sprint:Tasklistdone.html.twig',
+            array('sprintId' => $sprintId, 'taskList' => $taskList, 'project' => $project, 'owner' =>$owner, 'kanban_view' => $kanban_view, 'gantt_real' => 'ok', 'pre_gantt' => 'ok'));
     }
 }

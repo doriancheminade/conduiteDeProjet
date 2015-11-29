@@ -19,6 +19,7 @@
 			    { 'owner': app.request.get('owner'),
 			    'project': app.request.get('project')}) }}">new sprint</a></li>
                  {% endif %}
+
                 {% if kanban_view is defined%}
                 <li><a href="{{ path('go_to_Kanban', 
                 { 'owner': app.request.get('owner'),
@@ -31,7 +32,38 @@
                 { 'owner': app.request.get('owner'),
                 'project': app.request.get('project'),
                 'sprint': app.request.get('sprintId')}) }}">pertt sprint</a></li>
-                {% endif %}		    
+                {% endif %}	
+
+                 {% if pre_gantt is defined%}
+                <li><a href="{{ path('create_previsionelle_gantt', 
+                { 'owner': app.request.get('owner'),
+                'project': app.request.get('project'),
+                'sprint': app.request.get('sprintId')}) }}">prev gantt</a></li>
+                {% endif %}
+
+                 {% if gantt_real is defined%}
+                <li><a href="{{ path('edit_real_gantt', 
+                { 'owner': app.request.get('owner'),
+                'project': app.request.get('project'),
+                'sprint': app.request.get('sprintId')}) }}">real gantt</a></li>
+                {% endif %}
+
+                {% if task_done is defined %}
+                <li><a href="{{ path('Sprint_task_done', 
+                { 'owner': app.request.get('owner'),
+                'project': app.request.get('project'),
+                'sprintId': app.request.get('sprintId'),
+                'kanban_view' : 'ok'}) }}">tasks done</a></li>
+                {% endif %}
+
+
+                {% if bdc is defined %}
+                <li><a href="{{ path('Bdc', 
+                { 'owner': app.request.get('owner'),
+                'project': app.request.get('project'),
+                'sprintId': app.request.get('sprintId'),
+                'kanban_view' : 'ok'}) }}">burn down chart</a></li>
+                {% endif %} 	    
             </ul>
         </div>
 

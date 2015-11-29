@@ -40,7 +40,10 @@
         "doctrine/doctrine-fixtures-bundle": "^2.2",
         "friendsofsymfony/user-bundle": "~2.0@dev",   
         "taitems/jQuery.Gantt": "1.0",
-        "components/jquery": "^2.1"
+        "components/jquery": "^2.1",
+        "sensio/buzz-bundle": "dev-master",
+        "leaseweb/api-caller-bundle": "^1.2",
+        "jpgraph/jpgraph": "dev-master"
     },
     "require-dev": {
         "sensio/generator-bundle": "~2.3",

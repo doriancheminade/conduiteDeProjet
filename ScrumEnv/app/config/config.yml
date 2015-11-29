@@ -9,6 +9,11 @@ imports:
 parameters:
     locale: en
 
+services:
+     repo:
+        class: ProjectBundle\Services\RepositoryManager
+        arguments:    ['repoOwner', 'repoName']
+
 framework:
     #esi:             ~
     #translator:      { fallbacks: ["%locale%"] }

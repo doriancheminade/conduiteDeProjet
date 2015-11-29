@@ -35,6 +35,28 @@
             </div>
             <a href="{{ path('help_sprint',{ 'owner': owner, 'project': project})}}"><button class="btn btn-primary" type="submit" > help sprint  </button></a> 
         </div>
+            <div class="panel panel-default">
+                <div class="panel-heading">
+                    <h3 class="panel-title">repository for this project</h3>
+                </div>
+                <div class="panel-body">
+                    <ul class="list-group">
+                        {% if repo==NULL %}
+                        <li class="list-group-item">no repository linked to this project</li>
+                        <li class="list-group-item"><a href="{{ path('add_repo', 
+				            { 'owner': owner, 
+				            'project': project}) }}">
+				            add repository
+				        </a></li>
+				        {% else %}
+				        <li class="list-group-item">repository:</li>
+                        <li class="list-group-item">
+				            {{repo.Owner}}{{" : "}}{{repo.repoName}}{{" : "}}{{repo.type}}
+				        </li>
+				        {% endif %}
+                    </ul>
+                </div>
+            </div
         {% endblock %}
     </div>
 </body>

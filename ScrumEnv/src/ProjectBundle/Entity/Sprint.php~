@@ -42,7 +42,7 @@ class Sprint
     /**
      * Get id
      *
-     * @return integer
+     * @return string
      */
     public function getId()
     {

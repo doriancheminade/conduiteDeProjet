@@ -12,38 +12,44 @@ use Symfony\Component\Serializer\Encoder\JsonEncoder;
 use Symfony\Component\Serializer\Normalizer\GetSetMethodNormalizer;
 
 class GanttController extends Controller
-{
-    public function drawAction($sprint,$taskList)
-    {
-    }
-    
-    public function newGanttAction()
-    {
-    }
-    
+{        
     public function editGAnttTaskAction($task)
     {
         $taskform = array();
         $form = $this->createFormBuilder($taskform)
             ->add('developer', 'text')
-            ->add('dateBegining', 'date')
-            ->add('dateEnd', 'date')
+            ->add('dateBegining', 'datetime')
+            ->add('dateEnd', 'datetime')
+            ->add('id', 'hidden', array(
+                'data' => $task->getId()))
+            ->add('owner', 'hidden', array(
+                'data' => $task->getOwner()))
+            ->add('project', 'hidden', array(
+                'data' => $task->getProject()))
             ->add('change', 'submit')
-            ->getForm();
-            
+            ->getForm();    
         $request = $this->container->get('request');
-        $form->handleRequest($request);
-        if ($form->isValid()) 
+        if ($request->getMethod() == 'POST') 
         {
+            $data = $request->request->get('form');
             $em = $this->getDoctrine()->getManager();
-            $uptask = $em->getRepository('AppBundle:Task')->findOneBy();
-            if (!$uptask) 
-            {
-                throw $this->createNotFoundException('No task found for id '.$task.getId());
-            }
-            $data = $form->getData();
-            $product->setDateBegining(data.dateBegining);
-            $product->setDateEnd(data.dateEnd);
+            $uptask = $em->getRepository('ProjectBundle:Task')->findOneBy(
+                array('id' => $data['id'],
+                    'owner' => $data['owner'],
+                    'project' => $data['project']));
+            $d1 = new \DateTime(
+            $data['dateBegining']['date']['year']."-".$data['dateBegining']['date']['month']."-".$data['dateBegining']['date']['day'].
+            " ".
+            $data['dateBegining']['time']['hour'].":".$data['dateBegining']['time']['minute']);
+            $d2 = new \DateTime(
+            $data['dateEnd']['date']['year']."-".$data['dateEnd']['date']['month']."-".$data['dateEnd']['date']['day'].
+            " ".
+            $data['dateEnd']['time']['hour'].":".$data['dateEnd']['time']['minute']);
+            $uptask->setDateBeginingReal($d1);
+            $uptask->setDateEndReal($d2);
+            $uptask->setDeveloper($data['developer']);
+            var_dump($uptask);
+            $em->persist($uptask);
             $em->flush();
         }
         return $this->container->get('templating')->renderResponse('ProjectBundle:Gantt:GanttEditTask.html.twig',
@@ -53,6 +59,13 @@ class GanttController extends Controller
     public function editGAnttAction($owner, $project, $sprint)
     {
         $em = $this->getDoctrine()->getManager();
+        
+        $request = $this->container->get('request');
+        if($request->getMethod() == 'POST')
+        {
+            $this->forward('ProjectBundle:Gantt:editGanttTask',array('task' => new Task()));
+        }
+        
         $taskList = $em->getRepository('ProjectBundle:Task')
             ->findBy(
                 array('owner' => $owner,

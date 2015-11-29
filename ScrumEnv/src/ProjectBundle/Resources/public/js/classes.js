@@ -189,7 +189,6 @@ function find_next_node(){
 
                  if ( NodeArray_sorted[i].node_dependence[k] == NodeArray_sorted[j].node_object){ 
                    NodeArray_sorted[j].node_next[next]= NodeArray_sorted[i].node_object;
-                   alert(next);
                    next ++;
                 }      
             }

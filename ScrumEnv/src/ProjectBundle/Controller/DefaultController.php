@@ -41,13 +41,18 @@ class DefaultController extends Controller
     public function ProjectOverviewAction($owner, $project){
         $em = $this->getDoctrine()->getManager();
         $sprints = $em->getRepository('ProjectBundle:Sprint')
-        ->findBy(
-            array('owner' => $owner,
-                'project' => $project),
-            array('id' => 'ASC')
-            );
-        
-        return $this->render('ProjectBundle:Default:ProjectOverview.html.twig', array('owner' => $owner, 'project' => $project, 'sprints' => $sprints));
+            ->findBy(
+                array('owner' => $owner,
+                    'project' => $project),
+                array('id' => 'ASC')
+             );
+         $repo = $em->getRepository('ProjectBundle:Repository')
+            ->findOneBy(
+                array('owner' => $owner,
+                    'project' => $project));
+    
+        return $this->render('ProjectBundle:Default:ProjectOverview.html.twig', 
+            array('owner' => $owner, 'project' => $project, 'sprints' => $sprints, 'repo' => $repo));
     }
 
     public function listAction($owner, $project)

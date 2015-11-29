@@ -1,7 +1,6 @@
 
 <html>
 <head>
-	<link href="{{ asset('bundles/Project/css/main.css') }}" rel="stylesheet"  type="text/css"/>
 	<link href="{{ asset('css/twbs/bootstrap.css') }}" rel="stylesheet" />
 </head>
 <meta http-equiv="Content-Type" content="text/html; charset=utf-8" />
@@ -21,14 +20,24 @@
 				
 				<tr>
 					<div>
-						<td class="IDTask">{{ a.getId }}</td>
-						<td class="DescriptionTask">{{ a.getDescription }}
-							<a class="line_option" href="{{ path('oG_Update_Achievement', { 'id': a.getId, 'owner': owner, 'project': project,'sprint': sprint}) }}"> oG </a>
-							<a class="line_option" href="{{ path('Done_Update_Achievement', { 'id': a.getId, 'owner': owner, 'project': project,'sprint': sprint}) }}"> Done </a></td>
-						</div>
 
-					</tr>
-				{% endif %}
+					<td class="IDTask">{{ a.getId }}</td>
+					<td class="DescriptionTask">{{ a.getDescription }}
+				 <a class="line_option" href="{{ path('oG_Update_Achievement', { 'id': a.getId, 'owner': owner, 'project': project,'sprint': sprint }) }}"> onGoing </a>
+				 <a class="line_option" href="{{ path('Done_Update_Achievement', { 'id': a.getId, 'owner': owner, 'project': project,'sprint': sprint}) }}"> Done </a></td>
+				 {% for id,list in commits %}
+				     {% if id==a.getId %}
+				         {% for commit in list %}
+				             <tr>
+				                <td></td>
+				                <td>{{commit}}</td>
+				             </tr>
+				         {% endfor %}
+				     {% endif %}
+				 {% endfor %}
+
+				</tr>
+					{% endif %}
 				{% endfor %}
 			</table>
 
@@ -48,8 +57,18 @@
 							<a class="line_option" href="{{ path('Done_Update_Achievement', { 'id': a.getId, 'owner': owner, 'project': project,'sprint': sprint}) }}"> Done </a></td>
 					</div>
 				</tr>
-				{% endif %}
-				{% endfor %}
+				 {% for id,list in commits %}
+				     {% if id==a.getId %}
+				         {% for commit in list %}
+				             <tr>
+				                <td></td>
+				                <td>{{commit}}</td>
+				             </tr>
+				         {% endfor %}
+				     {% endif %}
+				 {% endfor %}
+			{% endif %}
+			{% endfor %}
 			</table>
 
 
@@ -66,8 +85,18 @@
 							<a class="line_option" href="{{ path('oG_Update_Achievement', { 'id': a.getId, 'owner': owner, 'project': project,'sprint': sprint}) }}"> onGoing </a></td>
 					</div>
 				</tr>
-				{% endif %}
-				{% endfor %}
+				 {% for id,list in commits %}
+				     {% if id==a.getId %}
+				         {% for commit in list %}
+				             <tr>
+				                <td></td>
+				                <td>{{commit}}</td>
+				             </tr>
+				         {% endfor %}
+				     {% endif %}
+				 {% endfor %}
+			{% endif %}
+			{% endfor %}
 			</table>
 		</div>
 	{% endblock %}

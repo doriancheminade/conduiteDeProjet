@@ -7,26 +7,39 @@ use Symfony\Bundle\FrameworkBundle\Controller\Controller;
 use ProjectBundle\Entity\UserStory;
 use ProjectBundle\Form\UserStoryForm;
 
+use ProjectBundle\Entity\Repository;
+use ProjectBundle\Services\RepositoryManager;
+
 class KanbanController extends Controller
 {
 
+     public function visualisationAction($owner, $project, $sprint){
+        $em = $this->container->get('doctrine')->getEntityManager();
 
-   public function visualisationAction($owner, $project, $sprint){
-    $em = $this->container->get('doctrine')->getEntityManager();
-
-    $US= $em->getRepository('ProjectBundle:Task')->findBy(
-        array('owner' => $owner,
-            'project' => $project,
-            'sprint' => $sprint));
-
-    return $this->container->get('templating')->renderResponse('ProjectBundle:Kanban:Kanban_visualisation.html.twig', 
+        $US= $em->getRepository('ProjectBundle:Task')->findBy(
+            array('owner' => $owner,
+                'project' => $project,
+                'sprint' => $sprint));
+                
+        
+        $repo = $em->getRepository('ProjectBundle:Repository')->findOneBy(
+            array('owner' => $owner,
+                'project' => $project)); 
+        $commits = array();
+        if($repo){
+            $repoManager = new RepositoryManager();
+            $commitList = $repoManager->getCommitsAction($repo->getRepoOwner(), $repo->getRepoName());
+            $commits = $repoManager->commitsByTaskAction($US, $commitList);
+        }
+        return $this->container->get('templating')->renderResponse('ProjectBundle:Kanban:Kanban_visualisation.html.twig', 
         array(
-            'kanban_us' => $US,
-            'owner' => $owner,
-            'project' => $project,
-            'sprint' => $sprint
-            ));
-}
+        'kanban_us' => $US,
+        'owner' => $owner,
+        'project' => $project,
+        'sprint' => $sprint,
+        'commits' => $commits
+        ));
+    }
 
 public function Update_task_achievementoGAction($owner, $project, $id, $sprint){
 
@@ -41,16 +54,26 @@ public function Update_task_achievementoGAction($owner, $project, $id, $sprint){
      
    if (!$Task){
     $message = "Aucune tache trouve";
-}
+    }
 
-else{
-    $Task -> setAchievementTask("onGoing");
-    $em->persist($Task);
-    $em->flush();
-}
+  else{
+      $Task -> setAchievementTask("onGoing");
+      $em->persist($Task);
+      $em->flush();
+  }
+
+      $repo = $em->getRepository('ProjectBundle:Repository')->findOneBy(
+            array('owner' => $owner,
+                'project' => $project)); 
+      $commits = array();
+      if($repo){
+         $repoManager = new RepositoryManager();
+         $commitList = $repoManager->getCommitsAction($repo->getRepoOwner(), $repo->getRepoName());
+         $commits = $repoManager->commitsByTaskAction($US, $commitList);
+      }
 
 return $this->container->get('templating')->renderResponse('ProjectBundle:Kanban:Kanban_visualisation.html.twig',
-  array('kanban_us' => $US, 'message' => $message, 'up' => $up,'owner' => $owner, 'project' => $project,'sprint' => $sprint));
+  array('kanban_us' => $US, 'message' => $message, 'up' => $up,'owner' => $owner, 'project' => $project,'sprint' => $sprint, 'commits' => $commits));
 }
 
 public function Update_task_achievementDAction($owner, $project, $id, $sprint){
@@ -72,7 +95,18 @@ else{
     $em->persist($Task);
     $em->flush();
 }
-return $this->container->get('templating')->renderResponse('ProjectBundle:Kanban:Kanban_visualisation.html.twig',array('kanban_us' => $US, 'message' => $message, 'up' => $up,'owner' => $owner, 'project' => $project,'sprint' => $sprint));
+
+      $repo = $em->getRepository('ProjectBundle:Repository')->findOneBy(
+            array('owner' => $owner,
+                'project' => $project)); 
+      $commits = array();
+      if($repo){
+         $repoManager = new RepositoryManager();
+         $commitList = $repoManager->getCommitsAction($repo->getRepoOwner(), $repo->getRepoName());
+         $commits = $repoManager->commitsByTaskAction($US, $commitList);
+      }
+
+return $this->container->get('templating')->renderResponse('ProjectBundle:Kanban:Kanban_visualisation.html.twig',array('kanban_us' => $US, 'message' => $message, 'up' => $up,'owner' => $owner, 'project' => $project,'sprint' => $sprint, 'commits' => $commits));
 }
 
 public function Update_task_achievementToDoAction($owner, $project, $id, $sprint){
@@ -89,11 +123,21 @@ public function Update_task_achievementToDoAction($owner, $project, $id, $sprint
     $message = "Aucune tache trouve";
 }
 
-else{
-    $Task -> setAchievementTask("ToDo");
-    $em->persist($Task);
-    $em->flush();
-}
-return $this->container->get('templating')->renderResponse('ProjectBundle:Kanban:Kanban_visualisation.html.twig',array('kanban_us' => $US, 'message' => $message, 'up' => $up,'owner' => $owner, 'project' => $project,'sprint' => $sprint));
+  else{
+      $Task -> setAchievementTask("ToDo");
+      $em->persist($Task);
+      $em->flush();
+  }
+
+    $repo = $em->getRepository('ProjectBundle:Repository')->findOneBy(
+            array('owner' => $owner,
+                'project' => $project)); 
+      $commits = array();
+      if($repo){
+         $repoManager = new RepositoryManager();
+         $commitList = $repoManager->getCommitsAction($repo->getRepoOwner(), $repo->getRepoName());
+         $commits = $repoManager->commitsByTaskAction($US, $commitList);
+      }
+return $this->container->get('templating')->renderResponse('ProjectBundle:Kanban:Kanban_visualisation.html.twig',array('commits' => $commits,'kanban_us' => $US, 'message' => $message, 'up' => $up,'owner' => $owner, 'project' => $project,'sprint' => $sprint));
 }
 }

@@ -1,0 +1,50 @@
+<html>
+    <head>
+        {% block stylesheets %}
+        <link href="{{ asset('bundles/Project/css/main.css') }}" rel="stylesheet"  type="text/css"/>
+        <link href="{{ asset('css/twbs/bootstrap.css') }}" rel="stylesheet" />
+        {% endblock %}
+
+    </head>
+    <body>
+        {% block body %}
+        <div id="project">
+            {{ include('ProjectBundle::navbar.html.twig') }}
+            <div class="panel panel-default">
+                <div class="panel-heading">
+                    <h1 class="panel-title">
+                        sprint tasks done
+                        {#sprint.dateBegining|date('Y-m-d')#} : {#sprint.dateEnd|date('Y-m-d')#}
+                    </h1>
+                </div>
+                <div class="panel-body">
+                   
+                     <table  class="table table-striped">
+                        <th >ID</th>
+                        <th >Description</th>
+                        
+
+                       {% for task in taskList %} 
+                       {%if task.getAchievementTask=="Done"%}
+                        <tr>
+                            <td>{{task.getId}}</td>
+                            <td>{{task.getDescription}}</td>
+                            
+                           
+                        </tr>
+                        {% endif %}
+                        {% endfor %}
+
+                    </table>
+               
+                    <a href="{{ path('Sprint_task_list', { 'owner': owner, 'project': project, 'sprintId': sprintId, 'kanban_view':'ok', 'pertt_view' :'ok' }) }}"><button class="btn btn-primary" type="submit" > back to task_list   </button></a>
+                              
+                </div>
+            </div>
+
+        {% endblock %}
+
+    </div>
+    
+    </body>
+</html>
