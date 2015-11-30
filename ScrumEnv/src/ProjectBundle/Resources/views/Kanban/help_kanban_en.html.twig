@@ -1,0 +1,40 @@
+<html>
+<head>
+
+	<link href="{{ asset('bundles/Project/css/main.css') }}" rel="stylesheet"  type="text/css"/>
+	<link href="{{ asset('css/twbs/bootstrap.css') }}" rel="stylesheet" />
+</head>
+<meta http-equiv="Content-Type" content="text/html; charset=utf-8" />
+<body >
+	<div id="Project_help">
+		{% block body %}
+		{{ include('ProjectBundle::navbar.html.twig') }}
+		<div class="panel panel-default">
+			<div class="panel-heading">
+				<h3 class="panel-title"></h3>
+			</div>
+			<div class="panel-body">
+				<div id="backlog">
+					<h1> What is a Kanban ?</h1>
+					</br>
+					<p>
+					    A Kanban shows the sprint's tasks by there progress state (todo, ongoig,or done) at the moment in time in which it's read.
+					    Every contributor may change the state of his task to the following state.
+					<p>
+
+ 					<h1> How do I use it ? </h1>
+					</br>
+					<p>
+					    Every task appears in the column corresponding to it's current state and has two buttons corresponding to the over two columns, by pressing one the task's state and column changes to the corresponding one.
+					    Moreover if a work repository (currently only github is supported) is linked to the project and if the commit messages follow a certain syntax, the commits messages in the repository are displayed next to the corresponding task (if the parsing goes well).
+					    For a commit message to be assocciated to a task it has to contain the identitier of the task between brackets (ex: "[Task1] the task 1: this is a commit message").  
+					    This improves the traceablility of the code.					    
+ 					</p>
+				</div>
+
+			<a href="{{ path('Project',{ 'owner': owner, 'project': project})}}"><button class="btn btn-primary" type="submit" > back to project </button></a> 
+			</div>
+		</div>	
+		{% endblock %}
+	</body>
+</html>
