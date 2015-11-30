@@ -1,0 +1,52 @@
+
+<html>
+<head>
+
+	<link href="{{ asset('bundles/Project/css/main.css') }}" rel="stylesheet"  type="text/css"/>
+	<link href="{{ asset('css/twbs/bootstrap.css') }}" rel="stylesheet" />
+</head>
+<meta http-equiv="Content-Type" content="text/html; charset=utf-8" />
+<body >
+	<div id="Project_help">
+		{% block body %}
+		{{ include('ProjectBundle::navbar.html.twig') }}
+		<div class="panel panel-default">
+			<div class="panel-heading">
+				<h3 class="panel-title">Backlog</h3>
+			</div>
+			<div class="panel-body">
+				<div id="backlog">
+					<h1> Qu'est-ce qu'on backlog? </h1>
+					</br>
+					<p> Un backlog est une liste de récit utilisateur (ou "user stories" , US) que la MOA (maitrise d'ouvrage: entitée porteuse du besoin) demande à la MOE (maitrise d'oeuvre: entitée retenue par la MOA pour son projet) de réaliser.
+					c'est le premier pas d'un projet Scrum. 
+					Les user stories représentent les caractéristiques nécessaires et suffisantes à la complétion d'un projet informatique.
+					Le caractère Agile de Scrum rend possible de supprimer ou d'ajouter une user story à tout moment du projet, afin de pouvoir rectifier un defaut de planification (oublie d'un US important ou présence d'un US non pertinent au projet).
+					Nous représentons ici le backlog sous form de tableau à quatres colones; respecivement l'identifiant de l'US, sa description, la priorité donnée par la MOE et son coût.
+ 					</p>
+
+ 					<h1> comment ajouter une user story? </h1>
+					</br>
+					<p> La page de visualisation du backlog initialement vide peut être remplie grace au bouton "add User story".
+					Cliquer sur ce bouton vous redirigera vers un formulaire permettant de renseigner les champs de l'US:
+					L'identifiant est une chaine de caractères, il doit être unique au niveau de tout le backlog.
+					la priorité et la difficulté sont renseignées sous forme de nombres et la description est une chaine de caractères.
+					Une fois les champs renseignés cliquer sur "valider" permet d'ajouter l'US au backlog.
+					Un message indiques l'ajout de l'US en cas de succès.
+					Pour revenir au backlog il suffit après de cliquer sur "back to backlog". 					
+					  
+ 					</p>
+
+ 					<h1> Comment supprimer ou mettre à jour une user story? </h1>
+					</br>
+					<p> chaque US comporte deux boutons: l'un pour supprimer l'US l'autre pour mettre à jour un ou plusieurs de ces champs.
+					Le bouton de mise à jour amène vers un formulaire similaire à celui de création d'US.
+ 					</p>
+				</div>
+
+			<a href="{{ path('go_to_backlog',{ 'owner': owner, 'project': project})}}"><button class="btn btn-primary" type="submit" > back to backlog  </button></a> 
+			</div>
+		</div>	
+		{% endblock %}
+	</body>
+</html>

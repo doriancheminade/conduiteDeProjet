@@ -1,0 +1,36 @@
+
+<html>
+<head>
+
+	<link href="{{ asset('bundles/Project/css/main.css') }}" rel="stylesheet"  type="text/css"/>
+	<link href="{{ asset('css/twbs/bootstrap.css') }}" rel="stylesheet" />
+</head>
+<meta http-equiv="Content-Type" content="text/html; charset=utf-8" />
+<body >
+	<div id="Project_help">
+		{% block body %}
+		{{ include('ProjectBundle::navbar.html.twig') }}
+		<div class="panel panel-default">
+			<div class="panel-heading">
+				<h3 class="panel-title">Backlog</h3>
+			</div>
+			<div class="panel-body">
+				<div id="backlog">
+					<h1> Qu'est-ce qu'un sprint? </h1>
+					</br>
+					<p> En développement logiciel un sprint est une période de temps pour laquelle un certain nombre de tâches devraient être accomplies. Le "product owner" (représentant du client) et l'équipe de Scrum choisissent quelles tâches doivent être faites pendant le sprint. La quantitée de travail est évaluée grâce à la somme des coûts du backlog par rapport au nombre de sprints. La durée d'un sprint est déterminée par le "Scrum master". Typiquement un sprint dure 30 jours. Les sprints permettent grâce au nombre de points faits de déterminer la vélocité de l'équipe de développement en terme de points par corrections successives, et ainsi d'évaluer le coût total d'un projet.
+					Un sprint est donc composé de tâches, ces tâches peuvent être représentées dans un Kanban, un diagramme de Pertt ou un diagramme de Gantt. Ces représentations sont proposées par notre application.
+ 					</p>
+
+ 					<h1> Comment ajouter un sprint? </h1>
+					</br>
+					<p> Pour ajouter un nouveau sprint il suffit de cliquer sur le bouton "new sprint" dans la barre de navigation en haut. Ce bouton redirige vers un formulaire avec un identifiant pour le sprint, une date de début et de fin, et une description. Une fois le formulaire soumis s'il est correct le sprint est ajouté à la liste des sprints visibles sur la page du projet.
+ 					</p>
+				</div>
+
+			<a href="{{ path('Project',{ 'owner': owner, 'project': project})}}"><button class="btn btn-primary" type="submit" > back to project </button></a> 
+			</div>
+		</div>	
+		{% endblock %}
+	</body>
+</html>
